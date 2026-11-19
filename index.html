@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MILA.STUDIO — сайты-визитки и инфографика</title>
+  <meta name="description" content="Сайты-визитки за 7 дней и инфографика для маркетплейсов, соцсетей и меню. Обработка фото — дополнительно.">
+
+  <!-- Превью ссылки в мессенджерах. После публикации замените «img/og.jpg» на полный адрес: https://ВАШ-АДРЕС.netlify.app/img/og.jpg -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MILA.STUDIO — сайты-визитки и инфографика">
+  <meta property="og:description" content="Сайт для бизнеса за 7 дней, инфографика для маркетплейсов, соцсетей и меню.">
+  <meta property="og:image" content="img/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230F2A1F'/%3E%3Ctext x='9' y='47' font-family='Arial Black,Arial,sans-serif' font-weight='900' font-size='40' fill='%23fff'%3EM%3C/text%3E%3Ccircle cx='52' cy='44' r='5' fill='%23FF5E00'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ===== Переменные ===== */
+    :root {
+      --bg: #0A0A0A;          /* чёрный */
+      --bg-alt: #0F2A1F;      /* тёмно-зелёный */
+      --surface: #141414;
+      --surface-green: #143526;
+      --placeholder: #2A2A2A;
+      --border: rgba(255, 255, 255, 0.12);
+      --text: #FFFFFF;        /* белый */
+      --text-muted: #B4B4B4;
+      --accent: #FF5E00;      /* оранжевый */
+      --accent-hover: #E65500;
+      --accent-rgb: 255, 94, 0;
+
+      --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+      --font-head: 'Inter Tight', 'Arial Narrow', Arial, sans-serif;
+      --font-mono: 'JetBrains Mono', ui-monospace, 'Courier New', monospace;
+
+      --container: 1200px;
+      --gutter: 20px;
+      --section-y: 56px;
+      --radius: 2px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ===== Сброс ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    html { font-size: 106.25%; } /* 17px */
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
+    /* ===== Общие ===== */
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 var(--gutter);
+    }
+
+    .section { padding: var(--section-y) 0; }
+    .section--alt { background: var(--bg-alt); }
+    .section:not(.section--alt) + .section:not(.section--alt) { border-top: 1px solid var(--border); }
+
+    .section__label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 1px;
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .section__title {
+      font-family: var(--font-head);
+      font-size: clamp(1.8rem, 4.2vw, 3rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      margin-bottom: 32px;
+    }
+
+    /* ===== Кнопки ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 32px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border-radius: var(--radius);
+      border: 1px solid var(--accent);
+      cursor: pointer;
+      transition: background-color 0.3s var(--ease), color 0.3s var(--ease),
+                  border-color 0.3s var(--ease), transform 0.3s var(--ease);
+    }
+
+    .btn--primary {
+      background: var(--accent);
+      color: var(--text);
+      font-size: 19px;          /* крупный текст: белый на #FF5E00 даёт 3:1 */
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-radius: 2px;
+    }
+    .btn--primary:hover {
+      background: var(--accent-hover);
+      border-color: var(--accent-hover);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+    .btn--outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* ===== Header ===== */
+    /* Меню закреплено сверху при прокрутке */
+    .header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15, 42, 31, 0.92);
+      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    /* Чтобы заголовок раздела не прятался под меню при переходе по ссылке */
+    section[id], footer[id] { scroll-margin-top: 72px; }
+    @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 80px; } }
+    .header__inner {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 12px 24px; padding-top: 20px; padding-bottom: 20px;
+    }
+    .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
+    .logo__dot { color: var(--accent); }
+    .nav__list { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; }
+    .nav__link { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; transition: opacity 0.2s; }
+    .nav__link:hover { opacity: 1; }
+
+    /* Кнопка меню: только на телефоне */
+    .nav__toggle {
+      display: none; align-items: center; gap: 10px;
+      background: none; border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius);
+      color: inherit; font: 500 13px/1 var(--font); text-transform: uppercase; letter-spacing: .06em;
+      padding: 10px 14px; cursor: pointer;
+    }
+    .nav__icon, .nav__icon::before, .nav__icon::after {
+      display: block; width: 16px; height: 2px; background: currentColor; transition: transform .2s, opacity .2s;
+    }
+    .nav__icon { position: relative; }
+    .nav__icon::before, .nav__icon::after { content: ""; position: absolute; left: 0; }
+    .nav__icon::before { top: -5px; }
+    .nav__icon::after { top: 5px; }
+    .header.is-open .nav__icon { background: transparent; }
+    .header.is-open .nav__icon::before { transform: translateY(5px) rotate(45deg); }
+    .header.is-open .nav__icon::after { transform: translateY(-5px) rotate(-45deg); }
+    @media (max-width: 639px) {
+      .header__inner { flex-wrap: nowrap; padding-top: 12px; padding-bottom: 12px; }
+      .nav__toggle { display: inline-flex; }
+      .nav {
+        display: none; position: absolute; left: 0; right: 0; top: 100%;
+        background: #0F2A1F; border-bottom: 1px solid rgba(255,255,255,.1); box-shadow: 0 12px 24px rgba(0,0,0,.35);
+      }
+      .header.is-open .nav { display: block; }
+      .nav__list { flex-direction: column; gap: 0; padding: 8px 20px 16px; }
+      .nav__link { display: block; padding: 14px 0; font-size: 16px; opacity: .9; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .nav__list li:last-child .nav__link { border-bottom: 0; }
+    }
+
+    /* ===== Hero ===== */
+    .hero { background: var(--bg-alt); padding-top: 48px; padding-bottom: 64px; border-bottom: 3px solid var(--accent); }
+    .hero__meta { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: 0.6; margin-bottom: 24px; }
+    .hero__title {
+      font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(4rem, 19vw, 12rem); line-height: 0.85; letter-spacing: -0.04em;
+    }
+    .hero__line--accent { color: var(--accent); }
+    .hero__services {
+      margin-top: 28px;
+      font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
+      font-size: clamp(1.1rem, 3.2vw, 2rem); line-height: 1.2; letter-spacing: -0.01em;
+    }
+    .hero__services span { white-space: nowrap; }
+    .hero__line { display: block; }
+    .hero__slash { color: var(--accent); }
+    .hero__text { max-width: 600px; margin-top: 24px; font-size: 18px; opacity: 0.8; }
+    /* Внутренние линии таблицы — через gap: фон контейнера просвечивает между ячейками */
+    .facts {
+      display: grid; grid-template-columns: 1fr; gap: 1px;
+      background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2);
+      max-width: 600px; margin-top: 40px;
+    }
+    .facts__cell { background: var(--bg-alt); padding: 18px 20px; }
+    .facts__value { display: block; font-size: 22px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+    .facts__label { display: block; margin-top: 4px; font-size: 14px; color: rgba(255, 255, 255, 0.6); }
+    .hero .btn { margin-top: 40px; }
+    .hero__grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; }
+    .hero__visual { display: grid; gap: 24px; max-width: 600px; }
+    .show { margin: 0; }
+    .show figcaption { margin-top: 10px; font-size: 14px; color: rgba(255,255,255,.7); }
+    .show figcaption b { color: var(--text); font-weight: 600; }
+    .show__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .show--site .browser { display: block; transition: transform .3s var(--ease); }
+    .show--site .browser:hover { transform: translateY(-3px); }
+    .hero .facts { max-width: none; }
+
+    /* ===== Услуги ===== */
+    .services__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .card {
+      padding: 40px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+
+    .card:hover {
+      border-color: rgba(255,255,255,.5);
+      transform: translateY(-6px);
+    }
+
+    .card__num {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .card__title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .card__text { color: var(--text-muted); }
+
+    /* ===== Портфолио ===== */
+    .portfolio__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .work { display: block; }
+    .work .browser { transition: transform .4s var(--ease), border-color .4s var(--ease); }
+    .work:hover .browser { transform: translateY(-4px); border-color: rgba(255,255,255,.4); }
+    .work__caption { display: block; margin-top: 12px; font-size: 14px; opacity: 0.7; transition: opacity .3s var(--ease); }
+    .work:hover .work__caption { opacity: 1; }
+
+    /* ===== До / после ===== */
+    .section--ai { border-top: 1px solid var(--border); }
+    .section__title + .pairs__title { margin-top: 0; }
+    .pairs__title {
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 600;
+      margin: 48px 0 20px;
+    }
+
+    .pairs {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 28px;
+    }
+
+    .pair__images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .pair__img {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--placeholder);
+    }
+
+
+
+    .pair__img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .pair:hover .pair__img img { transform: scale(1.03); }
+
+    /* Маленькие полупрозрачные метки в углу, не перекрывают товар */
+    .pair__tag {
+      position: absolute; top: 8px; left: 8px; padding: 2px 7px;
+      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.9); background: rgba(10, 10, 10, 0.45); border-radius: var(--radius);
+    }
+
+    .pair__caption { margin-top: 12px; font-size: 14px; opacity: 0.7; text-align: left; }
+
+    @media (min-width: 1024px) {
+      .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+    }
+
+    .block__lead {
+      max-width: 640px;
+      margin: -16px 0 32px;
+      color: var(--text-muted);
+    }
+
+    /* ===== ИИ-визуал ===== */
+    .section--ai .block__lead { margin: -24px 0 40px; }
+    .ai-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .ai-card__img {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: var(--placeholder);
+    }
+
+    .ai-card__img img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
+    }
+
+    .ai-card:hover .ai-card__img img { transform: scale(1.03); }
+
+    /* ===== Условия ===== */
+    .terms {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      margin-top: 56px;
+    }
+
+    .terms__item { padding: 24px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.3); }
+
+    .terms__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .terms__text { color: var(--text-muted); }
+
+    /* ===== Цены ===== */
+    .prices {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .price { padding: 40px 32px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); transition: border-color .3s var(--ease); }
+
+    .price:hover { border-color: rgba(255, 255, 255, 0.4); }
+
+
+    .price__title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .price__value { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 24px; }
+
+    .price__value span {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--text-muted);
+    }
+
+    .price__temp {
+      margin: -16px 0 24px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .price__list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 10px;
+      opacity: 0.7;
+    }
+
+    .price__list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 8px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    .price__text { opacity: 0.7; }
+
+    .prices__note {
+      max-width: 720px;
+      margin-top: 32px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    @media (min-width: 1024px) {
+      .ai-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
+      .terms { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+      .prices { grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+      .extra { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ===== Процесс ===== */
+    .process__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+      counter-reset: step;
+    }
+
+    .step {
+      padding: 32px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .step:last-child { border-bottom: 1px solid var(--border); }
+
+    .step__num {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .step__title {
+      font-size: 1.5rem;
+      font-weight: 600;
+    }
+
+    .step__text {
+      margin-top: 12px;
+      padding-right: 16px;
+      color: var(--text-muted);
+    }
+
+    /* ===== Контакты / футер ===== */
+    .footer {
+      padding: var(--section-y) 0 40px;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer__label { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: .6; margin-bottom: 20px; }
+    .footer__title {
+      font-family: var(--font);
+      font-size: clamp(1.75rem, 4vw, 3rem);
+      font-weight: 500;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 40px;
+    }
+    .footer__title span { opacity: .55; }
+
+    .footer__buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 48px;
+    }
+    .footer__buttons .btn {
+      min-height: 0; padding: 10px 22px; font-size: 14px;
+      background: transparent; color: var(--text); border: 1px solid var(--text);
+    }
+    /* Чёрный текст на оранжевом: белый при 14px не проходит по контрасту */
+    .footer__buttons .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: none; }
+
+    .footer__copy {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* ===== Услуги: что делаю → результат ===== */
+    .svc { display: grid; gap: 24px; }
+    .svc__row { display: grid; grid-template-columns: 1fr; gap: 20px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .svc__row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .svc__num { display: block; font-size: 3rem; font-weight: 300; line-height: 1; color: rgba(255,255,255,.25); margin-bottom: 12px; }
+    .svc__title { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; }
+    .svc__list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--text-muted); }
+    .svc__list li::before { content: ''; position: absolute; left: 0; top: .7em; width: 8px; height: 1px; background: var(--text-muted); }
+    .svc__result {
+      align-self: start; padding: 28px;
+      background: rgba(255, 255, 255, 0.05);
+      border-left: 3px solid var(--accent);
+    }
+    .svc__label { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: 0.6; margin-bottom: 12px; }
+    .svc__result p { font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.45; }
+
+    /* ===== Дополнительные услуги ===== */
+    .extra__title { font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: 1px; opacity: 0.6; margin: 64px 0 8px; }
+    .extra { display: grid; grid-template-columns: 1fr; gap: 0 48px; }
+    .extra__card { padding: 20px 0; border-top: 1px solid var(--border); }
+    .extra__name { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; }
+    .extra__text { color: var(--text-muted); font-size: .95rem; }
+    .prices--extra .price { padding: 28px 24px; }
+    .prices--extra .price__value { font-size: 1.5rem; margin-bottom: 12px; }
+
+    .footer { background: var(--bg-alt); }
+
+    /* ===== Рамки: браузер и ноутбук ===== */
+    .browser {
+      overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.14);
+      background: #1a1a1a; box-shadow: 0 24px 48px rgba(0,0,0,.45);
+    }
+    .browser__bar { display: flex; gap: 6px; align-items: center; height: 24px; padding: 0 10px; background: #1f1f1f; border-bottom: 1px solid rgba(255,255,255,.08); }
+    .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
+    .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
+    .laptop__screen { border: 8px solid #1c1c1c; border-radius: 12px 12px 0 0; box-shadow: none; }
+    .laptop__base {
+      height: 14px; width: 112%; margin-left: -6%;
+      background: linear-gradient(#3a3a3a, #1a1a1a); border-radius: 0 0 14px 14px;
+      box-shadow: 0 30px 60px rgba(0,0,0,.6);
+    }
+
+    /* ===== Переписка ===== */
+    .way__visual { margin-bottom: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: center; }
+    .chat { gap: 8px; padding: 16px; border-radius: 8px; background: rgba(255,255,255,.03); }
+    .bubble {
+      align-self: flex-start; max-width: 80%; padding: 8px 14px; font-size: .9rem;
+      background: #262626; border-radius: 14px 14px 14px 4px; color: var(--text);
+    }
+    .bubble--me { align-self: flex-end; background: #3a3a3a; border-radius: 14px 14px 4px 14px; color: var(--text-muted); }
+
+    /* ===== Показать все работы ===== */
+    .pairs--more { margin-top: 28px; }
+    .more__btn { display: flex; margin: 28px auto 0; }
+
+    @media (min-width: 1024px) {
+      .svc__row { grid-template-columns: 1.2fr 1fr; gap: 48px; padding-bottom: 40px; }
+    }
+
+    /* ===== Кейс ===== */
+    .case__sub { margin: -20px 0 28px; font-size: 18px; opacity: .7; }
+    .case { display: grid; grid-template-columns: 1fr; gap: 40px; }
+    .case__main { display: block; }
+    .case__thumbs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    .case__facts { display: grid; gap: 28px; align-content: start; }
+    .case__facts dt { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: .6; margin-bottom: 6px; }
+    .case__facts dd { margin: 0; font-size: 17px; line-height: 1.5; max-width: 36ch; }
+    .case__list { list-style: none; display: grid; gap: 8px; }
+    .case__list li { position: relative; padding-left: 18px; }
+    .case__list li::before { content: ''; position: absolute; left: 0; top: .75em; width: 8px; height: 1px; background: var(--accent); }
+    .case__facts div { padding-top: 16px; border-top: 1px solid var(--border); }
+    .case__link { display: inline-block; margin-top: 32px; font-weight: 600; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
+    .case__link:hover { color: var(--accent); }
+
+    /* ===== Услуги и цены ===== */
+    .offer { display: grid; }
+    .offer__row { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--border); }
+    .offer__row:last-child { border-bottom: 1px solid var(--border); }
+    .offer__title { font-size: 1.5rem; font-weight: 600; margin-bottom: 12px; }
+    .offer__head .price__value { margin-bottom: 4px; }
+    .price__value--sm { font-size: 1.75rem !important; }
+    .offer__meta { font-size: 14px; opacity: .7; }
+    .offer__row--extra .offer__title { font-size: 1.25rem; }
+    .pair--tall .pair__img { aspect-ratio: 3 / 4; }
+    .ig { display: grid; gap: 28px; align-items: center; }
+    .ig__lead { font-size: 1.125rem; line-height: 1.5; margin-bottom: 16px; }
+    .ig__list { list-style: none; display: grid; gap: 10px; margin-bottom: 20px; }
+    .ig__list li { position: relative; padding-left: 20px; opacity: .85; }
+    .ig__list li::before { content: "—"; position: absolute; left: 0; color: var(--accent); }
+    .ig__price { font-weight: 600; margin-bottom: 12px; }
+    .ig__link { color: var(--accent); font-weight: 600; }
+    .ig__link:hover { text-decoration: underline; }
+    @media (min-width: 768px) { .ig { grid-template-columns: 1.4fr 1fr; gap: 48px; } }
+    .pair--tall .pair__tag { top: auto; bottom: 8px; }
+    .prices__note { margin-top: 24px; font-size: 14px; opacity: .7; max-width: 70ch; }
+
+    /* ===== Обо мне ===== */
+    .section--about { background: var(--bg-alt); }
+    .about { display: block; }
+    .about__photo { width: 100%; max-width: 380px; aspect-ratio: 3 / 4; object-fit: cover; border-radius: var(--radius); }
+    .about__lead { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; max-width: 32ch; margin: -8px 0 32px; }
+    .about__facts { list-style: none; display: grid; gap: 16px; }
+    .about__facts li { padding-top: 16px; border-top: 1px solid rgba(255,255,255,.2); opacity: .85; }
+    .about__facts b { display: block; font-weight: 600; opacity: 1; }
+
+    /* ===== Правила ===== */
+    .rules { list-style: none; display: grid; gap: 12px; margin-top: 32px; max-width: 75ch; }
+    .rules li { opacity: .8; }
+    .rules b { color: var(--text); }
+
+    .ai-grid--2 { grid-template-columns: repeat(2, 1fr) !important; max-width: 640px; }
+
+    @media (min-width: 1024px) {
+      .case { grid-template-columns: 1.6fr 1fr; gap: 56px; }
+      .offer__row { grid-template-columns: 1fr 1.2fr 1fr; gap: 40px; }
+      .about__facts { grid-template-columns: repeat(3, 1fr); gap: 32px; }
+    }
+
+    /* ===== Анимация появления ===== */
+    .js .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+      transition-delay: var(--delay, 0s);
+    }
+
+    .js .reveal.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .btn, .card, .work .browser { transition: none; }
+    }
+
+    /* ===== Планшет ===== */
+    @media (min-width: 640px) {
+      .hero__text { font-size: 20px; }
+      .facts { grid-template-columns: repeat(3, 1fr); }
+      :root { --gutter: 32px; }
+
+      .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
+      .process__list   { grid-template-columns: repeat(2, 1fr); column-gap: 32px; }
+      .step:nth-last-child(2) { border-bottom: 1px solid var(--border); }
+
+      .footer__buttons { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    /* ===== Десктоп ===== */
+    @media (min-width: 1024px) {
+      .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 64px; }
+      .hero__title { font-size: clamp(5rem, 10vw, 10rem); }
+      .hero__services { font-size: clamp(1.1rem, 1.7vw, 1.5rem); }
+      :root { --section-y: 80px; --gutter: 48px; }
+
+      .services__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+      /* 6 колонок: сайты по 3, фото по 2 */
+      .portfolio__grid { grid-template-columns: repeat(6, 1fr); gap: 24px; }
+      .work--site  { grid-column: span 3; }
+
+      .process__list { grid-template-columns: repeat(4, 1fr); column-gap: 32px; }
+      .step { padding: 40px 0; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#top" class="logo" aria-label="MILA.STUDIO — на главную">MILA<span class="logo__dot">.</span>STUDIO</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="mainNav"><span class="nav__icon" aria-hidden="true"></span>Меню</button>
+      <nav class="nav" id="mainNav" aria-label="Основное меню">
+        <ul class="nav__list">
+          <li><a href="#case" class="nav__link">Работы</a></li>
+          <li><a href="#services" class="nav__link">Услуги и цены</a></li>
+          <li><a href="#process" class="nav__link">Как я работаю</a></li>
+          <li><a href="#contacts" class="nav__link">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__grid">
+          <div class="hero__content">
+        <h1 class="hero__title" id="hero-title">
+          <span class="hero__line">Mila</span>
+          <span class="hero__line hero__line--accent">Studio</span>
+        </h1>
+        <p class="hero__services"><span>Сайты-визитки</span> <span class="hero__slash" aria-hidden="true">/</span> <span>инфографика</span> <span class="hero__slash" aria-hidden="true">/</span> <span>обработка фото</span></p>
+        <p class="hero__text">Для малого бизнеса, мастеров и&nbsp;предпринимателей. Работаю одна: тексты, дизайн и&nbsp;готовый сайт. Без посредников и&nbsp;затягивания сроков.</p>
+        <div class="facts">
+          <div class="facts__cell"><span class="facts__value">7 дней</span><span class="facts__label">срок сайта</span></div>
+          <div class="facts__cell"><span class="facts__value">от 10&nbsp;000&nbsp;₽</span><span class="facts__label">сайт под ключ</span></div>
+          <div class="facts__cell"><span class="facts__value">от 2&nbsp;500&nbsp;₽</span><span class="facts__label">карточка инфографики</span></div>
+        </div>
+        <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
+          </div>
+          <div class="hero__visual">
+            <figure class="show show--site">
+              <a href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener" class="browser">
+                <div class="browser__bar"><i></i><i></i><i></i></div>
+                <img src="img/site-milana.webp" alt="Сайт-визитка кондитера Milana Volnaya" width="1600" height="900" fetchpriority="high">
+              </a>
+              <figcaption><b>Сайт-визитка</b> · кондитер-консультант</figcaption>
+            </figure>
+            <figure class="show show--photo">
+              <div class="show__pair">
+                <div class="pair__img"><img src="img/brooch-before.webp" alt="Валяная брошь-тигр на ладони" width="800" height="800"><span class="pair__tag">До</span></div>
+                <div class="pair__img"><img src="img/brooch-after.webp" alt="Та же брошь на светлом фоне" width="800" height="800"><span class="pair__tag">После</span></div>
+              </div>
+              <figcaption><b>Фото для каталога</b> · товар мастера</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Кейс -->
+    <section class="section" id="case">
+      <div class="container">
+        <h2 class="section__title reveal">Yulia Craft</h2>
+        <p class="case__sub reveal">Сайт-визитка для мастера вязаных игрушек</p>
+
+        <div class="case">
+          <div class="case__media reveal">
+            <a href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener" class="browser case__main">
+              <div class="browser__bar"><i></i><i></i><i></i></div>
+              <img src="img/site-yulia.webp" alt="Первый экран сайта Yulia Craft" loading="lazy" width="1600" height="900">
+            </a>
+            <div class="case__thumbs">
+              <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/case-yulia-catalog.webp" alt="Каталог игрушек с ценами" loading="lazy" width="1600" height="900"></div>
+              <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/case-yulia-gift.webp" alt="Блок с предложением к праздникам" loading="lazy" width="1600" height="900"></div>
+            </div>
+          </div>
+
+          <dl class="case__facts reveal">
+            <div><dt>Задача</dt><dd>Одна ссылка вместо переписки: покупатель сам видит модели, цены и&nbsp;как заказать.</dd></div>
+            <div><dt>Что сделала</dt><dd>
+              <ul class="case__list">
+                <li>Структура и&nbsp;тексты</li>
+                <li>Каталог: 13&nbsp;моделей с&nbsp;ценами</li>
+                <li>Кнопка «Узнать наличие» с&nbsp;готовым сообщением в&nbsp;WhatsApp</li>
+                <li>Блок к&nbsp;праздникам</li>
+                <li>Обработка фото игрушек</li>
+              </ul>
+            </dd></div>
+            <div><dt>Результат</dt><dd>Покупатель пишет мастеру уже с&nbsp;выбранной игрушкой.</dd></div>
+            <!-- Отзыв клиента: вставить, когда Юлия пришлёт текст
+            <div><dt>Отзыв</dt><dd>«…» — Юлия</dd></div> -->
+          </dl>
+        </div>
+        <a class="case__link reveal" href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener">Открыть сайт →</a>
+      </div>
+    </section>
+
+    <!-- До / после -->
+    <section class="section" id="photos">
+      <div class="container">
+        <h2 class="section__title reveal">До и&nbsp;после</h2>
+        <h3 class="pairs__title reveal">Фото для меню</h3>
+        
+        <div class="pairs">
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/cheesecake-before.webp" alt="Чизкейк на раздаче кухни" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне для меню" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Чизкейк: с раздачи кухни — в меню</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/begonia-before.webp" alt="Десерт с мороженым на тарелке, фото на кухне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/begonia-after.webp" alt="Тот же десерт для меню" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Десерт с мороженым: свет, фон, цвет</figcaption>
+          </figure>
+        </div>
+        <div class="more" id="moreDesserts" hidden>
+        <div class="pairs pairs--more">
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/buffet-before.webp" alt="Фуршет до обработки: зал, колонки, мебель на фоне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/buffet-after.webp" alt="Фуршет после обработки: светлый чистый фон" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Фуршет: убрала зал и технику, светлый фон</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/leaf-before.webp" alt="Грушевый тарт на зелёной тарелке, размытое фото" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/leaf-after.webp" alt="Тот же десерт: резкость, свет, светлый фон" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Тарт с мороженым: резкость, свет, светлый фон</figcaption>
+          </figure>
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/tart-before.webp" alt="Грушевый тарт на кухне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Грушевый тарт: фон, свет, цвет</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/eclair-before.webp" alt="Шоколадный десерт до обработки" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/eclair-after.webp" alt="Шоколадный десерт после обработки" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Шоколадный десерт: подача для меню</figcaption>
+          </figure>
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/mochi-before.webp" alt="Моти с клубникой на сером фоне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/mochi-after.webp" alt="Те же моти на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Моти с клубникой: фон и свет, подложки для подачи</figcaption>
+          </figure>
+        </div>
+        </div>
+        <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Показать ещё фото для меню" aria-expanded="false" aria-controls="moreDesserts">Показать ещё фото для меню</button>
+
+        <h3 class="pairs__title reveal">Фото товаров на чистом фоне</h3>
+        <p class="block__lead reveal">Основа для сайта, каталога, соцсетей и&nbsp;карточек маркетплейса.</p>
+
+        <div class="pairs">
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр на столе дома" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/tiger-after.webp" alt="Тот же тигр на студийном фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Вязаный тигр: фото для каталога</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/seal-before.webp" alt="Брелок-тюлень в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/seal-after.webp" alt="Тот же брелок целиком на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Брелок-тюлень: фото для каталога</figcaption>
+          </figure>
+        </div>
+        <div class="more" id="moreToys" hidden>
+        <div class="pairs pairs--more">
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/bunny-before.webp" alt="Валяная брошь-зайчик на ладони" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/bunny-after.webp" alt="Та же брошь на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Брошь-зайчик, сухое валяние</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/gulls-before.webp" alt="Броши-чайки на зелёном коврике" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/gulls-after.webp" alt="Те же броши на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Броши-чайки: групповой кадр</figcaption>
+          </figure>
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/gull-before.webp" alt="Вязаная чайка на ладони" loading="lazy" width="800" height="1000"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/gull-after.webp" alt="Вязаная чайка на белом фоне" loading="lazy" width="800" height="1000"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Брелок-чайка: фото для каталога</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/bears3-before.webp" alt="Три брелока-медведя в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/bears3-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Брелоки-медведи в тельняшках</figcaption>
+          </figure>
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/crabs-before.webp" alt="Два брелока-крабика на ладони" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/crabs-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Брелоки-крабики</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/brownbear-before.webp" alt="Бурый вязаный мишка в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/brownbear-after.webp" alt="Тот же мишка на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
+            </div>
+            <figcaption class="pair__caption">Бурый мишка: фото для каталога</figcaption>
+          </figure>
+        </div>
+        </div>
+        <button class="btn btn--outline more__btn" data-more="moreToys" data-label="Показать ещё товары" aria-expanded="false" aria-controls="moreToys">Показать ещё товары</button>
+
+        <h3 class="pairs__title reveal">Инфографика</h3>
+        <div class="ig">
+          <figure class="pair pair--tall reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/bear-before.webp" alt="Вязаный белый мишка в руке" loading="lazy" width="800" height="800"><span class="pair__tag">Фото мастера</span></div>
+              <div class="pair__img"><img src="img/card-bear.webp" alt="Карточка для маркетплейса: белый мишка, высота 10 ± 2 см" loading="lazy" width="750" height="1000"><span class="pair__tag pair__tag--after">Карточка</span></div>
+            </div>
+            <figcaption class="pair__caption">Мишка настоящий, нейросеть дорисовала только интерьер вокруг</figcaption>
+          </figure>
+          <div class="ig__text reveal" style="--delay: .1s">
+            <p class="ig__lead">Обложка карточки для маркетплейса из&nbsp;фото, снятого на&nbsp;телефон.</p>
+            <ul class="ig__list">
+              <li>Понятное название с&nbsp;первого взгляда</li>
+              <li>Размер и&nbsp;главные детали прямо на&nbsp;обложке</li>
+              <li>Товар без изменений, фон подобран под&nbsp;повод покупки</li>
+            </ul>
+            <p class="ig__price">Обложка + 4&nbsp;слайда — от&nbsp;2&nbsp;500&nbsp;₽, 2–3&nbsp;дня</p>
+            <a href="#services" class="ig__link">Что входит в&nbsp;услугу →</a>
+          </div>
+        </div>
+
+        <h3 class="pairs__title reveal">ИИ-визуал для соцсетей</h3>
+        <p class="block__lead reveal">Сцены по&nbsp;мотивам товара для постов. Не&nbsp;для каталога: детали могут отличаться от&nbsp;оригинала.</p>
+        <div class="pairs">
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/busts-before.webp" alt="Фигуры из белого шоколада на противне" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/busts-ai.webp" alt="ИИ-сцена с теми же фигурами" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
+            </div>
+            <figcaption class="pair__caption">Шоколадные фигуры, которые я готовила</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр дома" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/tiger-ai.webp" alt="ИИ-сцены с тигром в лесу" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
+            </div>
+            <figcaption class="pair__caption">Вязаный тигр в лесу</figcaption>
+          </figure>
+        </div>
+        <div class="more" id="moreAi" hidden>
+        <div class="pairs pairs--more">
+          <figure class="pair reveal">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/bear-after.webp" alt="Вязаный мишка на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/ski-ai.webp" alt="ИИ-сцена: мишка на лыжах" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
+            </div>
+            <figcaption class="pair__caption">Мишка на лыжах</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay: .1s">
+            <div class="pair__images">
+              <div class="pair__img"><img src="img/bear-before.webp" alt="Вязаный мишка, фото дома" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/xmas-ai.webp" alt="ИИ-сцена: мишка у ёлки" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
+            </div>
+            <figcaption class="pair__caption">Мишка у ёлки</figcaption>
+          </figure>
+        </div>
+        </div>
+        <button class="btn btn--outline more__btn" data-more="moreAi" data-label="Показать все сцены" aria-expanded="false" aria-controls="moreAi">Показать все сцены</button>
+      </div>
+    </section>
+
+    <!-- Услуги и цены -->
+    <section class="section" id="services">
+      <div class="container">
+        <h2 class="section__title reveal">Что я&nbsp;делаю</h2>
+
+        <div class="offer">
+          <article class="offer__row reveal">
+            <div class="offer__head">
+              <span class="svc__num">01</span>
+              <h3 class="offer__title">Сайт-визитка</h3>
+              <p class="price__value">от&nbsp;10&nbsp;000&nbsp;₽</p>
+              <p class="offer__meta">7 дней · временная стартовая цена</p>
+            </div>
+            <ul class="svc__list">
+              <li>Структура и&nbsp;тексты по&nbsp;вашей информации</li>
+              <li>Вёрстка, удобный вид на&nbsp;телефоне</li>
+              <li>До&nbsp;15&nbsp;фото с&nbsp;простой обработкой</li>
+              <li>Публикация, два круга правок</li>
+            </ul>
+            <div class="svc__result"><span class="svc__label">Результат</span><p>Клиент сам находит ответы на&nbsp;сайте, а&nbsp;вы меньше переписываетесь.</p></div>
+          </article>
+
+          <article class="offer__row reveal">
+            <div class="offer__head">
+              <span class="svc__num">02</span>
+              <h3 class="offer__title">Инфографика</h3>
+              <p class="price__value">от&nbsp;2&nbsp;500&nbsp;₽</p>
+              <p class="offer__meta">за&nbsp;карточку · 2–3 рабочих дня</p>
+            </div>
+            <ul class="svc__list">
+              <li>Карточка товара для Ozon и&nbsp;Wildberries: обложка + 4&nbsp;слайда</li>
+              <li>Слайды для соцсетей, меню и&nbsp;прайсы&nbsp;— от&nbsp;500&nbsp;₽</li>
+              <li>Тексты на&nbsp;слайдах по&nbsp;вашей информации</li>
+              <li>Два круга правок</li>
+            </ul>
+            <div class="svc__result"><span class="svc__label">Результат</span><p>Покупатель за&nbsp;пару секунд понимает, что это за&nbsp;товар и&nbsp;чем он лучше.</p></div>
+          </article>
+
+          <article class="offer__row offer__row--extra reveal">
+            <div class="offer__head">
+              <span class="svc__num">+</span>
+              <h3 class="offer__title">Обработка фото</h3>
+              <p class="price__value price__value--sm">500&nbsp;₽</p>
+              <p class="offer__meta">за&nbsp;10&nbsp;фото · ручная ретушь 1&nbsp;000&nbsp;₽ за&nbsp;фото</p>
+            </div>
+            <ul class="svc__list">
+              <li>Нейтральный фон, свет, цвет, ретушь</li>
+              <li>ТЗ для фотографа и&nbsp;контроль съёмки&nbsp;— по&nbsp;запросу</li>
+              <li>ИИ-визуал для соцсетей по&nbsp;мотивам вашего товара</li>
+            </ul>
+            <div class="svc__result"><span class="svc__label">Важно</span><p>Перед сдачей проверяю каждое фото: товар должен остаться таким, как в&nbsp;жизни.</p></div>
+          </article>
+        </div>
+        <p class="prices__note reveal">В&nbsp;цену не&nbsp;входят: съёмка, домен (оплачивается у&nbsp;регистратора), оплата и&nbsp;формы заявок на&nbsp;сайте, дополнительные страницы.</p>
+      </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section class="section section--about" id="about">
+      <div class="container about">
+        <div class="about__text reveal">
+          <h2 class="section__title">Обо мне</h2>
+          <p class="about__lead">Делаю сайты и&nbsp;визуал одна, от&nbsp;текста до&nbsp;публикации. Вы общаетесь напрямую с&nbsp;тем, кто делает работу.</p>
+          <ul class="about__facts">
+            <li><b>Полиграфия и&nbsp;фотомастерские</b>работала с&nbsp;макетами, печатью и&nbsp;ретушью&nbsp;— отсюда внимание к&nbsp;деталям и&nbsp;цвету</li>
+            <li><b>Сама работала в&nbsp;сфере услуг</b>кондитером в&nbsp;кафе и&nbsp;отелях с&nbsp;2016&nbsp;года&nbsp;— знаю, как продукт попадает к&nbsp;клиенту</li>
+            <li><b>ИП на&nbsp;НПД</b>договор, акт и&nbsp;чек на&nbsp;каждую оплату</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Как я работаю -->
+    <section class="section" id="process">
+      <div class="container">
+        <h2 class="section__title reveal">Как я&nbsp;работаю</h2>
+        <ol class="process__list">
+          <li class="step reveal"><span class="step__num">01</span><h3 class="step__title">Знакомство</h3><p class="step__text">Вы рассказываете о&nbsp;деле и&nbsp;задаче. Я&nbsp;задаю вопросы и&nbsp;называю точную цену и&nbsp;срок.</p></li>
+          <li class="step reveal" style="--delay: .1s"><span class="step__num">02</span><h3 class="step__title">Договор и&nbsp;материалы</h3><p class="step__text">Подписываем договор. Вы присылаете фото и&nbsp;информацию&nbsp;— с&nbsp;этого дня идёт срок.</p></li>
+          <li class="step reveal" style="--delay: .2s"><span class="step__num">03</span><h3 class="step__title">Работа</h3><p class="step__text">Пишу тексты, делаю дизайн и&nbsp;собираю сайт. Сайт&nbsp;— 7&nbsp;дней, карточка&nbsp;— 2–3&nbsp;рабочих дня.</p></li>
+          <li class="step reveal" style="--delay: .3s"><span class="step__num">04</span><h3 class="step__title">Правки и&nbsp;сдача</h3><p class="step__text">Два круга правок. Затем публикую сайт на&nbsp;вашем аккаунте и&nbsp;передаю файлы, фото и&nbsp;инструкцию.</p></li>
+        </ol>
+        <ul class="rules reveal">
+          <li><b>Правки.</b> Два круга: все замечания одним списком. Дальше&nbsp;— от&nbsp;500&nbsp;₽.</li>
+          <li><b>Сайт ваш.</b> Аккаунт, файлы и&nbsp;домен на&nbsp;вас, перейти к&nbsp;другому разработчику можно в&nbsp;любой момент.</li>
+          <li><b>Права.</b> После оплаты переходят к&nbsp;вам, авторство и&nbsp;право показать работу в&nbsp;портфолио остаются за&nbsp;мной.</li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Контакты -->
+  <footer class="footer" id="contacts">
+    <div class="container">
+      <span class="footer__label reveal">Контакты</span>
+      <h2 class="footer__title reveal">Расскажите о&nbsp;задаче.<br><span>Отвечу и&nbsp;назову точную цену.</span></h2>
+
+      <div class="footer__buttons reveal" style="--delay: .1s">
+        <a href="https://t.me/artifexform" class="btn btn--outline" target="_blank" rel="noopener">Telegram</a>
+        <a href="https://wa.me/79384899030" class="btn btn--outline" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://max.ru/-71848323403080" class="btn btn--outline" target="_blank" rel="noopener">MAX</a>
+        <a href="mailto:artifexform@gmail.com" class="btn btn--outline">Email</a>
+      </div>
+
+      <p class="footer__copy">© <span id="year">2026</span> MILA.STUDIO. Все права защищены.</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var items = document.querySelectorAll('.reveal');
+
+      // Год в копирайте обновляется сам
+      var yearEl = document.getElementById('year');
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+
+      document.querySelectorAll('[data-more]').forEach(function (btn) {
+        var box = document.getElementById(btn.getAttribute('data-more'));
+        btn.addEventListener('click', function () {
+          var open = box.hidden;
+          box.hidden = !open;
+          btn.setAttribute('aria-expanded', String(open));
+          btn.textContent = open ? 'Свернуть' : btn.getAttribute('data-label');
+          if (open) box.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+        });
+      });
+
+      // Без поддержки IntersectionObserver просто показываем всё
+      if (!('IntersectionObserver' in window)) return;
+
+      // Прячем блоки только когда JS точно работает
+      root.classList.add('js');
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+      items.forEach(function (el) { observer.observe(el); });
+    })();
+    // Кнопка меню на телефоне
+    (function () {
+      var header = document.querySelector('.header');
+      var btn = header.querySelector('.nav__toggle');
+      function setOpen(open) {
+        header.classList.toggle('is-open', open);
+        btn.setAttribute('aria-expanded', String(open));
+      }
+      btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
+      header.querySelectorAll('.nav__link').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+      document.addEventListener('click', function (e) { if (!header.contains(e.target)) setOpen(false); });
+    })();
+  </script>
+</body>
+</html>
