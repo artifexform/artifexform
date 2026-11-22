@@ -943,65 +943,67 @@
     </section>
 
     <!-- До / после -->
+       <!-- До / после -->
     <section class="section" id="photos">
       <div class="container">
         <h2 class="section__title reveal">До и&nbsp;после</h2>
-        <h3 class="pairs__title reveal">Фото для меню</h3>
         
+        <h3 class="pairs__title reveal">Фото для меню</h3>
         <div class="pairs">
-                   <figure class="pair reveal" style="max-width: 600px; margin: 0 auto;">
-            <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1;">
+          <figure class="pair reveal">
+            <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
               <img slot="first" src="img/cheesecake-before.webp" alt="Чизкейк до обработки" style="width: 100%; height: 100%; object-fit: cover;">
               <img slot="second" src="img/cheesecake-after.webp" alt="Чизкейк после обработки" style="width: 100%; height: 100%; object-fit: cover;">
             </img-comparison-slider>
             <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Чизкейк: потяни ползунок, чтобы увидеть разницу</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/begonia-before.webp" alt="Десерт с мороженым на тарелке, фото на кухне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/begonia-after.webp" alt="Тот же десерт для меню" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Десерт с мороженым: свет, фон, цвет</figcaption>
+            <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+              <img slot="first" src="img/begonia-before.webp" alt="Десерт до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              <img slot="second" src="img/begonia-after.webp" alt="Десерт после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+            </img-comparison-slider>
+            <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Десерт с мороженым: потяни ползунок, чтобы увидеть разницу</figcaption>
           </figure>
         </div>
+
         <div class="more" id="moreDesserts" hidden>
-        <div class="pairs pairs--more">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/buffet-before.webp" alt="Фуршет до обработки: зал, колонки, мебель на фоне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/buffet-after.webp" alt="Фуршет после обработки: светлый чистый фон" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Фуршет: убрала зал и технику, светлый фон</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/leaf-before.webp" alt="Грушевый тарт на зелёной тарелке, размытое фото" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/leaf-after.webp" alt="Тот же десерт: резкость, свет, светлый фон" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Тарт с мороженым: резкость, свет, светлый фон</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/tart-before.webp" alt="Грушевый тарт на кухне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Грушевый тарт: фон, свет, цвет</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/eclair-before.webp" alt="Шоколадный десерт до обработки" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/eclair-after.webp" alt="Шоколадный десерт после обработки" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Шоколадный десерт: подача для меню</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/mochi-before.webp" alt="Моти с клубникой на сером фоне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/mochi-after.webp" alt="Те же моти на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Моти с клубникой: фон и свет, подложки для подачи</figcaption>
-          </figure>
-        </div>
+          <div class="pairs pairs--more">
+            <figure class="pair reveal">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/buffet-before.webp" alt="Фуршет до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/buffet-after.webp" alt="Фуршет после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Фуршет: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay: .1s">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/leaf-before.webp" alt="Тарт до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/leaf-after.webp" alt="Тарт после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Тарт с мороженым: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/tart-before.webp" alt="Грушевый тарт до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/tart-after.webp" alt="Грушевый тарт после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Грушевый тарт: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay: .1s">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/eclair-before.webp" alt="Десерт до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/eclair-after.webp" alt="Десерт после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Шоколадный десерт: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/mochi-before.webp" alt="Моти до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/mochi-after.webp" alt="Моти после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Моти с клубникой: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+          </div>
         </div>
         <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Показать ещё фото для меню" aria-expanded="false" aria-controls="moreDesserts">Показать ещё фото для меню</button>
 
@@ -1010,68 +1012,70 @@
 
         <div class="pairs">
           <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр на столе дома" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/tiger-after.webp" alt="Тот же тигр на студийном фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Вязаный тигр: фото для каталога</figcaption>
+            <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+              <img slot="first" src="img/tiger-before.webp" alt="Тигр до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              <img slot="second" src="img/tiger-after.webp" alt="Тигр после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+            </img-comparison-slider>
+            <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Вязаный тигр: потяни ползунок, чтобы увидеть разницу</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/seal-before.webp" alt="Брелок-тюлень в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/seal-after.webp" alt="Тот же брелок целиком на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелок-тюлень: фото для каталога</figcaption>
+            <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+              <img slot="first" src="img/seal-before.webp" alt="Тюлень до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              <img slot="second" src="img/seal-after.webp" alt="Тюлень после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+            </img-comparison-slider>
+            <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Брелок-тюлень: потяни ползунок, чтобы увидеть разницу</figcaption>
           </figure>
         </div>
+
         <div class="more" id="moreToys" hidden>
-        <div class="pairs pairs--more">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bunny-before.webp" alt="Валяная брошь-зайчик на ладони" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/bunny-after.webp" alt="Та же брошь на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брошь-зайчик, сухое валяние</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/gulls-before.webp" alt="Броши-чайки на зелёном коврике" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/gulls-after.webp" alt="Те же броши на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Броши-чайки: групповой кадр</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/gull-before.webp" alt="Вязаная чайка на ладони" loading="lazy" width="800" height="1000"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/gull-after.webp" alt="Вязаная чайка на белом фоне" loading="lazy" width="800" height="1000"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелок-чайка: фото для каталога</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bears3-before.webp" alt="Три брелока-медведя в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/bears3-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелоки-медведи в тельняшках</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/crabs-before.webp" alt="Два брелока-крабика на ладони" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/crabs-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелоки-крабики</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/brownbear-before.webp" alt="Бурый вязаный мишка в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/brownbear-after.webp" alt="Тот же мишка на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Бурый мишка: фото для каталога</figcaption>
-          </figure>
-        </div>
+          <div class="pairs pairs--more">
+            <figure class="pair reveal">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/bunny-before.webp" alt="Зайчик до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/bunny-after.webp" alt="Зайчик после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Брошь-зайчик: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay: .1s">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/gulls-before.webp" alt="Чайки до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/gulls-after.webp" alt="Чайки после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Броши-чайки: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/gull-before.webp" alt="Чайка до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/gull-after.webp" alt="Чайка после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Брелок-чайка: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay: .1s">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/bears3-before.webp" alt="Медведи до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/bears3-after.webp" alt="Медведи после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Брелоки-медведи: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/crabs-before.webp" alt="Крабики до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/crabs-after.webp" alt="Крабики после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Брелоки-крабики: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay: .1s">
+              <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1; width: 100%;">
+                <img slot="first" src="img/brownbear-before.webp" alt="Мишка до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+                <img slot="second" src="img/brownbear-after.webp" alt="Мишка после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Бурый мишка: потяни ползунок, чтобы увидеть разницу</figcaption>
+            </figure>
+          </div>
         </div>
         <button class="btn btn--outline more__btn" data-more="moreToys" data-label="Показать ещё товары" aria-expanded="false" aria-controls="moreToys">Показать ещё товары</button>
 
+        <!-- Остальные блоки (Инфографика и ИИ-визуал) оставляем как есть, они не про ретушь -->
         <h3 class="pairs__title reveal">Инфографика</h3>
         <div class="ig">
           <figure class="pair pair--tall reveal">
@@ -1132,7 +1136,6 @@
         <button class="btn btn--outline more__btn" data-more="moreAi" data-label="Показать все сцены" aria-expanded="false" aria-controls="moreAi">Показать все сцены</button>
       </div>
     </section>
-
     <!-- Услуги и цены -->
     <section class="section" id="services">
       <div class="container">
