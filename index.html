@@ -50,10 +50,8 @@
 
     /* ===== Сброс ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    html { font-size: 106.25%; } /* 17px */
+    html { font-size: 106.25%; }
 
     body {
       font-family: var(--font);
@@ -65,86 +63,29 @@
 
     a { color: inherit; text-decoration: none; }
     ul, ol { list-style: none; }
-
-    a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
     /* ===== Общие ===== */
-    .container {
-      width: 100%;
-      max-width: var(--container);
-      margin: 0 auto;
-      padding: 0 var(--gutter);
-    }
-
+    .container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); }
     .section { padding: var(--section-y) 0; }
     .section--alt { background: var(--bg-alt); }
     .section:not(.section--alt) + .section:not(.section--alt) { border-top: 1px solid var(--border); }
 
-    .section__label {
-      display: block;
-      font-family: var(--font-mono);
-      font-size: 12px;
-      letter-spacing: 1px;
-      opacity: 0.6;
-      margin-bottom: 20px;
-    }
-
-    .section__title {
-      font-family: var(--font-head);
-      font-size: clamp(1.8rem, 4.2vw, 3rem);
-      font-weight: 900;
-      text-transform: uppercase;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      margin-bottom: 32px;
-    }
+    .section__label { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: 0.6; margin-bottom: 20px; }
+    .section__title { font-family: var(--font-head); font-size: clamp(1.8rem, 4.2vw, 3rem); font-weight: 900; text-transform: uppercase; line-height: 0.95; letter-spacing: -0.02em; margin-bottom: 32px; }
 
     /* ===== Кнопки ===== */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      min-height: 52px;
-      padding: 14px 32px;
-      font-family: inherit;
-      font-size: 0.95rem;
-      font-weight: 500;
-      letter-spacing: 0.02em;
-      border-radius: var(--radius);
-      border: 1px solid var(--accent);
-      cursor: pointer;
-      transition: background-color 0.3s var(--ease), color 0.3s var(--ease),
-                  border-color 0.3s var(--ease), transform 0.3s var(--ease);
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 14px 32px; font-family: inherit; font-size: 0.95rem;
+      font-weight: 500; letter-spacing: 0.02em; border-radius: var(--radius);
+      border: 1px solid var(--accent); cursor: pointer;
+      transition: background-color 0.3s var(--ease), color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
     }
-
-    .btn--primary {
-      background: var(--accent);
-      color: var(--text);
-      font-size: 19px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      border-radius: 2px;
-    }
-    .btn--primary:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-    }
-
-    .btn--outline {
-      background: transparent;
-      color: var(--text);
-      border-color: var(--border);
-    }
-    .btn--outline:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      transform: translateY(-2px);
-    }
+    .btn--primary { background: var(--accent); color: var(--text); font-size: 19px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; border-radius: 2px; }
+    .btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+    .btn--outline { background: transparent; color: var(--text); border-color: var(--border); }
+    .btn--outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
     /* ===== Header ===== */
     .header {
@@ -155,10 +96,8 @@
     }
     section[id], footer[id] { scroll-margin-top: 72px; }
     @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 80px; } }
-    .header__inner {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-      gap: 12px 24px; padding-top: 20px; padding-bottom: 20px;
-    }
+    
+    .header__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-top: 20px; padding-bottom: 20px; }
     .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
     .logo__dot { color: var(--accent); }
     .nav__list { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; }
@@ -166,11 +105,7 @@
     .nav__link:hover { opacity: 1; }
 
     .nav__has-sub { position: relative; }
-    .nav__sub-toggle {
-      background: none; border: 0; font: inherit; color: inherit;
-      letter-spacing: inherit; text-transform: inherit; opacity: 0.7; cursor: pointer;
-      padding: 0; display: inline-flex; align-items: center; gap: 6px;
-    }
+    .nav__sub-toggle { background: none; border: 0; font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit; opacity: 0.7; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 6px; }
     .nav__sub-toggle::after { content: "▾"; font-size: 10px; transition: transform 0.2s; }
     .nav__has-sub.is-open .nav__sub-toggle::after { transform: rotate(180deg); }
     .nav__sub-toggle:hover { opacity: 1; }
@@ -178,23 +113,15 @@
       position: absolute; top: calc(100% + 12px); left: -12px;
       min-width: 230px; padding: 6px 0; list-style: none;
       background: #0F2A1F; border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius); box-shadow: 0 16px 32px rgba(0,0,0,.45);
-      display: none;
+      border-radius: var(--radius); box-shadow: 0 16px 32px rgba(0,0,0,.45); display: none;
     }
     .nav__sub::before { content: ""; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
     .nav__has-sub:hover .nav__sub, .nav__has-sub.is-open .nav__sub { display: block; }
     .nav__sublink { display: block; padding: 11px 18px; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; opacity: .75; }
     .nav__sublink:hover { opacity: 1; color: var(--accent); }
 
-    .nav__toggle {
-      display: none; align-items: center; gap: 10px;
-      background: none; border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius);
-      color: inherit; font: 500 13px/1 var(--font); text-transform: uppercase; letter-spacing: .06em;
-      padding: 10px 14px; cursor: pointer;
-    }
-    .nav__icon, .nav__icon::before, .nav__icon::after {
-      display: block; width: 16px; height: 2px; background: currentColor; transition: transform .2s, opacity .2s;
-    }
+    .nav__toggle { display: none; align-items: center; gap: 10px; background: none; border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius); color: inherit; font: 500 13px/1 var(--font); text-transform: uppercase; letter-spacing: .06em; padding: 10px 14px; cursor: pointer; }
+    .nav__icon, .nav__icon::before, .nav__icon::after { display: block; width: 16px; height: 2px; background: currentColor; transition: transform .2s, opacity .2s; }
     .nav__icon { position: relative; }
     .nav__icon::before, .nav__icon::after { content: ""; position: absolute; left: 0; }
     .nav__icon::before { top: -5px; }
@@ -202,13 +129,11 @@
     .header.is-open .nav__icon { background: transparent; }
     .header.is-open .nav__icon::before { transform: translateY(5px) rotate(45deg); }
     .header.is-open .nav__icon::after { transform: translateY(-5px) rotate(-45deg); }
+    
     @media (max-width: 639px) {
       .header__inner { flex-wrap: nowrap; padding-top: 12px; padding-bottom: 12px; }
       .nav__toggle { display: inline-flex; }
-      .nav {
-        display: none; position: absolute; left: 0; right: 0; top: 100%;
-        background: #0F2A1F; border-bottom: 1px solid rgba(255,255,255,.1); box-shadow: 0 12px 24px rgba(0,0,0,.35);
-      }
+      .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #0F2A1F; border-bottom: 1px solid rgba(255,255,255,.1); box-shadow: 0 12px 24px rgba(0,0,0,.35); }
       .header.is-open .nav { display: block; }
       .nav__list { flex-direction: column; gap: 0; padding: 8px 20px 16px; }
       .nav__link { display: block; padding: 14px 0; font-size: 16px; opacity: .9; border-bottom: 1px solid rgba(255,255,255,.08); }
@@ -222,30 +147,20 @@
 
     /* ===== Hero ===== */
     .hero { background: var(--bg-alt); padding-top: 48px; padding-bottom: 64px; border-bottom: 3px solid var(--accent); }
-    .hero__meta { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: 0.6; margin-bottom: 24px; }
-    .hero__title {
-      font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
-      font-size: clamp(4rem, 19vw, 12rem); line-height: 0.85; letter-spacing: -0.04em;
-    }
+    .hero__title { font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(4rem, 19vw, 12rem); line-height: 0.85; letter-spacing: -0.04em; }
     .hero__line--accent { color: var(--accent); }
-    .hero__services {
-      margin-top: 28px;
-      font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
-      font-size: clamp(1.1rem, 3.2vw, 2rem); line-height: 1.2; letter-spacing: -0.01em;
-    }
+    .hero__services { margin-top: 28px; font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(1.1rem, 3.2vw, 2rem); line-height: 1.2; letter-spacing: -0.01em; }
     .hero__services span { white-space: nowrap; }
     .hero__line { display: block; }
     .hero__slash { color: var(--accent); }
     .hero__text { max-width: 600px; margin-top: 24px; font-size: 18px; opacity: 0.8; }
-    .facts {
-      display: grid; grid-template-columns: 1fr; gap: 1px;
-      background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2);
-      max-width: 600px; margin-top: 40px;
-    }
+    
+    .facts { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); max-width: 600px; margin-top: 40px; }
     .facts__cell { background: var(--bg-alt); padding: 18px 20px; }
     .facts__value { display: block; font-size: 22px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
     .facts__label { display: block; margin-top: 4px; font-size: 14px; color: rgba(255, 255, 255, 0.6); }
     .hero .btn { margin-top: 40px; }
+    
     .hero__grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; }
     .hero__visual { display: grid; gap: 24px; max-width: 600px; }
     .show { margin: 0; }
@@ -257,47 +172,15 @@
     .hero .facts { max-width: none; }
 
     /* ===== Услуги ===== */
-    .services__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
-    .card {
-      padding: 40px 32px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
-    }
-
-    .card:hover {
-      border-color: rgba(255,255,255,.5);
-      transform: translateY(-6px);
-    }
-
-    .card__num {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 40px;
-    }
-
-    .card__title {
-      font-size: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
+    .services__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    .card { padding: 40px 32px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); transition: border-color 0.4s var(--ease), transform 0.4s var(--ease); }
+    .card:hover { border-color: rgba(255,255,255,.5); transform: translateY(-6px); }
+    .card__num { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 40px; }
+    .card__title { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; }
     .card__text { color: var(--text-muted); }
 
     /* ===== Портфолио ===== */
-    .portfolio__grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
+    .portfolio__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
     .work { display: block; }
     .work .browser { transition: transform .4s var(--ease), border-color .4s var(--ease); }
     .work:hover .browser { transform: translateY(-4px); border-color: rgba(255,255,255,.4); }
@@ -307,136 +190,47 @@
     /* ===== До / после ===== */
     .section--ai { border-top: 1px solid var(--border); }
     .section__title + .pairs__title { margin-top: 0; }
-    .pairs__title {
-      font-size: clamp(1.5rem, 4vw, 2rem);
-      font-weight: 600;
-      margin: 48px 0 20px;
-    }
-
-    .pairs {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-
-    .pair__images {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-    }
-
-    .pair__img {
-      position: relative;
-      aspect-ratio: 1 / 1;
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--placeholder);
-    }
-
-    .pair__img img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-
+    .pairs__title { font-size: clamp(1.5rem, 4vw, 2rem); font-weight: 600; margin: 48px 0 20px; }
+    .pairs { display: grid; grid-template-columns: 1fr; gap: 28px; }
+    .pair__images { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+    .pair__img { position: relative; aspect-ratio: 1 / 1; overflow: hidden; border-radius: var(--radius); background: var(--placeholder); }
+    .pair__img img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease); }
     .pair:hover .pair__img img { transform: scale(1.03); }
-
-    .pair__tag {
-      position: absolute; top: 8px; left: 8px; padding: 2px 7px;
-      font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.9); background: rgba(10, 10, 10, 0.45); border-radius: var(--radius);
-      pointer-events: none;
-    }
-
+    .pair__tag { position: absolute; top: 8px; left: 8px; padding: 2px 7px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: rgba(255, 255, 255, 0.9); background: rgba(10, 10, 10, 0.45); border-radius: var(--radius); pointer-events: none; }
     .pair__caption { margin-top: 12px; font-size: 14px; opacity: 0.7; text-align: left; }
+    @media (min-width: 1024px) { .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; } }
 
-    @media (min-width: 1024px) {
-      .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
-    }
+    .block__lead { max-width: 640px; margin: -16px 0 32px; color: var(--text-muted); }
 
-    .block__lead {
-      max-width: 640px;
-      margin: -16px 0 32px;
-      color: var(--text-muted);
-    }
+    /* ===== Инфографика: серии в окошках ===== */
+    .ig-series { padding: 32px; margin-bottom: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+    .ig-series__title { font-size: 1.25rem; font-weight: 600; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); color: var(--text); }
+    .igfolio { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .igfolio__item { margin: 0; }
+    .igfolio__img { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--placeholder); border: 1px solid var(--border); }
+    .igfolio__img img { display: block; width: 100%; height: auto; transition: transform 0.6s var(--ease); }
+    .igfolio__item:hover .igfolio__img img { transform: scale(1.03); }
+    .igfolio__cap { margin-top: 8px; font-size: 13px; opacity: .65; text-align: center; }
+    @media (min-width: 768px) { .igfolio { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
 
     /* ===== Условия ===== */
-    .terms {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      margin-top: 56px;
-    }
-
+    .terms { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 56px; }
     .terms__item { padding: 24px 0 0; border-top: 1px solid rgba(255, 255, 255, 0.3); }
-
-    .terms__title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-
+    .terms__title { font-size: 1.25rem; font-weight: 600; margin-bottom: 12px; }
     .terms__text { color: var(--text-muted); }
 
     /* ===== Цены ===== */
-    .prices {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
-
+    .prices { display: grid; grid-template-columns: 1fr; gap: 20px; }
     .price { padding: 40px 32px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); transition: border-color .3s var(--ease); }
-
     .price:hover { border-color: rgba(255, 255, 255, 0.4); }
-
-    .price__title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-
+    .price__title { font-size: 1.25rem; font-weight: 600; margin-bottom: 16px; }
     .price__value { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 24px; }
-
-    .price__value span {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--text-muted);
-    }
-
-    .price__temp {
-      margin: -16px 0 24px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .price__list li {
-      position: relative;
-      padding-left: 20px;
-      margin-bottom: 10px;
-      opacity: 0.7;
-    }
-
-    .price__list li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.7em;
-      width: 8px;
-      height: 1px;
-      background: var(--accent);
-    }
-
+    .price__value span { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+    .price__temp { margin: -16px 0 24px; font-size: 0.85rem; color: var(--text-muted); }
+    .price__list li { position: relative; padding-left: 20px; margin-bottom: 10px; opacity: 0.7; }
+    .price__list li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 8px; height: 1px; background: var(--accent); }
     .price__text { opacity: 0.7; }
-
-    .prices__note {
-      max-width: 720px;
-      margin-top: 32px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
+    .prices__note { max-width: 720px; margin-top: 32px; font-size: 0.9rem; color: var(--text-muted); }
     @media (min-width: 1024px) {
       .terms { grid-template-columns: repeat(3, 1fr); gap: 24px; }
       .prices { grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
@@ -444,71 +238,22 @@
     }
 
     /* ===== Процесс ===== */
-    .process__list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
-      counter-reset: step;
-    }
-
-    .step {
-      padding: 32px 0;
-      border-top: 1px solid var(--border);
-    }
-
+    .process__list { display: grid; grid-template-columns: 1fr; gap: 0; counter-reset: step; }
+    .step { padding: 32px 0; border-top: 1px solid var(--border); }
     .step:last-child { border-bottom: 1px solid var(--border); }
-
-    .step__num {
-      display: block;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      margin-bottom: 12px;
-    }
-
-    .step__title {
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-
-    .step__text {
-      margin-top: 12px;
-      padding-right: 16px;
-      color: var(--text-muted);
-    }
+    .step__num { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
+    .step__title { font-size: 1.5rem; font-weight: 600; }
+    .step__text { margin-top: 12px; padding-right: 16px; color: var(--text-muted); }
 
     /* ===== Контакты / футер ===== */
-    .footer {
-      padding: var(--section-y) 0 40px;
-      border-top: 1px solid var(--border);
-    }
-
+    .footer { padding: var(--section-y) 0 40px; border-top: 1px solid var(--border); background: var(--bg-alt); }
     .footer__label { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: .6; margin-bottom: 20px; }
-    .footer__title {
-      font-family: var(--font);
-      font-size: clamp(1.75rem, 4vw, 3rem);
-      font-weight: 500;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      margin-bottom: 40px;
-    }
+    .footer__title { font-family: var(--font); font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 500; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 40px; }
     .footer__title span { opacity: .55; }
-
-    .footer__buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-bottom: 48px;
-    }
-    .footer__buttons .btn {
-      min-height: 0; padding: 10px 22px; font-size: 14px;
-      background: transparent; color: var(--text); border: 1px solid var(--text);
-    }
+    .footer__buttons { display: flex; flex-direction: column; gap: 12px; margin-bottom: 48px; }
+    .footer__buttons .btn { min-height: 0; padding: 10px 22px; font-size: 14px; background: transparent; color: var(--text); border: 1px solid var(--text); }
     .footer__buttons .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: none; }
-
-    .footer__copy {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
+    .footer__copy { font-size: 0.85rem; color: var(--text-muted); }
 
     /* ===== Услуги: что делаю → результат ===== */
     .svc { display: grid; gap: 24px; }
@@ -518,11 +263,7 @@
     .svc__title { font-size: 1.5rem; font-weight: 600; margin-bottom: 16px; }
     .svc__list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--text-muted); }
     .svc__list li::before { content: ''; position: absolute; left: 0; top: .7em; width: 8px; height: 1px; background: var(--text-muted); }
-    .svc__result {
-      align-self: start; padding: 28px;
-      background: rgba(255, 255, 255, 0.05);
-      border-left: 3px solid var(--accent);
-    }
+    .svc__result { align-self: start; padding: 28px; background: rgba(255, 255, 255, 0.05); border-left: 3px solid var(--accent); }
     .svc__label { display: block; font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: 0.6; margin-bottom: 12px; }
     .svc__result p { font-size: 1.1rem; font-weight: 600; color: var(--text); line-height: 1.45; }
 
@@ -535,13 +276,8 @@
     .prices--extra .price { padding: 28px 24px; }
     .prices--extra .price__value { font-size: 1.5rem; margin-bottom: 12px; }
 
-    .footer { background: var(--bg-alt); }
-
     /* ===== Рамки: браузер ===== */
-    .browser {
-      overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.14);
-      background: #1a1a1a; box-shadow: 0 24px 48px rgba(0,0,0,.45);
-    }
+    .browser { overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.14); background: #1a1a1a; box-shadow: 0 24px 48px rgba(0,0,0,.45); }
     .browser__bar { display: flex; gap: 6px; align-items: center; height: 24px; padding: 0 10px; background: #1f1f1f; border-bottom: 1px solid rgba(255,255,255,.08); }
     .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
     .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
@@ -549,10 +285,7 @@
     /* ===== Показать все работы ===== */
     .pairs--more { margin-top: 28px; }
     .more__btn { display: flex; margin: 28px auto 0; }
-
-    @media (min-width: 1024px) {
-      .svc__row { grid-template-columns: 1.2fr 1fr; gap: 48px; padding-bottom: 40px; }
-    }
+    @media (min-width: 1024px) { .svc__row { grid-template-columns: 1.2fr 1fr; gap: 48px; padding-bottom: 40px; } }
 
     /* ===== Кейс ===== */
     .case__sub { margin: -20px 0 28px; font-size: 18px; opacity: .7; }
@@ -612,18 +345,8 @@
     }
 
     /* ===== Анимация появления ===== */
-    .js .reveal {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
-      transition-delay: var(--delay, 0s);
-    }
-
-    .js .reveal.is-visible {
-      opacity: 1;
-      transform: none;
-    }
-
+    .js .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); transition-delay: var(--delay, 0s); }
+    .js .reveal.is-visible { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .js .reveal { opacity: 1; transform: none; transition: none; }
@@ -635,11 +358,9 @@
       .hero__text { font-size: 20px; }
       .facts { grid-template-columns: repeat(3, 1fr); }
       :root { --gutter: 32px; }
-
       .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
-      .process__list   { grid-template-columns: repeat(2, 1fr); column-gap: 32px; }
+      .process__list { grid-template-columns: repeat(2, 1fr); column-gap: 32px; }
       .step:nth-last-child(2) { border-bottom: 1px solid var(--border); }
-
       .footer__buttons { flex-direction: row; flex-wrap: wrap; }
     }
 
@@ -649,12 +370,9 @@
       .hero__title { font-size: clamp(5rem, 10vw, 10rem); }
       .hero__services { font-size: clamp(1.1rem, 1.7vw, 1.5rem); }
       :root { --section-y: 80px; --gutter: 48px; }
-
       .services__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
-
       .portfolio__grid { grid-template-columns: repeat(6, 1fr); gap: 24px; }
-      .work--site  { grid-column: span 3; }
-
+      .work--site { grid-column: span 3; }
       .process__list { grid-template-columns: repeat(4, 1fr); column-gap: 32px; }
       .step { padding: 40px 0; border-bottom: 1px solid var(--border); }
     }
@@ -663,50 +381,30 @@
     .case-slider { position: relative; overflow: hidden; padding: 8px 0; }
     .case-track { display: flex; transition: transform .5s var(--ease); }
     .case-slide { flex: 0 0 100%; min-width: 0; }
-
     .case-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 40px; height: 40px; border-radius: 50%;
-      background: rgba(10, 10, 10, 0.55);
-      border: 1px solid rgba(255,255,255,.25);
-      color: #fff; font-size: 16px; line-height: 1;
-      cursor: pointer; z-index: 5;
+      background: rgba(10, 10, 10, 0.55); border: 1px solid rgba(255,255,255,.25);
+      color: #fff; font-size: 16px; line-height: 1; cursor: pointer; z-index: 5;
       display: flex; align-items: center; justify-content: center;
       transition: background .2s, border-color .2s, color .2s;
     }
     .case-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
     .case-arrow--prev { left: 4px; }
     .case-arrow--next { right: 4px; }
-    @media (min-width: 1024px) {
-      .case-arrow--prev { left: -8px; }
-      .case-arrow--next { right: -8px; }
-    }
+    @media (min-width: 1024px) { .case-arrow--prev { left: -8px; } .case-arrow--next { right: -8px; } }
 
     /* ===== Инфографика: карусель серий ===== */
     .ig-block { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
     @media (min-width: 1024px) { .ig-block { grid-template-columns: 3fr 1fr; gap: 32px; align-items: start; } }
-
     .ig-carousel { position: relative; }
-    .ig-track {
-      display: flex; gap: 16px;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      scrollbar-width: none; -ms-overflow-style: none;
-    }
+    .ig-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; }
     .ig-track::-webkit-scrollbar { display: none; }
     .ig-slide { flex: 0 0 calc((100% - 32px) / 3); min-width: 0; scroll-snap-align: start; }
-    .ig-slide__img {
-      position: relative; aspect-ratio: 3 / 4; overflow: hidden;
-      border-radius: var(--radius); background: var(--placeholder);
-      border: 1px solid var(--border); cursor: zoom-in;
-    }
-    .ig-slide__img img {
-      display: block; width: 100%; height: 100%;
-      object-fit: cover; object-position: top;
-      transition: transform .6s var(--ease);
-    }
+    .ig-slide__img { position: relative; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--radius); background: var(--placeholder); border: 1px solid var(--border); cursor: zoom-in; }
+    .ig-slide__img img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform .6s var(--ease); }
     .ig-slide:hover .ig-slide__img img { transform: scale(1.04); }
     .ig-slide__cap { margin-top: 8px; font-size: 13px; opacity: .6; text-align: center; }
-
     .ig-arrow {
       position: absolute; top: 40%; transform: translateY(-50%);
       width: 40px; height: 40px; border-radius: 50%;
@@ -718,30 +416,21 @@
     .ig-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
     .ig-arrow--prev { left: -8px; }
     .ig-arrow--next { right: -8px; }
-
     .ig-carousel.is-expanded .ig-track { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
     .ig-carousel.is-expanded .ig-slide { flex: none; }
     .ig-carousel.is-expanded .ig-arrow { display: none; }
-
     .ig-expand { grid-column: 1 / -1; margin-top: 4px; }
-
     @media (max-width: 767px) { .ig-slide { flex: 0 0 100%; } }
     @media (min-width: 768px) and (max-width: 1023px) { .ig-slide { flex: 0 0 calc((100% - 16px) / 2); } }
 
     /* ===== Карусель пар до/после ===== */
     .retouch-carousel { position: relative; margin-bottom: 32px; }
-    .retouch-track {
-      display: flex; gap: 16px;
-      overflow-x: auto; scroll-snap-type: x mandatory;
-      scrollbar-width: none; -ms-overflow-style: none;
-      padding: 4px;
-    }
+    .retouch-track { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding: 4px; }
     .retouch-track::-webkit-scrollbar { display: none; }
     .retouch-slide { flex: 0 0 calc((100% - 48px) / 4); min-width: 0; scroll-snap-align: start; }
-    .retouch-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; cursor: zoom-in; }
+    .retouch-pair { display: block; cursor: zoom-in; }
     .retouch-pair .pair__img { aspect-ratio: 1/1; }
-    .retouch-pair .pair__caption { grid-column: 1 / -1; text-align: center; margin-top: 8px; font-size: 13px; }
-
+    .retouch-pair .pair__caption { text-align: center; margin-top: 8px; font-size: 13px; }
     .retouch-arrow {
       position: absolute; top: 50%; transform: translateY(-50%);
       width: 40px; height: 40px; border-radius: 50%;
@@ -753,35 +442,19 @@
     .retouch-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
     .retouch-arrow--prev { left: -8px; }
     .retouch-arrow--next { right: -8px; }
-
     @media (max-width: 1023px) { .retouch-slide { flex: 0 0 calc((100% - 16px) / 2); } }
     @media (max-width: 639px) { .retouch-slide { flex: 0 0 100%; } }
 
     /* ===== Lightbox с навигацией ===== */
-    .lightbox {
-      position: fixed; inset: 0; z-index: 1000;
-      background: rgba(0, 0, 0, 0.92);
-      display: none; align-items: center; justify-content: center;
-      padding: 24px; cursor: zoom-out;
-    }
+    .lightbox { position: fixed; inset: 0; z-index: 1000; background: rgba(0, 0, 0, 0.92); display: none; align-items: center; justify-content: center; padding: 24px; cursor: zoom-out; }
     .lightbox.is-open { display: flex; }
-    .lightbox__content {
-      max-width: 100%; max-height: 100%;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .lightbox__content img {
-      max-width: 100%; max-height: 80vh;
-      object-fit: contain; border-radius: var(--radius);
-      box-shadow: 0 24px 64px rgba(0,0,0,.6);
-    }
+    .lightbox__content { max-width: 100%; max-height: 100%; display: flex; align-items: center; justify-content: center; }
+    .lightbox__content img { max-width: 100%; max-height: 80vh; object-fit: contain; border-radius: var(--radius); box-shadow: 0 24px 64px rgba(0,0,0,.6); }
     .lightbox__close {
-      position: absolute; top: 16px; right: 20px;
-      width: 44px; height: 44px; border-radius: 50%;
+      position: absolute; top: 16px; right: 20px; width: 44px; height: 44px; border-radius: 50%;
       background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
-      color: #fff; font-size: 22px; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      transition: background .2s, border-color .2s;
-      z-index: 1001;
+      color: #fff; font-size: 22px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s; z-index: 1001;
     }
     .lightbox__close:hover { background: var(--accent); border-color: var(--accent); }
     .lightbox__nav {
@@ -800,14 +473,7 @@
       font-size: 13px; color: rgba(255,255,255,.7); background: rgba(10,10,10,.6);
       padding: 6px 12px; border-radius: 12px; z-index: 1001;
     }
-    .lightbox__slider {
-      width: 100%; max-width: 800px;
-      aspect-ratio: 1/1;
-      --divider-width: 2px;
-      --divider-color: var(--accent);
-      border-radius: var(--radius); overflow: hidden;
-      cursor: default;
-    }
+    .lightbox__slider { width: 100%; max-width: 800px; aspect-ratio: 1/1; --divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; cursor: default; }
     .lightbox__slider img { display: block; width: 100%; height: 100%; object-fit: cover; }
   </style>
 </head>
@@ -841,18 +507,18 @@
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content">
-        <h1 class="hero__title" id="hero-title">
-          <span class="hero__line">Mila</span>
-          <span class="hero__line hero__line--accent">Studio</span>
-        </h1>
-        <p class="hero__services"><span>Сайты-визитки</span> <span class="hero__slash" aria-hidden="true">/</span> <span>инфографика</span> <span class="hero__slash" aria-hidden="true">/</span> <span>обработка фото</span></p>
-        <p class="hero__text">Для малого бизнеса, мастеров и&nbsp;предпринимателей. Работаю одна: тексты, дизайн и&nbsp;готовый сайт. Без посредников и&nbsp;затягивания сроков.</p>
-        <div class="facts">
-          <div class="facts__cell"><span class="facts__value">7 дней</span><span class="facts__label">срок сайта</span></div>
-          <div class="facts__cell"><span class="facts__value">от 10&nbsp;000&nbsp;₽</span><span class="facts__label">сайт под ключ</span></div>
-          <div class="facts__cell"><span class="facts__value">от 2&nbsp;500&nbsp;₽</span><span class="facts__label">карточка инфографики</span></div>
-        </div>
-        <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
+            <h1 class="hero__title" id="hero-title">
+              <span class="hero__line">Mila</span>
+              <span class="hero__line hero__line--accent">Studio</span>
+            </h1>
+            <p class="hero__services"><span>Сайты-визитки</span> <span class="hero__slash" aria-hidden="true">/</span> <span>инфографика</span> <span class="hero__slash" aria-hidden="true">/</span> <span>обработка фото</span></p>
+            <p class="hero__text">Для малого бизнеса, мастеров и предпринимателей. Работаю одна: тексты, дизайн и готовый сайт. Без посредников и затягивания сроков.</p>
+            <div class="facts">
+              <div class="facts__cell"><span class="facts__value">7 дней</span><span class="facts__label">срок сайта</span></div>
+              <div class="facts__cell"><span class="facts__value">от 10 000 ₽</span><span class="facts__label">сайт под ключ</span></div>
+              <div class="facts__cell"><span class="facts__value">от 2 500 ₽</span><span class="facts__label">карточка инфографики</span></div>
+            </div>
+            <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
           </div>
           <div class="hero__visual">
             <figure class="show show--site">
@@ -882,7 +548,6 @@
 
         <div class="case-slider reveal">
           <div class="case-track">
-
             <!-- Кейс 1 -->
             <div class="case-slide">
               <div class="case">
@@ -897,17 +562,17 @@
                   </div>
                 </div>
                 <dl class="case__facts">
-                  <div><dt>Задача</dt><dd>Одна ссылка вместо переписки: покупатель сам видит модели, цены и&nbsp;как заказать.</dd></div>
+                  <div><dt>Задача</dt><dd>Одна ссылка вместо переписки: покупатель сам видит модели, цены и как заказать.</dd></div>
                   <div><dt>Что сделала</dt><dd>
                     <ul class="case__list">
-                      <li>Структура и&nbsp;тексты</li>
-                      <li>Каталог: 13&nbsp;моделей с&nbsp;ценами</li>
-                      <li>Кнопка «Узнать наличие» с&nbsp;готовым сообщением в&nbsp;WhatsApp</li>
-                      <li>Блок к&nbsp;праздникам</li>
+                      <li>Структура и тексты</li>
+                      <li>Каталог: 13 моделей с ценами</li>
+                      <li>Кнопка «Узнать наличие» с готовым сообщением в WhatsApp</li>
+                      <li>Блок к праздникам</li>
                       <li>Обработка фото игрушек</li>
                     </ul>
                   </dd></div>
-                  <div><dt>Результат</dt><dd>Покупатель пишет мастеру уже с&nbsp;выбранной игрушкой.</dd></div>
+                  <div><dt>Результат</dt><dd>Покупатель пишет мастеру уже с выбранной игрушкой.</dd></div>
                 </dl>
               </div>
               <a class="case__link" href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener">Открыть сайт →</a>
@@ -921,24 +586,28 @@
                     <div class="browser__bar"><i></i><i></i><i></i></div>
                     <img src="img/site-milana.webp" alt="Первый экран сайта Milana Volnaya" loading="lazy" width="1600" height="900">
                   </a>
+                  <div class="case__thumbs">
+                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне" loading="lazy" width="1600" height="900"></div>
+                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy" width="1600" height="900"></div>
+                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/buffet-after.webp" alt="Фуршет после обработки" loading="lazy" width="1600" height="900"></div>
+                  </div>
                 </div>
                 <dl class="case__facts">
                   <div><dt>Задача</dt><dd>Показать кондитера как специалиста: портфолио тортов, отзывы, как заказать.</dd></div>
                   <div><dt>Что сделала</dt><dd>
                     <ul class="case__list">
-                      <li>Структура и&nbsp;тексты</li>
-                      <li>Портфолио работ с&nbsp;описанием</li>
-                      <li>Кнопка заказа с&nbsp;готовым сообщением в&nbsp;Telegram</li>
-                      <li>Блок «Обо мне» и&nbsp;отзывы</li>
+                      <li>Структура и тексты</li>
+                      <li>Портфолио работ с описанием</li>
+                      <li>Кнопка заказа с готовым сообщением в Telegram</li>
+                      <li>Блок «Обо мне» и отзывы</li>
                       <li>Обработка фото тортов</li>
                     </ul>
                   </dd></div>
-                  <div><dt>Результат</dt><dd>Клиент приходит на&nbsp;сайте уже с&nbsp;пониманием, что заказать.</dd></div>
+                  <div><dt>Результат</dt><dd>Клиент приходит на сайте уже с пониманием, что заказать.</dd></div>
                 </dl>
               </div>
               <a class="case__link" href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener">Открыть сайт →</a>
             </div>
-
           </div>
           <button class="case-arrow case-arrow--prev" type="button" aria-label="Предыдущий сайт">‹</button>
           <button class="case-arrow case-arrow--next" type="button" aria-label="Следующий сайт">›</button>
@@ -1041,44 +710,37 @@
     <!-- До / после: карусели пар -->
     <section class="section" id="photos">
       <div class="container">
-        <h2 class="section__title reveal">До и&nbsp;после</h2>
+        <h2 class="section__title reveal">До и после</h2>
 
         <h3 class="pairs__title reveal">Фото для меню</h3>
         <div class="retouch-carousel reveal" data-group="menu">
           <div class="retouch-track">
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/cheesecake-before.webp" data-after="img/cheesecake-after.webp" data-caption="Чизкейк: с раздачи кухни — в меню">
-              <div class="pair__img"><img src="img/cheesecake-before.webp" alt="Чизкейк на раздаче кухни" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне для меню" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне для меню" loading="lazy"></div>
               <div class="pair__caption">Чизкейк</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/begonia-before.webp" data-after="img/begonia-after.webp" data-caption="Десерт с мороженым: свет, фон, цвет">
-              <div class="pair__img"><img src="img/begonia-before.webp" alt="Десерт с мороженым на тарелке" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/begonia-after.webp" alt="Тот же десерт для меню" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/begonia-after.webp" alt="Десерт с мороженым для меню" loading="lazy"></div>
               <div class="pair__caption">Десерт с мороженым</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/buffet-before.webp" data-after="img/buffet-after.webp" data-caption="Фуршет: убрала зал и технику, светлый фон">
-              <div class="pair__img"><img src="img/buffet-before.webp" alt="Фуршет до обработки" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/buffet-after.webp" alt="Фуршет после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/buffet-after.webp" alt="Фуршет после обработки" loading="lazy"></div>
               <div class="pair__caption">Фуршет</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/leaf-before.webp" data-after="img/leaf-after.webp" data-caption="Тарт с мороженым: резкость, свет, светлый фон">
-              <div class="pair__img"><img src="img/leaf-before.webp" alt="Тарт на зелёной тарелке" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/leaf-after.webp" alt="Тот же десерт после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/leaf-after.webp" alt="Тарт с мороженым после обработки" loading="lazy"></div>
               <div class="pair__caption">Тарт с мороженым</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/tart-before.webp" data-after="img/tart-after.webp" data-caption="Грушевый тарт: фон, свет, цвет">
-              <div class="pair__img"><img src="img/tart-before.webp" alt="Грушевый тарт на кухне" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy"></div>
               <div class="pair__caption">Грушевый тарт</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/eclair-before.webp" data-after="img/eclair-after.webp" data-caption="Шоколадный десерт: подача для меню">
-              <div class="pair__img"><img src="img/eclair-before.webp" alt="Шоколадный десерт до обработки" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/eclair-after.webp" alt="Шоколадный десерт после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/eclair-after.webp" alt="Шоколадный десерт после обработки" loading="lazy"></div>
               <div class="pair__caption">Шоколадный десерт</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/mochi-before.webp" data-after="img/mochi-after.webp" data-caption="Моти с клубникой: фон и свет">
-              <div class="pair__img"><img src="img/mochi-before.webp" alt="Моти с клубникой на сером фоне" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/mochi-after.webp" alt="Те же моти на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/mochi-after.webp" alt="Моти с клубникой на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Моти с клубникой</div>
             </div></div>
           </div>
@@ -1087,47 +749,39 @@
         </div>
 
         <h3 class="pairs__title reveal">Фото товаров на чистом фоне</h3>
-        <p class="block__lead reveal">Основа для сайта, каталога, соцсетей и&nbsp;карточек маркетплейса.</p>
+        <p class="block__lead reveal">Основа для сайта, каталога, соцсетей и карточек маркетплейса.</p>
         <div class="retouch-carousel reveal" data-group="toys">
           <div class="retouch-track">
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/tiger-before.webp" data-after="img/tiger-after.webp" data-caption="Вязаный тигр: фото для каталога">
-              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр на столе дома" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/tiger-after.webp" alt="Тот же тигр на студийном фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/tiger-after.webp" alt="Вязаный тигр на студийном фоне" loading="lazy"></div>
               <div class="pair__caption">Вязаный тигр</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/seal-before.webp" data-after="img/seal-after.webp" data-caption="Брелок-тюлень: фото для каталога">
-              <div class="pair__img"><img src="img/seal-before.webp" alt="Брелок-тюлень в руке" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/seal-after.webp" alt="Тот же брелок на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/seal-after.webp" alt="Брелок-тюлень на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Брелок-тюлень</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/bunny-before.webp" data-after="img/bunny-after.webp" data-caption="Брошь-зайчик, сухое валяние">
-              <div class="pair__img"><img src="img/bunny-before.webp" alt="Валяная брошь-зайчик на ладони" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/bunny-after.webp" alt="Та же брошь на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/bunny-after.webp" alt="Брошь-зайчик на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Брошь-зайчик</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/gulls-before.webp" data-after="img/gulls-after.webp" data-caption="Броши-чайки: групповой кадр">
-              <div class="pair__img"><img src="img/gulls-before.webp" alt="Броши-чайки на зелёном коврике" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/gulls-after.webp" alt="Те же броши на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/gulls-after.webp" alt="Броши-чайки на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Броши-чайки</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/gull-before.webp" data-after="img/gull-after.webp" data-caption="Брелок-чайка: фото для каталога">
-              <div class="pair__img"><img src="img/gull-before.webp" alt="Вязаная чайка на ладони" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/gull-after.webp" alt="Вязаная чайка на белом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/gull-after.webp" alt="Вязаная чайка на белом фоне" loading="lazy"></div>
               <div class="pair__caption">Брелок-чайка</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/bears3-before.webp" data-after="img/bears3-after.webp" data-caption="Брелоки-медведи в тельняшках">
-              <div class="pair__img"><img src="img/bears3-before.webp" alt="Три брелока-медведя в руке" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/bears3-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/bears3-after.webp" alt="Брелоки-медведи на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Брелоки-медведи</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/crabs-before.webp" data-after="img/crabs-after.webp" data-caption="Брелоки-крабики">
-              <div class="pair__img"><img src="img/crabs-before.webp" alt="Два брелока-крабика на ладони" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/crabs-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/crabs-after.webp" alt="Брелоки-крабики на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Брелоки-крабики</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/brownbear-before.webp" data-after="img/brownbear-after.webp" data-caption="Бурый мишка: фото для каталога">
-              <div class="pair__img"><img src="img/brownbear-before.webp" alt="Бурый вязаный мишка в руке" loading="lazy"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/brownbear-after.webp" alt="Тот же мишка на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__img"><img src="img/brownbear-after.webp" alt="Бурый мишка на светлом фоне" loading="lazy"></div>
               <div class="pair__caption">Бурый мишка</div>
             </div></div>
           </div>
@@ -1135,49 +789,24 @@
           <button class="retouch-arrow retouch-arrow--next" type="button" aria-label="Следующие">›</button>
         </div>
 
-        <h3 class="pairs__title reveal">Инфографика</h3>
-        <div class="ig">
-          <figure class="pair pair--tall reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bear-before.webp" alt="Вязаный белый мишка в руке" loading="lazy" width="800" height="800"><span class="pair__tag">Фото мастера</span></div>
-              <div class="pair__img"><img src="img/card-bear.webp" alt="Карточка для маркетплейса: белый мишка, высота 10 ± 2 см" loading="lazy" width="750" height="1000"><span class="pair__tag pair__tag--after">Карточка</span></div>
-            </div>
-            <figcaption class="pair__caption">Мишка настоящий, нейросеть дорисовала только интерьер вокруг</figcaption>
-          </figure>
-          <div class="ig__text reveal" style="--delay: .1s">
-            <p class="ig__lead">Обложка карточки для маркетплейса из&nbsp;фото, снятого на&nbsp;телефон.</p>
-            <ul class="ig__list">
-              <li>Понятное название с&nbsp;первого взгляда</li>
-              <li>Размер и&nbsp;главные детали прямо на&nbsp;обложке</li>
-              <li>Товар без изменений, фон подобран под&nbsp;повод покупки</li>
-            </ul>
-            <p class="ig__price">Обложка + 4&nbsp;слайда — от&nbsp;2&nbsp;500&nbsp;₽, 2–3&nbsp;дня</p>
-            <a href="#services" class="ig__link">Что входит в&nbsp;услугу →</a>
-          </div>
-        </div>
-
         <h3 class="pairs__title reveal">ИИ-визуал для соцсетей</h3>
-        <p class="block__lead reveal">Сцены по&nbsp;мотивам товара для постов. Не&nbsp;для каталога: детали могут отличаться от&nbsp;оригинала.</p>
+        <p class="block__lead reveal">Сцены по мотивам товара для постов. Не для каталога: детали могут отличаться от оригинала.</p>
         <div class="retouch-carousel reveal" data-group="ai">
           <div class="retouch-track">
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/busts-before.webp" data-after="img/busts-ai.webp" data-caption="Шоколадные фигуры, которые я готовила">
-              <div class="pair__img"><img src="img/busts-before.webp" alt="Фигуры из белого шоколада на противне" loading="lazy"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/busts-ai.webp" alt="ИИ-сцена с теми же фигурами" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__img"><img src="img/busts-ai.webp" alt="ИИ-сцена с шоколадными фигурами" loading="lazy"></div>
               <div class="pair__caption">Шоколадные фигуры</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/tiger-before.webp" data-after="img/tiger-ai.webp" data-caption="Вязаный тигр в лесу">
-              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр дома" loading="lazy"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/tiger-ai.webp" alt="ИИ-сцена с тигром в лесу" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__img"><img src="img/tiger-ai.webp" alt="ИИ-сцена с тигром в лесу" loading="lazy"></div>
               <div class="pair__caption">Тигр в лесу</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/bear-after.webp" data-after="img/ski-ai.webp" data-caption="Мишка на лыжах">
-              <div class="pair__img"><img src="img/bear-after.webp" alt="Вязаный мишка на светлом фоне" loading="lazy"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/ski-ai.webp" alt="ИИ-сцена: мишка на лыжах" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__img"><img src="img/ski-ai.webp" alt="ИИ-сцена: мишка на лыжах" loading="lazy"></div>
               <div class="pair__caption">Мишка на лыжах</div>
             </div></div>
             <div class="retouch-slide"><div class="retouch-pair" data-before="img/bear-before.webp" data-after="img/xmas-ai.webp" data-caption="Мишка у ёлки">
-              <div class="pair__img"><img src="img/bear-before.webp" alt="Вязаный мишка, фото дома" loading="lazy"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/xmas-ai.webp" alt="ИИ-сцена: мишка у ёлки" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__img"><img src="img/xmas-ai.webp" alt="ИИ-сцена: мишка у ёлки" loading="lazy"></div>
               <div class="pair__caption">Мишка у ёлки</div>
             </div></div>
           </div>
@@ -1190,57 +819,56 @@
     <!-- Услуги и цены -->
     <section class="section" id="services">
       <div class="container">
-        <h2 class="section__title reveal">Что я&nbsp;делаю</h2>
-
+        <h2 class="section__title reveal">Что я делаю</h2>
         <div class="offer">
           <article class="offer__row reveal">
             <div class="offer__head">
               <span class="svc__num">01</span>
               <h3 class="offer__title">Сайт-визитка</h3>
-              <p class="price__value">от&nbsp;10&nbsp;000&nbsp;₽</p>
+              <p class="price__value">от 10 000 ₽</p>
               <p class="offer__meta">7 дней · временная стартовая цена</p>
             </div>
             <ul class="svc__list">
-              <li>Структура и&nbsp;тексты по&nbsp;вашей информации</li>
-              <li>Вёрстка, удобный вид на&nbsp;телефоне</li>
-              <li>До&nbsp;15&nbsp;фото с&nbsp;простой обработкой</li>
+              <li>Структура и тексты по вашей информации</li>
+              <li>Вёрстка, удобный вид на телефоне</li>
+              <li>До 15 фото с простой обработкой</li>
               <li>Публикация, два круга правок</li>
             </ul>
-            <div class="svc__result"><span class="svc__label">Результат</span><p>Клиент сам находит ответы на&nbsp;сайте, а&nbsp;вы меньше переписываетесь.</p></div>
+            <div class="svc__result"><span class="svc__label">Результат</span><p>Клиент сам находит ответы на сайте, а вы меньше переписываетесь.</p></div>
           </article>
 
           <article class="offer__row reveal">
             <div class="offer__head">
               <span class="svc__num">02</span>
               <h3 class="offer__title">Инфографика</h3>
-              <p class="price__value">от&nbsp;2&nbsp;500&nbsp;₽</p>
-              <p class="offer__meta">за&nbsp;карточку · 2–3 рабочих дня</p>
+              <p class="price__value">от 2 500 ₽</p>
+              <p class="offer__meta">за карточку · 2–3 рабочих дня</p>
             </div>
             <ul class="svc__list">
-              <li>Карточка товара для Ozon и&nbsp;Wildberries: обложка + 4&nbsp;слайда</li>
-              <li>Слайды для соцсетей, меню и&nbsp;прайсы&nbsp;— от&nbsp;500&nbsp;₽</li>
-              <li>Тексты на&nbsp;слайдах по&nbsp;вашей информации</li>
+              <li>Карточка товара для Ozon и Wildberries: обложка + 4 слайда</li>
+              <li>Слайды для соцсетей, меню и прайсы — от 500 ₽</li>
+              <li>Тексты на слайдах по вашей информации</li>
               <li>Два круга правок</li>
             </ul>
-            <div class="svc__result"><span class="svc__label">Результат</span><p>Покупатель за&nbsp;пару секунд понимает, что это за&nbsp;товар и&nbsp;чем он лучше.</p></div>
+            <div class="svc__result"><span class="svc__label">Результат</span><p>Покупатель за пару секунд понимает, что это за товар и чем он лучше.</p></div>
           </article>
 
           <article class="offer__row offer__row--extra reveal">
             <div class="offer__head">
               <span class="svc__num">+</span>
               <h3 class="offer__title">Обработка фото</h3>
-              <p class="price__value price__value--sm">500&nbsp;₽</p>
-              <p class="offer__meta">за&nbsp;10&nbsp;фото · ручная ретушь 1&nbsp;000&nbsp;₽ за&nbsp;фото</p>
+              <p class="price__value price__value--sm">500 ₽</p>
+              <p class="offer__meta">за 10 фото · ручная ретушь 1 000 ₽ за фото</p>
             </div>
             <ul class="svc__list">
               <li>Нейтральный фон, свет, цвет, ретушь</li>
-              <li>ТЗ для фотографа и&nbsp;контроль съёмки&nbsp;— по&nbsp;запросу</li>
-              <li>ИИ-визуал для соцсетей по&nbsp;мотивам вашего товара</li>
+              <li>ТЗ для фотографа и контроль съёмки — по запросу</li>
+              <li>ИИ-визуал для соцсетей по мотивам вашего товара</li>
             </ul>
-            <div class="svc__result"><span class="svc__label">Важно</span><p>Перед сдачей проверяю каждое фото: товар должен остаться таким, как в&nbsp;жизни.</p></div>
+            <div class="svc__result"><span class="svc__label">Важно</span><p>Перед сдачей проверяю каждое фото: товар должен остаться таким, как в жизни.</p></div>
           </article>
         </div>
-        <p class="prices__note reveal">В&nbsp;цену не&nbsp;входят: съёмка, домен (оплачивается у&nbsp;регистратора), оплата и&nbsp;формы заявок на&nbsp;сайте, дополнительные страницы.</p>
+        <p class="prices__note reveal">В цену не входят: съёмка, домен (оплачивается у регистратора), оплата и формы заявок на сайте, дополнительные страницы.</p>
       </div>
     </section>
 
@@ -1249,11 +877,11 @@
       <div class="container about">
         <div class="about__text reveal">
           <h2 class="section__title">Обо мне</h2>
-          <p class="about__lead">Делаю сайты и&nbsp;визуал одна, от&nbsp;текста до&nbsp;публикации. Вы общаетесь напрямую с&nbsp;тем, кто делает работу.</p>
+          <p class="about__lead">Делаю сайты и визуал одна, от текста до публикации. Вы общаетесь напрямую с тем, кто делает работу.</p>
           <ul class="about__facts">
-            <li><b>Полиграфия и&nbsp;фотомастерские</b>работала с&nbsp;макетами, печатью и&nbsp;ретушью&nbsp;— отсюда внимание к&nbsp;деталям и&nbsp;цвету</li>
-            <li><b>Сама работала в&nbsp;сфере услуг</b>кондитером в&nbsp;кафе и&nbsp;отелях с&nbsp;2016&nbsp;года&nbsp;— знаю, как продукт попадает к&nbsp;клиенту</li>
-            <li><b>ИП на&nbsp;НПД</b>договор, акт и&nbsp;чек на&nbsp;каждую оплату</li>
+            <li><b>Полиграфия и фотомастерские</b> работала с макетами, печатью и ретушью — отсюда внимание к деталям и цвету</li>
+            <li><b>Сама работала в сфере услуг</b> кондитером в кафе и отелях с 2016 года — знаю, как продукт попадает к клиенту</li>
+            <li><b>ИП на НПД</b> договор, акт и чек на каждую оплату</li>
           </ul>
         </div>
       </div>
@@ -1262,36 +890,33 @@
     <!-- Как я работаю -->
     <section class="section" id="process">
       <div class="container">
-        <h2 class="section__title reveal">Как я&nbsp;работаю</h2>
+        <h2 class="section__title reveal">Как я работаю</h2>
         <ol class="process__list">
-          <li class="step reveal"><span class="step__num">01</span><h3 class="step__title">Знакомство</h3><p class="step__text">Вы рассказываете о&nbsp;деле и&nbsp;задаче. Я&nbsp;задаю вопросы и&nbsp;называю точную цену и&nbsp;срок.</p></li>
-          <li class="step reveal" style="--delay: .1s"><span class="step__num">02</span><h3 class="step__title">Договор и&nbsp;материалы</h3><p class="step__text">Подписываем договор. Вы присылаете фото и&nbsp;информацию&nbsp;— с&nbsp;этого дня идёт срок.</p></li>
-          <li class="step reveal" style="--delay: .2s"><span class="step__num">03</span><h3 class="step__title">Работа</h3><p class="step__text">Пишу тексты, делаю дизайн и&nbsp;собираю сайт. Сайт&nbsp;— 7&nbsp;дней, карточка&nbsp;— 2–3&nbsp;рабочих дня.</p></li>
-          <li class="step reveal" style="--delay: .3s"><span class="step__num">04</span><h3 class="step__title">Правки и&nbsp;сдача</h3><p class="step__text">Два круга правок. Затем публикую сайт на&nbsp;вашем аккаунте и&nbsp;передаю файлы, фото и&nbsp;инструкцию.</p></li>
+          <li class="step reveal"><span class="step__num">01</span><h3 class="step__title">Знакомство</h3><p class="step__text">Вы рассказываете о деле и задаче. Я задаю вопросы и называю точную цену и срок.</p></li>
+          <li class="step reveal" style="--delay: .1s"><span class="step__num">02</span><h3 class="step__title">Договор и материалы</h3><p class="step__text">Подписываем договор. Вы присылаете фото и информацию — с этого дня идёт срок.</p></li>
+          <li class="step reveal" style="--delay: .2s"><span class="step__num">03</span><h3 class="step__title">Работа</h3><p class="step__text">Пишу тексты, делаю дизайн и собираю сайт. Сайт — 7 дней, карточка — 2–3 рабочих дня.</p></li>
+          <li class="step reveal" style="--delay: .3s"><span class="step__num">04</span><h3 class="step__title">Правки и сдача</h3><p class="step__text">Два круга правок. Затем публикую сайт на вашем аккаунте и передаю файлы, фото и инструкцию.</p></li>
         </ol>
         <ul class="rules reveal">
-          <li><b>Правки.</b> Два круга: все замечания одним списком. Дальше&nbsp;— от&nbsp;500&nbsp;₽.</li>
-          <li><b>Сайт ваш.</b> Аккаунт, файлы и&nbsp;домен на&nbsp;вас, перейти к&nbsp;другому разработчику можно в&nbsp;любой момент.</li>
-          <li><b>Права.</b> После оплаты переходят к&nbsp;вам, авторство и&nbsp;право показать работу в&nbsp;портфолио остаются за&nbsp;мной.</li>
+          <li><b>Правки.</b> Два круга: все замечания одним списком. Дальше — от 500 ₽.</li>
+          <li><b>Сайт ваш.</b> Аккаунт, файлы и домен на вас, перейти к другому разработчику можно в любой момент.</li>
+          <li><b>Права.</b> После оплаты переходят к вам, авторство и право показать работу в портфолио остаются за мной.</li>
         </ul>
       </div>
     </section>
-
   </main>
 
   <!-- Контакты -->
   <footer class="footer" id="contacts">
     <div class="container">
       <span class="footer__label reveal">Контакты</span>
-      <h2 class="footer__title reveal">Расскажите о&nbsp;задаче.<br><span>Отвечу и&nbsp;назову точную цену.</span></h2>
-
+      <h2 class="footer__title reveal">Расскажите о задаче.<br><span>Отвечу и назову точную цену.</span></h2>
       <div class="footer__buttons reveal" style="--delay: .1s">
         <a href="https://t.me/artifexform" class="btn btn--outline" target="_blank" rel="noopener">Telegram</a>
         <a href="https://wa.me/79384899030" class="btn btn--outline" target="_blank" rel="noopener">WhatsApp</a>
         <a href="https://max.ru/-71848323403080" class="btn btn--outline" target="_blank" rel="noopener">MAX</a>
         <a href="mailto:artifexform@gmail.com" class="btn btn--outline">Email</a>
       </div>
-
       <p class="footer__copy">© <span id="year">2026</span> MILA.STUDIO. Все права защищены.</p>
     </div>
   </footer>
@@ -1309,11 +934,8 @@
     (function () {
       var root = document.documentElement;
       var items = document.querySelectorAll('.reveal');
-
-      // Год в копирайте обновляется сам
       var yearEl = document.getElementById('year');
       if (yearEl) yearEl.textContent = new Date().getFullYear();
-
 
       document.querySelectorAll('[data-more]').forEach(function (btn) {
         var box = document.getElementById(btn.getAttribute('data-more'));
@@ -1326,12 +948,8 @@
         });
       });
 
-      // Без поддержки IntersectionObserver просто показываем всё
       if (!('IntersectionObserver' in window)) return;
-
-      // Прячем блоки только когда JS точно работает
       root.classList.add('js');
-
       var observer = new IntersectionObserver(function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
@@ -1340,23 +958,19 @@
           }
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
       items.forEach(function (el) { observer.observe(el); });
     })();
-    // Кнопка меню на телефоне
+
     (function () {
       var header = document.querySelector('.header');
       var btn = header.querySelector('.nav__toggle');
-      function setOpen(open) {
-        header.classList.toggle('is-open', open);
-        btn.setAttribute('aria-expanded', String(open));
-      }
+      function setOpen(open) { header.classList.toggle('is-open', open); btn.setAttribute('aria-expanded', String(open)); }
       btn.addEventListener('click', function () { setOpen(!header.classList.contains('is-open')); });
       header.querySelectorAll('.nav__link').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
       document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
       document.addEventListener('click', function (e) { if (!header.contains(e.target)) setOpen(false); });
     })();
-    // Выпадающее меню «Работы»
+
     (function () {
       var wrap = document.querySelector('.nav__has-sub');
       if (!wrap) return;
@@ -1373,10 +987,7 @@
         if (e.key === 'Escape') { wrap.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); }
       });
       wrap.querySelectorAll('.nav__sublink').forEach(function (a) {
-        a.addEventListener('click', function () {
-          wrap.classList.remove('is-open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
+        a.addEventListener('click', function () { wrap.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); });
       });
     })();
 
@@ -1394,16 +1005,11 @@
         { title: 'Milana Volnaya', sub: 'Сайт кондитера и кондитера-консультанта' }
       ];
       var current = 0;
-
       function goTo(i) {
         current = (i + slides.length) % slides.length;
         track.style.transform = 'translateX(' + (-current * 100) + '%)';
-        if (data[current]) {
-          titleEl.textContent = data[current].title;
-          subEl.textContent = data[current].sub;
-        }
+        if (data[current]) { titleEl.textContent = data[current].title; subEl.textContent = data[current].sub; }
       }
-
       prev.addEventListener('click', function () { goTo(current - 1); });
       next.addEventListener('click', function () { goTo(current + 1); });
     })();
@@ -1420,7 +1026,6 @@
           track.scrollBy({ left: dir * step, behavior: 'smooth' });
         });
       });
-
       document.querySelectorAll('.ig-expand').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var block = btn.closest('.ig-block');
@@ -1463,62 +1068,41 @@
         content.innerHTML = '<img-comparison-slider class="lightbox__slider"><img slot="first" src="' + before + '" alt="' + caption + ' до"><img slot="second" src="' + after + '" alt="' + caption + ' после"></img-comparison-slider>';
         counter.textContent = (index + 1) + ' / ' + total + ' · ' + caption;
       }
-
       function showImage(src, alt, index, total) {
         content.innerHTML = '<img src="' + src + '" alt="' + alt + '">';
         counter.textContent = (index + 1) + ' / ' + total + ' · ' + alt;
       }
-
       function updateLightbox() {
         var item = currentGroup[currentIndex];
-        if (item.before) {
-          showSlider(item.before, item.after, item.caption, currentIndex, currentGroup.length);
-        } else {
-          showImage(item.src, item.alt, currentIndex, currentGroup.length);
-        }
+        if (item.before) { showSlider(item.before, item.after, item.caption, currentIndex, currentGroup.length); }
+        else { showImage(item.src, item.alt, currentIndex, currentGroup.length); }
       }
-
       function openLightbox(group, index) {
-        currentGroup = group;
-        currentIndex = index;
+        currentGroup = group; currentIndex = index;
         updateLightbox();
         lb.classList.add('is-open');
         document.body.style.overflow = 'hidden';
         isOpen = true;
       }
-
       function closeLightbox() {
         lb.classList.remove('is-open');
         document.body.style.overflow = '';
         content.innerHTML = '';
         isOpen = false;
       }
-
       function next() { currentIndex = (currentIndex + 1) % currentGroup.length; updateLightbox(); }
       function prev() { currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length; updateLightbox(); }
 
-      // Пары до/после: группа = все пары этой карусели
       document.querySelectorAll('.retouch-pair').forEach(function (pair) {
         pair.addEventListener('click', function () {
           var carousel = pair.closest('.retouch-carousel');
           var pairs = Array.from(carousel.querySelectorAll('.retouch-pair'));
-          var group = pairs.map(function (p) {
-            return { before: p.dataset.before, after: p.dataset.after, caption: p.dataset.caption };
-          });
+          var group = pairs.map(function (p) { return { before: p.dataset.before, after: p.dataset.after, caption: p.dataset.caption }; });
           openLightbox(group, pairs.indexOf(pair));
         });
       });
 
-      // Одиночные картинки (инфографика, блок ig) — не внутри пар
       document.querySelectorAll('.ig-slide__img').forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          var im = el.querySelector('img');
-          if (im) openLightbox([{ src: im.src, alt: im.alt }], 0);
-        });
-      });
-      document.querySelectorAll('.pair__img').forEach(function (el) {
-        if (el.closest('.retouch-pair')) return;
         el.addEventListener('click', function (e) {
           e.preventDefault();
           var im = el.querySelector('img');
