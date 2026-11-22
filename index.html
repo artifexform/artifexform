@@ -96,7 +96,7 @@
     }
     section[id], footer[id] { scroll-margin-top: 72px; }
     @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 80px; } }
-    
+
     .header__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-top: 20px; padding-bottom: 20px; }
     .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
     .logo__dot { color: var(--accent); }
@@ -129,7 +129,7 @@
     .header.is-open .nav__icon { background: transparent; }
     .header.is-open .nav__icon::before { transform: translateY(5px) rotate(45deg); }
     .header.is-open .nav__icon::after { transform: translateY(-5px) rotate(-45deg); }
-    
+
     @media (max-width: 639px) {
       .header__inner { flex-wrap: nowrap; padding-top: 12px; padding-bottom: 12px; }
       .nav__toggle { display: inline-flex; }
@@ -145,8 +145,18 @@
       .nav__sublink { padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 15px; }
     }
 
-    /* ===== Hero ===== */
-    .hero { background: var(--bg-alt); padding-top: 48px; padding-bottom: 64px; border-bottom: 3px solid var(--accent); }
+    /* ===== Hero с фоновым фото ===== */
+    .hero {
+      position: relative;
+      background: var(--bg-alt) url('img/hero-bg.webp') center right / cover no-repeat;
+      padding-top: 96px; padding-bottom: 96px;
+      border-bottom: 3px solid var(--accent);
+    }
+    .hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(100deg, rgba(10,10,10,.88) 0%, rgba(10,10,10,.72) 38%, rgba(10,10,10,.35) 62%, rgba(10,10,10,.15) 100%);
+    }
+    .hero > .container { position: relative; z-index: 1; }
     .hero__title { font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(4rem, 19vw, 12rem); line-height: 0.85; letter-spacing: -0.04em; }
     .hero__line--accent { color: var(--accent); }
     .hero__services { margin-top: 28px; font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(1.1rem, 3.2vw, 2rem); line-height: 1.2; letter-spacing: -0.01em; }
@@ -154,22 +164,17 @@
     .hero__line { display: block; }
     .hero__slash { color: var(--accent); }
     .hero__text { max-width: 600px; margin-top: 24px; font-size: 18px; opacity: 0.8; }
-    
+
     .facts { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); max-width: 600px; margin-top: 40px; }
-    .facts__cell { background: var(--bg-alt); padding: 18px 20px; }
+    .facts__cell { background: rgba(15, 42, 31, 0.88); padding: 18px 20px; }
     .facts__value { display: block; font-size: 22px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
     .facts__label { display: block; margin-top: 4px; font-size: 14px; color: rgba(255, 255, 255, 0.6); }
     .hero .btn { margin-top: 40px; }
-    
-    .hero__grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; }
-    .hero__visual { display: grid; gap: 24px; max-width: 600px; }
-    .show { margin: 0; }
-    .show figcaption { margin-top: 10px; font-size: 14px; color: rgba(255,255,255,.7); }
-    .show figcaption b { color: var(--text); font-weight: 600; }
-    .show__pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-    .show--site .browser { display: block; transition: transform .3s var(--ease); }
-    .show--site .browser:hover { transform: translateY(-3px); }
     .hero .facts { max-width: none; }
+    @media (max-width: 767px) {
+      .hero { padding-top: 64px; padding-bottom: 64px; background-position: 72% center; }
+      .hero::before { background: linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.5) 50%, rgba(10,10,10,.85) 100%); }
+    }
 
     /* ===== Услуги ===== */
     .services__grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
@@ -201,17 +206,6 @@
     @media (min-width: 1024px) { .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; } }
 
     .block__lead { max-width: 640px; margin: -16px 0 32px; color: var(--text-muted); }
-
-    /* ===== Инфографика: серии в окошках ===== */
-    .ig-series { padding: 32px; margin-bottom: 40px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
-    .ig-series__title { font-size: 1.25rem; font-weight: 600; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border); color: var(--text); }
-    .igfolio { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .igfolio__item { margin: 0; }
-    .igfolio__img { position: relative; overflow: hidden; border-radius: var(--radius); background: var(--placeholder); border: 1px solid var(--border); }
-    .igfolio__img img { display: block; width: 100%; height: auto; transition: transform 0.6s var(--ease); }
-    .igfolio__item:hover .igfolio__img img { transform: scale(1.03); }
-    .igfolio__cap { margin-top: 8px; font-size: 13px; opacity: .65; text-align: center; }
-    @media (min-width: 768px) { .igfolio { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
 
     /* ===== Условия ===== */
     .terms { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 56px; }
@@ -283,7 +277,6 @@
     .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
 
     /* ===== Показать все работы ===== */
-    .pairs--more { margin-top: 28px; }
     .more__btn { display: flex; margin: 28px auto 0; }
     @media (min-width: 1024px) { .svc__row { grid-template-columns: 1.2fr 1fr; gap: 48px; padding-bottom: 40px; } }
 
@@ -366,7 +359,6 @@
 
     /* ===== Десктоп ===== */
     @media (min-width: 1024px) {
-      .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 64px; }
       .hero__title { font-size: clamp(5rem, 10vw, 10rem); }
       .hero__services { font-size: clamp(1.1rem, 1.7vw, 1.5rem); }
       :root { --section-y: 80px; --gutter: 48px; }
@@ -382,7 +374,7 @@
     .case-track { display: flex; transition: transform .5s var(--ease); }
     .case-slide { flex: 0 0 100%; min-width: 0; }
     .case-arrow {
-      position: absolute; top: 50%; transform: translateY(-50%);
+      position: absolute; top: 110px; transform: translateY(-50%);
       width: 40px; height: 40px; border-radius: 50%;
       background: rgba(10, 10, 10, 0.55); border: 1px solid rgba(255,255,255,.25);
       color: #fff; font-size: 16px; line-height: 1; cursor: pointer; z-index: 5;
@@ -392,7 +384,8 @@
     .case-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
     .case-arrow--prev { left: 4px; }
     .case-arrow--next { right: 4px; }
-    @media (min-width: 1024px) { .case-arrow--prev { left: -8px; } .case-arrow--next { right: -8px; } }
+    @media (min-width: 640px) { .case-arrow { top: 210px; } }
+    @media (min-width: 1024px) { .case-arrow { top: 195px; } .case-arrow--prev { left: -8px; } .case-arrow--next { right: -8px; } }
 
     /* ===== Инфографика: карусель серий ===== */
     .ig-block { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
@@ -422,6 +415,10 @@
     .ig-expand { grid-column: 1 / -1; margin-top: 4px; }
     @media (max-width: 767px) { .ig-slide { flex: 0 0 100%; } }
     @media (min-width: 768px) and (max-width: 1023px) { .ig-slide { flex: 0 0 calc((100% - 16px) / 2); } }
+
+    /* Скрытые серии инфографики: без текста сбоку, на всю ширину */
+    #moreSeries .ig-block { grid-template-columns: 1fr; margin-bottom: 32px; }
+    #moreSeries .ig-carousel { margin-bottom: 16px; }
 
     /* ===== Карусель пар до/после ===== */
     .retouch-carousel { position: relative; margin-bottom: 32px; }
@@ -502,40 +499,22 @@
   </header>
 
   <main id="top">
-    <!-- Hero -->
+    <!-- Hero с фоновым фото -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
-        <div class="hero__grid">
-          <div class="hero__content">
-            <h1 class="hero__title" id="hero-title">
-              <span class="hero__line">Mila</span>
-              <span class="hero__line hero__line--accent">Studio</span>
-            </h1>
-            <p class="hero__services"><span>Сайты-визитки</span> <span class="hero__slash" aria-hidden="true">/</span> <span>инфографика</span> <span class="hero__slash" aria-hidden="true">/</span> <span>обработка фото</span></p>
-            <p class="hero__text">Для малого бизнеса, мастеров и предпринимателей. Работаю одна: тексты, дизайн и готовый сайт. Без посредников и затягивания сроков.</p>
-            <div class="facts">
-              <div class="facts__cell"><span class="facts__value">7 дней</span><span class="facts__label">срок сайта</span></div>
-              <div class="facts__cell"><span class="facts__value">от 10 000 ₽</span><span class="facts__label">сайт под ключ</span></div>
-              <div class="facts__cell"><span class="facts__value">от 2 500 ₽</span><span class="facts__label">карточка инфографики</span></div>
-            </div>
-            <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
+        <div class="hero__content">
+          <h1 class="hero__title" id="hero-title">
+            <span class="hero__line">Mila</span>
+            <span class="hero__line hero__line--accent">Studio</span>
+          </h1>
+          <p class="hero__services"><span>Сайты-визитки</span> <span class="hero__slash" aria-hidden="true">/</span> <span>инфографика</span> <span class="hero__slash" aria-hidden="true">/</span> <span>обработка фото</span></p>
+          <p class="hero__text">Для малого бизнеса, мастеров и предпринимателей. Работаю одна: тексты, дизайн и готовый сайт. Без посредников и затягивания сроков.</p>
+          <div class="facts">
+            <div class="facts__cell"><span class="facts__value">7 дней</span><span class="facts__label">срок сайта</span></div>
+            <div class="facts__cell"><span class="facts__value">от 10 000 ₽</span><span class="facts__label">сайт под ключ</span></div>
+            <div class="facts__cell"><span class="facts__value">от 2 500 ₽</span><span class="facts__label">карточка инфографики</span></div>
           </div>
-          <div class="hero__visual">
-            <figure class="show show--site">
-              <a href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener" class="browser">
-                <div class="browser__bar"><i></i><i></i><i></i></div>
-                <img src="img/site-milana.webp" alt="Сайт-визитка кондитера Milana Volnaya" width="1600" height="900" fetchpriority="high">
-              </a>
-              <figcaption><b>Сайт-визитка</b> · кондитер-консультант</figcaption>
-            </figure>
-            <figure class="show show--photo">
-              <div class="show__pair">
-                <div class="pair__img"><img src="img/brooch-before.webp" alt="Валяная брошь-тигр на ладони" width="800" height="800"><span class="pair__tag">До</span></div>
-                <div class="pair__img"><img src="img/brooch-after.webp" alt="Та же брошь на светлом фоне" width="800" height="800"><span class="pair__tag">После</span></div>
-              </div>
-              <figcaption><b>Фото для каталога</b> · товар мастера</figcaption>
-            </figure>
-          </div>
+          <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
         </div>
       </div>
     </section>
@@ -621,7 +600,7 @@
         <h2 class="section__title reveal">Инфографика для маркетплейсов</h2>
         <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + слайды за 2–3 дня.</p>
 
-        <!-- Серия 1 -->
+        <!-- Серия 1: видна сразу с текстом -->
         <div class="ig-block reveal">
           <div class="ig-carousel">
             <div class="ig-track">
@@ -650,60 +629,41 @@
           <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
         </div>
 
-        <!-- Серия 2 -->
-        <div class="ig-block reveal">
-          <div class="ig-carousel">
-            <div class="ig-track">
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка карточки: вязаный зайка в синей шапке" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл: зайка на полке" loading="lazy"></div><figcaption class="ig-slide__cap">Лайфстайл</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(3).jpg" alt="Слайд «Материалы и качество»" loading="lazy"></div><figcaption class="ig-slide__cap">Материалы</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(4).jpg" alt="Слайд «Готовый подарок — упаковка включена»" loading="lazy"></div><figcaption class="ig-slide__cap">Упаковка</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(5).jpg" alt="Слайд «Размеры и характеристики»" loading="lazy"></div><figcaption class="ig-slide__cap">Размеры</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс создания" loading="lazy"></div><figcaption class="ig-slide__cap">Процесс</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(7).jpg" alt="Слайд «Производство и сроки»" loading="lazy"></div><figcaption class="ig-slide__cap">Производство</figcaption></figure>
+        <!-- Скрытые серии: без текста сбоку -->
+        <div class="more" id="moreSeries" hidden>
+          <div class="ig-block reveal">
+            <div class="ig-carousel">
+              <div class="ig-track">
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка карточки: вязаный зайка в синей шапке" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл: зайка на полке" loading="lazy"></div><figcaption class="ig-slide__cap">Лайфстайл</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(3).jpg" alt="Слайд «Материалы и качество»" loading="lazy"></div><figcaption class="ig-slide__cap">Материалы</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(4).jpg" alt="Слайд «Готовый подарок — упаковка включена»" loading="lazy"></div><figcaption class="ig-slide__cap">Упаковка</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(5).jpg" alt="Слайд «Размеры и характеристики»" loading="lazy"></div><figcaption class="ig-slide__cap">Размеры</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс создания" loading="lazy"></div><figcaption class="ig-slide__cap">Процесс</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(7).jpg" alt="Слайд «Производство и сроки»" loading="lazy"></div><figcaption class="ig-slide__cap">Производство</figcaption></figure>
+              </div>
+              <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
+              <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
             </div>
-            <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
-            <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
+            <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
           </div>
-          <div class="ig-text">
-            <p class="ig__lead">Карточка вязаного зайки для Ozon. Обложка + 6 слайдов.</p>
-            <ul class="ig__list">
-              <li>Понятное название с первого взгляда</li>
-              <li>Материалы и размеры на слайдах</li>
-              <li>Упаковка как готовый подарок</li>
-              <li>Сроки производства</li>
-            </ul>
-            <p class="ig__price">Обложка + 6 слайдов — от 2 500 ₽, 2–3 дня</p>
-            <a href="#services" class="ig__link">Что входит в услугу →</a>
-          </div>
-          <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
-        </div>
 
-        <!-- Серия 3 -->
-        <div class="ig-block reveal">
-          <div class="ig-carousel">
-            <div class="ig-track">
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка карточки: набор для замены автостёкол" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(2).jpg" alt="Слайд «Замена автостёкол своими руками»" loading="lazy"></div><figcaption class="ig-slide__cap">Применение</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(3).jpg" alt="Слайд «Детали» — инструменты набора" loading="lazy"></div><figcaption class="ig-slide__cap">Детали</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(4).jpg" alt="Слайд «Размер» 33 × 27 см" loading="lazy"></div><figcaption class="ig-slide__cap">Размер</figcaption></figure>
-              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект набора в кейсе" loading="lazy"></div><figcaption class="ig-slide__cap">Комплект</figcaption></figure>
+          <div class="ig-block reveal">
+            <div class="ig-carousel">
+              <div class="ig-track">
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка карточки: набор для замены автостёкол" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(2).jpg" alt="Слайд «Замена автостёкол своими руками»" loading="lazy"></div><figcaption class="ig-slide__cap">Применение</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(3).jpg" alt="Слайд «Детали» — инструменты набора" loading="lazy"></div><figcaption class="ig-slide__cap">Детали</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(4).jpg" alt="Слайд «Размер» 33 × 27 см" loading="lazy"></div><figcaption class="ig-slide__cap">Размер</figcaption></figure>
+                <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект набора в кейсе" loading="lazy"></div><figcaption class="ig-slide__cap">Комплект</figcaption></figure>
+              </div>
+              <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
+              <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
             </div>
-            <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
-            <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
+            <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
           </div>
-          <div class="ig-text">
-            <p class="ig__lead">Карточка автотовара для Ozon. Обложка + 4 слайда.</p>
-            <ul class="ig__list">
-              <li>Сценарий применения на обложке</li>
-              <li>Инструменты крупным планом</li>
-              <li>Размер и комплектация</li>
-            </ul>
-            <p class="ig__price">Обложка + 4 слайда — от 2 500 ₽, 2–3 дня</p>
-            <a href="#services" class="ig__link">Что входит в услугу →</a>
-          </div>
-          <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
         </div>
+        <button class="btn btn--outline more__btn" data-more="moreSeries" data-label="Показать другие серии" aria-expanded="false" aria-controls="moreSeries">Показать другие серии</button>
       </div>
     </section>
 
@@ -711,6 +671,7 @@
     <section class="section" id="photos">
       <div class="container">
         <h2 class="section__title reveal">До и после</h2>
+        <p class="block__lead reveal">Кликните на картинку — откроется сравнение «до» и «после» с ползунком. Стрелки на экране или клавиши ← → переключают фото.</p>
 
         <h3 class="pairs__title reveal">Фото для меню</h3>
         <div class="retouch-carousel reveal" data-group="menu">
