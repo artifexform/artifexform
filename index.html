@@ -24,14 +24,12 @@
       --bg: #1C1C1E;
       --bg-alt: #0F2A1F;
       --surface: #262628;
-      --surface-green: #143526;
       --placeholder: #2A2A2A;
       --border: rgba(255, 255, 255, 0.12);
       --text: #FFFFFF;
       --text-muted: #B4B4B4;
       --accent: #FF5E00;
       --accent-hover: #E65500;
-      --accent-rgb: 255, 94, 0;
 
       --font: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
       --font-head: 'Inter Tight', 'Arial Narrow', Arial, sans-serif;
@@ -83,12 +81,23 @@
 
     .section__title {
       font-family: var(--font-head);
-      font-size: clamp(1.8rem, 4.2vw, 3rem);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
       font-weight: 900;
       text-transform: uppercase;
       line-height: 0.95;
       letter-spacing: -0.02em;
       margin-bottom: 32px;
+    }
+
+    .subsection__title {
+      font-family: var(--font-head);
+      font-size: clamp(1.3rem, 2.8vw, 1.8rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin: 56px 0 24px;
+      color: var(--text);
+      opacity: 0.85;
     }
 
     .btn {
@@ -202,6 +211,7 @@
       .nav__sublink { padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 15px; }
     }
 
+    /* ===== HERO ===== */
     .hero { background: var(--bg-alt); padding-top: 48px; padding-bottom: 64px; border-bottom: 3px solid var(--accent); }
     .hero__title {
       font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
@@ -228,60 +238,43 @@
     .hero .btn { margin-top: 40px; }
 
     .hero__grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; }
-    .hero__visual { display: grid; gap: 24px; max-width: 600px; }
-    .show { margin: 0; }
-    .show figcaption { margin-top: 10px; font-size: 14px; color: rgba(255,255,255,.7); }
-    .show figcaption b { color: var(--text); font-weight: 600; }
+    .hero__visual { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 768px) {
+      .hero__visual { grid-template-columns: repeat(3, 1fr); }
+    }
 
-    .hero__carousel {
+    .hero__preview {
       position: relative;
-      max-width: 480px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.14);
       background: #1a1a1a;
       box-shadow: 0 24px 48px rgba(0,0,0,.45);
     }
-    .carousel__slides { position: relative; aspect-ratio: 1 / 1; }
-    .carousel__slide {
-      position: absolute; inset: 0;
-      opacity: 0;
-      transition: opacity 0.8s var(--ease);
+    .hero__preview img {
+      display: block;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
     }
-    .carousel__slide.is-active { opacity: 1; }
-    .carousel__slide img {
-      display: block; width: 100%; height: 100%;
-      object-fit: cover; object-position: top center;
-    }
-    .carousel__caption {
-      padding: 14px 18px;
-      font-size: 14px;
-      color: rgba(255,255,255,.7);
-      background: #0F2A1F;
-      border-top: 1px solid rgba(255,255,255,.1);
-      min-height: 48px;
-      display: flex; align-items: center; gap: 6px;
-    }
-    .carousel__label { color: var(--text); font-weight: 600; }
-    .carousel__dots {
-      position: absolute; bottom: 60px; left: 18px;
-      display: flex; gap: 8px;
-    }
-    .carousel__dot-btn {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255,255,255,.35); border: 0; padding: 0; cursor: pointer;
-      transition: background 0.3s;
-    }
-    .carousel__dot-btn.is-active { background: var(--accent); }
-    .carousel__dot-btn:hover { background: rgba(255,255,255,.7); }
-    @media (max-width: 639px) {
-      .hero__carousel { max-width: 100%; }
-    }
+    .hero__preview--site img { aspect-ratio: 16/9; }
+    .hero__preview--info img { aspect-ratio: 3/4; }
+    .hero__preview--retouch img { aspect-ratio: 1/1; }
 
+    .hero__caption {
+      margin-top: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,.7);
+      text-align: center;
+    }
+    .hero__caption b { color: var(--text); font-weight: 600; }
+
+    /* ===== БЛОКИ ===== */
     .block__lead {
       max-width: 640px;
       margin: 0 0 32px;
       color: var(--text-muted);
+      font-size: 17px;
     }
 
     .pairs {
@@ -311,13 +304,14 @@
       color: rgba(255, 255, 255, 0.9); background: rgba(10, 10, 10, 0.45); border-radius: var(--radius);
       pointer-events: none;
     }
-    .pair__caption { margin-top: 12px; font-size: 14px; opacity: 0.7; text-align: left; }
+    .pair__caption { margin-top: 12px; font-size: 14px; opacity: 0.7; text-align: center; }
     .pairs--more { margin-top: 28px; }
     .more__btn { display: flex; margin: 28px auto 0; }
 
     @media (min-width: 640px) { .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; } }
     @media (min-width: 1024px) { .pairs { grid-template-columns: repeat(3, 1fr); } }
 
+    /* ===== КАРУСЕЛЬ ===== */
     .ig-carousel { position: relative; margin-bottom: 48px; }
     .ig-carousel__head {
       display: flex; align-items: baseline; justify-content: space-between;
@@ -366,6 +360,7 @@
       .ig-arrow { opacity: 1; }
     }
 
+    /* ===== СЛАЙДЕР ДО/ПОСЛЕ ===== */
     .cmp {
       display: block; width: 100%;
       aspect-ratio: 1 / 1;
@@ -376,6 +371,7 @@
       cursor: pointer;
     }
 
+    /* ===== КЕЙС ===== */
     .case__sub { margin: -20px 0 28px; font-size: 18px; opacity: .7; }
     .case { display: grid; grid-template-columns: 1fr; gap: 40px; }
     .case__main { display: block; }
@@ -398,6 +394,7 @@
     .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
     .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
 
+    /* ===== УСЛУГИ ===== */
     .offer { display: grid; }
     .offer__row { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--border); }
     .offer__row:last-child { border-bottom: 1px solid var(--border); }
@@ -421,6 +418,7 @@
     .price__value { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 24px; }
     .prices__note { margin-top: 24px; font-size: 14px; opacity: .7; max-width: 70ch; }
 
+    /* ===== ПРОЦЕСС ===== */
     .process__list { display: grid; grid-template-columns: 1fr; gap: 0; counter-reset: step; }
     .step { padding: 32px 0; border-top: 1px solid var(--border); }
     .step:last-child { border-bottom: 1px solid var(--border); }
@@ -428,6 +426,7 @@
     .step__title { font-size: 1.5rem; font-weight: 600; }
     .step__text { margin-top: 12px; padding-right: 16px; color: var(--text-muted); }
 
+    /* ===== ОБО МНЕ ===== */
     .section--about { background: var(--bg-alt); }
     .about { display: block; }
     .about__lead { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; max-width: 32ch; margin: -8px 0 32px; }
@@ -439,6 +438,7 @@
     .rules li { opacity: .8; }
     .rules b { color: var(--text); }
 
+    /* ===== ФУТЕР ===== */
     .footer {
       padding: var(--section-y) 0 40px;
       border-top: 1px solid var(--border);
@@ -462,6 +462,7 @@
     .footer__buttons .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: none; }
     .footer__copy { font-size: 0.85rem; color: var(--text-muted); }
 
+    /* ===== АНИМАЦИЯ ===== */
     .js .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -498,10 +499,10 @@
       .step { padding: 40px 0; border-bottom: 1px solid var(--border); }
     }
 
-    /* ===== Lightbox ===== */
+    /* ===== LIGHTBOX ===== */
     .lightbox {
       position: fixed; inset: 0; z-index: 1000;
-      background: rgba(10, 10, 10, 0.92);
+      background: rgba(10, 10, 10, 0.95);
       display: none; align-items: center; justify-content: center;
       padding: 24px;
       cursor: zoom-out;
@@ -555,6 +556,7 @@
   </header>
 
   <main id="top">
+    <!-- HERO -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
@@ -573,35 +575,30 @@
             <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Написать в Telegram</a>
           </div>
           <div class="hero__visual">
-            <div class="hero__carousel" aria-label="Примеры работ">
-              <div class="carousel__slides">
-                <div class="carousel__slide is-active">
-                  <img src="img/site-milana.webp" alt="Сайт-визитка кондитера Milana Volnaya" fetchpriority="high">
-                </div>
-                <div class="carousel__slide">
-                  <img src="img/infografika/cat%20(1).jpg" alt="Инфографика карточки для маркетплейса" loading="lazy">
-                </div>
-                <div class="carousel__slide">
-                  <img src="img/tiger-after.webp" alt="Ретушь фото товара на чистом фоне" loading="lazy">
-                </div>
+            <div>
+              <div class="hero__preview hero__preview--site">
+                <img src="img/site-milana.webp" alt="Сайт-визитка кондитера" fetchpriority="high">
               </div>
-              <div class="carousel__dots" aria-hidden="true">
-                <button class="carousel__dot-btn is-active" data-slide="0" aria-label="Сайт-визитка"></button>
-                <button class="carousel__dot-btn" data-slide="1" aria-label="Инфографика"></button>
-                <button class="carousel__dot-btn" data-slide="2" aria-label="Ретушь"></button>
+              <div class="hero__caption"><b>Сайт-визитка</b> · кондитер</div>
+            </div>
+            <div>
+              <div class="hero__preview hero__preview--info">
+                <img src="img/infografika/cat%20(1).jpg" alt="Инфографика для маркетплейса" loading="lazy">
               </div>
-              <div class="carousel__caption">
-                <span class="carousel__label" id="carouselLabel">Сайт-визитка</span>
-                <span>·</span>
-                <span id="carouselDesc">кондитер-консультант</span>
+              <div class="hero__caption"><b>Инфографика</b> · карточка товара</div>
+            </div>
+            <div>
+              <div class="hero__preview hero__preview--retouch">
+                <img src="img/tiger-after.webp" alt="Ретушь фото товара" loading="lazy">
               </div>
+              <div class="hero__caption"><b>Ретушь</b> · фото на белом фоне</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Сайты -->
+    <!-- САЙТЫ -->
     <section class="section" id="sites">
       <div class="container">
         <h2 class="section__title reveal">Сайты-визитки</h2>
@@ -609,30 +606,38 @@
 
         <div class="ig-carousel reveal">
           <div class="ig-carousel__head">
-            <h3 class="ig-carousel__title">Выполненные сайты</h3>
+            <h3 class="ig-carousel__title">Выполненные проекты</h3>
             <span class="ig-carousel__meta">листайте стрелками</span>
           </div>
           <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущий сайт">‹</button>
           <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующий сайт">›</button>
           <div class="ig-track">
-            <div class="ig-slide">
-              <a href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener" class="ig-slide__img" style="aspect-ratio: 16/9;">
-                <img src="img/site-yulia.webp" alt="Первый экран сайта Yulia Craft" loading="lazy">
+            <div class="ig-slide" style="flex-basis: 100%;">
+              <a href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener" class="browser" style="margin-bottom:16px;">
+                <div class="browser__bar"><i></i><i></i><i></i></div>
+                <img src="img/site-yulia.webp" alt="Первый экран сайта Yulia Craft" loading="lazy" style="aspect-ratio:16/9;">
               </a>
-              <div class="ig-slide__cap"><b>Yulia Craft</b> · вязаные игрушки</div>
+              <div style="font-size:14px; opacity:.7;">
+                <b style="color:var(--text);">Yulia Craft</b> · сайт для мастера вязаных игрушек<br>
+                Каталог 13 моделей · кнопка WhatsApp · блок к праздникам
+              </div>
             </div>
-            <div class="ig-slide">
-              <a href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener" class="ig-slide__img" style="aspect-ratio: 16/9;">
-                <img src="img/site-milana.webp" alt="Первый экран сайта Milana Volnaya" loading="lazy">
+            <div class="ig-slide" style="flex-basis: 100%;">
+              <a href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener" class="browser" style="margin-bottom:16px;">
+                <div class="browser__bar"><i></i><i></i><i></i></div>
+                <img src="img/site-milana.webp" alt="Первый экран сайта Milana Volnaya" loading="lazy" style="aspect-ratio:16/9;">
               </a>
-              <div class="ig-slide__cap"><b>Milana Volnaya</b> · кондитер</div>
+              <div style="font-size:14px; opacity:.7;">
+                <b style="color:var(--text);">Milana Volnaya</b> · сайт кондитера-консультанта<br>
+                Разработка десертных меню · портфолио работ
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Инфографика -->
+    <!-- ИНФОГРАФИКА -->
     <section class="section" id="infographics">
       <div class="container">
         <h2 class="section__title reveal">Инфографика для маркетплейсов</h2>
@@ -694,7 +699,7 @@
         <button class="btn btn--outline more__btn" data-more="moreSeries" data-label="Свернуть другие серии" aria-expanded="false" aria-controls="moreSeries" style="margin-top: 28px;">Показать другие серии</button>
 
         <div style="margin-top:72px; padding-top:40px; border-top:1px solid var(--border);">
-          <h3 class="section__title reveal" style="font-size: clamp(1.8rem, 4.2vw, 3rem);">Motion и AI для соцсетей</h3>
+          <h3 class="subsection__title reveal">Motion и AI для соцсетей</h3>
           <p class="block__lead reveal">
             Для каталога важна точность, а для сторис и рекламы — внимание.
             Делаю яркую анимацию и AI-сцены по мотивам товара, чтобы остановить скроллинг ленты.
@@ -705,55 +710,55 @@
                 <img src="img/busts-ai.webp" alt="AI-сцена: шоколадные фигуры" loading="lazy">
                 <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
               </div>
-              <figcaption class="pair__caption" style="text-align:center;">Промо для кондитерской</figcaption>
+              <figcaption class="pair__caption">Промо для кондитерской</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
               <div class="pair__img" data-lightbox="img/tiger-ai.webp">
                 <img src="img/tiger-ai.webp" alt="AI-сцена: тигр в лесу" loading="lazy">
                 <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
               </div>
-              <figcaption class="pair__caption" style="text-align:center;">Сказочная сцена для сторис</figcaption>
+              <figcaption class="pair__caption">Сказочная сцена для сторис</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.2s">
               <div class="pair__img" data-lightbox="img/ski-ai.webp">
                 <img src="img/ski-ai.webp" alt="AI-сцена: мишка на лыжах" loading="lazy">
                 <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
               </div>
-              <figcaption class="pair__caption" style="text-align:center;">Сезонный визуал</figcaption>
+              <figcaption class="pair__caption">Сезонный визуал</figcaption>
             </figure>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Ретушь -->
+    <!-- РЕТУШЬ -->
     <section class="section" id="menu">
       <div class="container">
         <h2 class="section__title reveal">Ретушь и обработка фото</h2>
         <p class="block__lead reveal">Потяните ползунок — увидите разницу между исходником и готовым фото. Клик по картинке — увеличить.</p>
 
-        <h3 class="section__title reveal" style="font-size: clamp(1.8rem, 4.2vw, 3rem);">Меню кафе и кондитерских</h3>
+        <h3 class="subsection__title reveal">Меню кафе и кондитерских</h3>
         <div class="pairs">
           <figure class="pair reveal">
             <img-comparison-slider class="cmp">
               <img slot="first" src="img/cheesecake-before.webp" alt="Птичье молоко до обработки">
               <img slot="second" src="img/cheesecake-after.webp" alt="Птичье молоко после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center;">Птичье молоко</figcaption>
+            <figcaption class="pair__caption">Птичье молоко</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay:.1s">
             <img-comparison-slider class="cmp">
               <img slot="first" src="img/begonia-before.webp" alt="Чизкейк халва до обработки">
               <img slot="second" src="img/begonia-after.webp" alt="Чизкейк халва после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center;">Чизкейк халва</figcaption>
+            <figcaption class="pair__caption">Чизкейк халва</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay:.2s">
             <img-comparison-slider class="cmp">
               <img slot="first" src="img/buffet-before.webp" alt="Фуршет до обработки">
               <img slot="second" src="img/buffet-after.webp" alt="Фуршет после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center;">Фуршет</figcaption>
+            <figcaption class="pair__caption">Фуршет</figcaption>
           </figure>
         </div>
 
@@ -764,34 +769,34 @@
                 <img slot="first" src="img/leaf-before.webp" alt="Тарт до обработки">
                 <img slot="second" src="img/leaf-after.webp" alt="Тарт после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Тарт с мороженым</figcaption>
+              <figcaption class="pair__caption">Тарт с мороженым</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/tart-before.webp" alt="Грушевый тарт до обработки">
                 <img slot="second" src="img/tart-after.webp" alt="Грушевый тарт после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Грушевый тарт</figcaption>
+              <figcaption class="pair__caption">Грушевый тарт</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.2s">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/eclair-before.webp" alt="Шоколадный десерт до обработки">
                 <img slot="second" src="img/eclair-after.webp" alt="Шоколадный десерт после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Шоколадный десерт</figcaption>
+              <figcaption class="pair__caption">Шоколадный десерт</figcaption>
             </figure>
             <figure class="pair reveal">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/mochi-before.webp" alt="Моти до обработки">
                 <img slot="second" src="img/mochi-after.webp" alt="Моти после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Моти с клубникой</figcaption>
+              <figcaption class="pair__caption">Моти с клубникой</figcaption>
             </figure>
           </div>
         </div>
         <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Свернуть десерты" aria-expanded="false" aria-controls="moreDesserts" style="margin-top: 28px;">Показать ещё десерты</button>
 
-        <h3 class="section__title reveal" style="font-size: clamp(1.8rem, 4.2vw, 3rem); margin-top:64px;">Товары на чистом фоне</h3>
+        <h3 class="subsection__title reveal">Товары на чистом фоне</h3>
         <p class="block__lead reveal">Для каталога, сайта и карточек маркетплейса.</p>
 
         <div class="pairs">
@@ -800,21 +805,21 @@
               <img slot="first" src="img/tiger-before.webp" alt="Тигр до обработки">
               <img slot="second" src="img/tiger-after.webp" alt="Тигр после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center;">Вязаный тигр</figcaption>
+            <figcaption class="pair__caption">Вязаный тигр</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay:.1s">
             <img-comparison-slider class="cmp">
               <img slot="first" src="img/seal-before.webp" alt="Тюлень до обработки">
               <img slot="second" src="img/seal-after.webp" alt="Тюлень после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center;">Брелок-тюлень</figcaption>
+            <figcaption class="pair__caption">Брелок-тюлень</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay:.2s">
             <img-comparison-slider class="cmp">
               <img slot="first" src="img/bunny-before.webp" alt="Зайчик до обработки">
               <img slot="second" src="img/bunny-after.webp" alt="Зайчик после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center;">Брошь-зайчик</figcaption>
+            <figcaption class="pair__caption">Брошь-зайчик</figcaption>
           </figure>
         </div>
 
@@ -825,35 +830,35 @@
                 <img slot="first" src="img/gulls-before.webp" alt="Чайки до обработки">
                 <img slot="second" src="img/gulls-after.webp" alt="Чайки после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Броши-чайки</figcaption>
+              <figcaption class="pair__caption">Броши-чайки</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/gull-before.webp" alt="Чайка до обработки">
                 <img slot="second" src="img/gull-after.webp" alt="Чайка после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Брелок-чайка</figcaption>
+              <figcaption class="pair__caption">Брелок-чайка</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.2s">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/bears3-before.webp" alt="Медведи до обработки">
                 <img slot="second" src="img/bears3-after.webp" alt="Медведи после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Брелоки-медведи</figcaption>
+              <figcaption class="pair__caption">Брелоки-медведи</figcaption>
             </figure>
             <figure class="pair reveal">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/crabs-before.webp" alt="Крабики до обработки">
                 <img slot="second" src="img/crabs-after.webp" alt="Крабики после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Брелоки-крабики</figcaption>
+              <figcaption class="pair__caption">Брелоки-крабики</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
               <img-comparison-slider class="cmp">
                 <img slot="first" src="img/brownbear-before.webp" alt="Мишка до обработки">
                 <img slot="second" src="img/brownbear-after.webp" alt="Мишка после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center;">Бурый мишка</figcaption>
+              <figcaption class="pair__caption">Бурый мишка</figcaption>
             </figure>
           </div>
         </div>
@@ -861,6 +866,7 @@
       </div>
     </section>
 
+    <!-- УСЛУГИ -->
     <section class="section" id="services">
       <div class="container">
         <h2 class="section__title reveal">Что я делаю</h2>
@@ -916,6 +922,7 @@
       </div>
     </section>
 
+    <!-- ОБО МНЕ -->
     <section class="section section--about" id="about">
       <div class="container about">
         <div class="about__text reveal">
@@ -930,6 +937,7 @@
       </div>
     </section>
 
+    <!-- ПРОЦЕСС -->
     <section class="section" id="process">
       <div class="container">
         <h2 class="section__title reveal">Как я работаю</h2>
@@ -964,7 +972,7 @@
     </div>
   </footer>
 
-  <!-- Lightbox -->
+  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
     <button class="lightbox__close" aria-label="Закрыть">×</button>
     <img class="lightbox__img" src="" alt="">
@@ -1038,46 +1046,6 @@
     })();
 
     (function () {
-      var slides = document.querySelectorAll('.carousel__slide');
-      var dots = document.querySelectorAll('.carousel__dot-btn');
-      var label = document.getElementById('carouselLabel');
-      var desc = document.getElementById('carouselDesc');
-      if (!slides.length) return;
-
-      var captions = [
-        { label: 'Сайт-визитка', desc: 'кондитер-консультант' },
-        { label: 'Инфографика', desc: 'карточка для маркетплейса' },
-        { label: 'Ретушь', desc: 'фото товара на чистом фоне' }
-      ];
-
-      var current = 0;
-      var interval;
-
-      function goTo(index) {
-        slides[current].classList.remove('is-active');
-        dots[current].classList.remove('is-active');
-        current = index;
-        slides[current].classList.add('is-active');
-        dots[current].classList.add('is-active');
-        if (label) label.textContent = captions[current].label;
-        if (desc) desc.textContent = captions[current].desc;
-      }
-
-      function next() { goTo((current + 1) % slides.length); }
-      function start() { interval = setInterval(next, 4000); }
-      function stop() { clearInterval(interval); }
-
-      dots.forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          stop();
-          goTo(parseInt(btn.getAttribute('data-slide'), 10));
-          start();
-        });
-      });
-      start();
-    })();
-
-    (function () {
       document.querySelectorAll('.ig-arrow').forEach(function (btn) {
         btn.addEventListener('click', function () {
           var carousel = btn.closest('.ig-carousel');
@@ -1094,22 +1062,27 @@
       var lightbox = document.getElementById('lightbox');
       var lbImg = lightbox.querySelector('.lightbox__img');
       var lbClose = lightbox.querySelector('.lightbox__close');
+      var isOpen = false;
 
       function openLightbox(src, alt) {
+        if (isOpen) { closeLightbox(); return; }
         lbImg.src = src;
         lbImg.alt = alt || '';
         lightbox.classList.add('is-open');
         document.body.style.overflow = 'hidden';
+        isOpen = true;
       }
       function closeLightbox() {
         lightbox.classList.remove('is-open');
         document.body.style.overflow = '';
         setTimeout(function () { lbImg.src = ''; }, 300);
+        isOpen = false;
       }
 
       document.querySelectorAll('[data-lightbox]').forEach(function (el) {
         el.addEventListener('click', function (e) {
           e.preventDefault();
+          e.stopPropagation();
           var src = el.getAttribute('data-lightbox');
           var img = el.querySelector('img');
           openLightbox(src, img ? img.alt : '');
@@ -1120,18 +1093,20 @@
         if (el.hasAttribute('data-lightbox')) return;
         var img = el.querySelector('img');
         if (img) {
-          el.addEventListener('click', function () {
+          el.addEventListener('click', function (e) {
+            e.stopPropagation();
             openLightbox(img.src, img.alt);
           });
         }
       });
 
-      lbClose.addEventListener('click', closeLightbox);
+      lbClose.addEventListener('click', function (e) { e.stopPropagation(); closeLightbox(); });
+      lbImg.addEventListener('click', function (e) { e.stopPropagation(); closeLightbox(); });
       lightbox.addEventListener('click', function (e) {
         if (e.target === lightbox) closeLightbox();
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+        if (e.key === 'Escape' && isOpen) closeLightbox();
       });
     })();
   </script>
