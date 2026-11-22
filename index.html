@@ -739,7 +739,51 @@
       .process__list { grid-template-columns: repeat(4, 1fr); column-gap: 32px; }
       .step { padding: 40px 0; border-bottom: 1px solid var(--border); }
     }
-  </style>
+      /* ===== Карусель в шапке ===== */
+    .hero__carousel {
+      position: relative;
+      max-width: 560px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: #1a1a1a;
+      box-shadow: 0 24px 48px rgba(0,0,0,.45);
+    }
+    .carousel__slides { position: relative; aspect-ratio: 4 / 3; }
+    .carousel__slide {
+      position: absolute; inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s var(--ease);
+    }
+    .carousel__slide.is-active { opacity: 1; }
+    .carousel__slide img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+    }
+    .carousel__caption {
+      padding: 14px 18px;
+      font-size: 14px;
+      color: rgba(255,255,255,.7);
+      background: #0F2A1F;
+      border-top: 1px solid rgba(255,255,255,.1);
+      min-height: 48px;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .carousel__label { color: var(--text); font-weight: 600; }
+    .carousel__dots {
+      position: absolute; bottom: 60px; left: 18px;
+      display: flex; gap: 8px;
+    }
+    .carousel__dot-btn {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: rgba(255,255,255,.35); border: 0; padding: 0; cursor: pointer;
+      transition: background 0.3s;
+    }
+    .carousel__dot-btn.is-active { background: var(--accent); }
+    .carousel__dot-btn:hover { background: rgba(255,255,255,.7); }
+    @media (max-width: 639px) {
+      .hero__carousel { max-width: 100%; }
+    }</style>
 </head>
 <body>
 
@@ -784,20 +828,30 @@
         </div>
         <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
           </div>
-                    <div class="hero__visual">
-            <figure class="show show--site">
-              <a href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener" class="browser">
-                <div class="browser__bar"><i></i><i></i><i></i></div>
-                <img src="img/site-milana.webp" alt="Сайт-визитка кондитера Milana Volnaya" width="1600" height="900" fetchpriority="high">
-              </a>
-              <figcaption><b>Сайт-визитка</b> · кондитер-консультант</figcaption>
-            </figure>
-            <figure class="show show--infographic">
-              <div class="igfolio__img" style="max-width: 400px; border: 1px solid rgba(255,255,255,0.14); border-radius: 2px; overflow: hidden;">
-                <img src="img/infografika/cat%20(1).jpg" alt="Инфографика: Кошечка Мила" loading="lazy" style="width: 100%; height: auto; display: block;">
+                              <div class="hero__visual">
+            <div class="hero__carousel" aria-label="Примеры работ">
+              <div class="carousel__slides">
+                <div class="carousel__slide is-active">
+                  <img src="img/site-milana.webp" alt="Сайт-визитка кондитера Milana Volnaya" fetchpriority="high">
+                </div>
+                <div class="carousel__slide">
+                  <img src="img/infografika/cat%20(1).jpg" alt="Инфографика карточки для маркетплейса" loading="lazy">
+                </div>
+                <div class="carousel__slide">
+                  <img src="img/tiger-after.webp" alt="Ретушь фото товара на чистом фоне" loading="lazy">
+                </div>
               </div>
-              <figcaption style="margin-top: 10px; font-size: 14px; color: rgba(255,255,255,.7);"><b>Инфографика</b> · карточка для маркетплейса</figcaption>
-            </figure>
+              <div class="carousel__dots" aria-hidden="true">
+                <button class="carousel__dot-btn is-active" data-slide="0" aria-label="Сайт-визитка"></button>
+                <button class="carousel__dot-btn" data-slide="1" aria-label="Инфографика"></button>
+                <button class="carousel__dot-btn" data-slide="2" aria-label="Ретушь"></button>
+              </div>
+              <div class="carousel__caption">
+                <span class="carousel__label" id="carouselLabel">Сайт-визитка</span>
+                <span class="carousel__dot">·</span>
+                <span class="carousel__desc" id="carouselDesc">кондитер-консультант</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -1259,7 +1313,47 @@
           btn.setAttribute('aria-expanded', 'false');
         });
       });
-    })();
-  </script>
+    })();    // Карусель в шапке
+    (function () {
+      var slides = document.querySelectorAll('.carousel__slide');
+      var dots = document.querySelectorAll('.carousel__dot-btn');
+      var label = document.getElementById('carouselLabel');
+      var desc = document.getElementById('carouselDesc');
+      if (!slides.length) return;
+
+      var captions = [
+        { label: 'Сайт-визитка', desc: 'кондитер-консультант' },
+        { label: 'Инфографика', desc: 'карточка для маркетплейса' },
+        { label: 'Ретушь', desc: 'фото товара на чистом фоне' }
+      ];
+
+      var current = 0;
+      var interval;
+
+      function goTo(index) {
+        slides[current].classList.remove('is-active');
+        dots[current].classList.remove('is-active');
+        current = index;
+        slides[current].classList.add('is-active');
+        dots[current].classList.add('is-active');
+        if (label) label.textContent = captions[current].label;
+        if (desc) desc.textContent = captions[current].desc;
+      }
+
+      function next() { goTo((current + 1) % slides.length); }
+
+      function start() { interval = setInterval(next, 4000); }
+      function stop() { clearInterval(interval); }
+
+      dots.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          stop();
+          goTo(parseInt(btn.getAttribute('data-slide'), 10));
+          start();
+        });
+      });
+
+      start();
+    })();</script>
 </body>
 </html>
