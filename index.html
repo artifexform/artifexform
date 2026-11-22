@@ -19,18 +19,21 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
+  <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/styles.css" />
+
   <style>
     /* ===== Переменные ===== */
     :root {
-      --bg: #0A0A0A;          /* чёрный */
-      --bg-alt: #0F2A1F;      /* тёмно-зелёный */
+      --bg: #0A0A0A;
+      --bg-alt: #0F2A1F;
       --surface: #141414;
       --surface-green: #143526;
       --placeholder: #2A2A2A;
       --border: rgba(255, 255, 255, 0.12);
-      --text: #FFFFFF;        /* белый */
+      --text: #FFFFFF;
       --text-muted: #B4B4B4;
-      --accent: #FF5E00;      /* оранжевый */
+      --accent: #FF5E00;
       --accent-hover: #E65500;
       --accent-rgb: 255, 94, 0;
 
@@ -121,7 +124,7 @@
     .btn--primary {
       background: var(--accent);
       color: var(--text);
-      font-size: 19px;          /* крупный текст: белый на #FF5E00 даёт 3:1 */
+      font-size: 19px;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.04em;
@@ -144,14 +147,12 @@
     }
 
     /* ===== Header ===== */
-    /* Меню закреплено сверху при прокрутке */
     .header {
       position: sticky; top: 0; z-index: 100;
       background: rgba(15, 42, 31, 0.92);
       -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
-    /* Чтобы заголовок раздела не прятался под меню при переходе по ссылке */
     section[id], footer[id] { scroll-margin-top: 72px; }
     @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 80px; } }
     .header__inner {
@@ -164,7 +165,6 @@
     .nav__link { font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; transition: opacity 0.2s; }
     .nav__link:hover { opacity: 1; }
 
-    /* ===== Выпадающее меню «Работы» ===== */
     .nav__has-sub { position: relative; }
     .nav__sub-toggle {
       background: none; border: 0; font: inherit; color: inherit;
@@ -181,13 +181,11 @@
       border-radius: var(--radius); box-shadow: 0 16px 32px rgba(0,0,0,.45);
       display: none;
     }
-    /* невидимый мостик: чтобы меню не закрывалось при прохождении зазора */
     .nav__sub::before { content: ""; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
     .nav__has-sub:hover .nav__sub, .nav__has-sub.is-open .nav__sub { display: block; }
     .nav__sublink { display: block; padding: 11px 18px; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: .04em; opacity: .75; }
     .nav__sublink:hover { opacity: 1; color: var(--accent); }
 
-    /* Кнопка меню: только на телефоне */
     .nav__toggle {
       display: none; align-items: center; gap: 10px;
       background: none; border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius);
@@ -215,7 +213,6 @@
       .nav__list { flex-direction: column; gap: 0; padding: 8px 20px 16px; }
       .nav__link { display: block; padding: 14px 0; font-size: 16px; opacity: .9; border-bottom: 1px solid rgba(255,255,255,.08); }
       .nav__list li:last-child .nav__link { border-bottom: 0; }
-      /* в бургер-меню подпункты всегда видны списком */
       .nav__has-sub { position: static; }
       .nav__sub { position: static; display: block; min-width: 0; padding: 0; background: transparent; border: 0; box-shadow: none; }
       .nav__sub::before { display: none; }
@@ -240,7 +237,6 @@
     .hero__line { display: block; }
     .hero__slash { color: var(--accent); }
     .hero__text { max-width: 600px; margin-top: 24px; font-size: 18px; opacity: 0.8; }
-    /* Внутренние линии таблицы — через gap: фон контейнера просвечивает между ячейками */
     .facts {
       display: grid; grid-template-columns: 1fr; gap: 1px;
       background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2);
@@ -337,8 +333,6 @@
       background: var(--placeholder);
     }
 
-
-
     .pair__img img {
       display: block;
       width: 100%;
@@ -349,11 +343,11 @@
 
     .pair:hover .pair__img img { transform: scale(1.03); }
 
-    /* Маленькие полупрозрачные метки в углу, не перекрывают товар */
     .pair__tag {
       position: absolute; top: 8px; left: 8px; padding: 2px 7px;
       font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
       color: rgba(255, 255, 255, 0.9); background: rgba(10, 10, 10, 0.45); border-radius: var(--radius);
+      pointer-events: none;
     }
 
     .pair__caption { margin-top: 12px; font-size: 14px; opacity: 0.7; text-align: left; }
@@ -362,64 +356,11 @@
       .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
     }
 
-    /* ===== Инфографика: серии в окошках ===== */
-    .ig-series {
-      padding: 32px;
-      margin-bottom: 40px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-    }
-    .ig-series__title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-    }
-    .igfolio { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .igfolio__item { margin: 0; }
-    .igfolio__img {
-      position: relative; overflow: hidden; border-radius: var(--radius);
-      background: var(--placeholder); border: 1px solid var(--border);
-    }
-    .igfolio__img img { display: block; width: 100%; height: auto; transition: transform 0.6s var(--ease); }
-    .igfolio__item:hover .igfolio__img img { transform: scale(1.03); }
-    .igfolio__cap { margin-top: 8px; font-size: 13px; opacity: .65; text-align: center; }
-    @media (min-width: 768px) { .igfolio { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
-
     .block__lead {
       max-width: 640px;
       margin: -16px 0 32px;
       color: var(--text-muted);
     }
-
-    /* ===== ИИ-визуал ===== */
-    .section--ai .block__lead { margin: -24px 0 40px; }
-    .ai-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-    }
-
-    .ai-card__img {
-      position: relative;
-      aspect-ratio: 4 / 5;
-      overflow: hidden;
-      border-radius: var(--radius);
-      background: var(--placeholder);
-    }
-
-    .ai-card__img img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s var(--ease);
-    }
-
-    .ai-card:hover .ai-card__img img { transform: scale(1.03); }
 
     /* ===== Условия ===== */
     .terms {
@@ -449,7 +390,6 @@
     .price { padding: 40px 32px; background: transparent; border: 1px solid rgba(255, 255, 255, 0.15); transition: border-color .3s var(--ease); }
 
     .price:hover { border-color: rgba(255, 255, 255, 0.4); }
-
 
     .price__title {
       font-size: 1.25rem;
@@ -498,7 +438,6 @@
     }
 
     @media (min-width: 1024px) {
-      .ai-grid { grid-template-columns: repeat(4, 1fr); gap: 24px; }
       .terms { grid-template-columns: repeat(3, 1fr); gap: 24px; }
       .prices { grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
       .extra { grid-template-columns: 1fr 1fr; }
@@ -564,7 +503,6 @@
       min-height: 0; padding: 10px 22px; font-size: 14px;
       background: transparent; color: var(--text); border: 1px solid var(--text);
     }
-    /* Чёрный текст на оранжевом: белый при 14px не проходит по контрасту */
     .footer__buttons .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: none; }
 
     .footer__copy {
@@ -599,7 +537,7 @@
 
     .footer { background: var(--bg-alt); }
 
-    /* ===== Рамки: браузер и ноутбук ===== */
+    /* ===== Рамки: браузер ===== */
     .browser {
       overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.14);
       background: #1a1a1a; box-shadow: 0 24px 48px rgba(0,0,0,.45);
@@ -607,21 +545,6 @@
     .browser__bar { display: flex; gap: 6px; align-items: center; height: 24px; padding: 0 10px; background: #1f1f1f; border-bottom: 1px solid rgba(255,255,255,.08); }
     .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
     .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
-    .laptop__screen { border: 8px solid #1c1c1c; border-radius: 12px 12px 0 0; box-shadow: none; }
-    .laptop__base {
-      height: 14px; width: 112%; margin-left: -6%;
-      background: linear-gradient(#3a3a3a, #1a1a1a); border-radius: 0 0 14px 14px;
-      box-shadow: 0 30px 60px rgba(0,0,0,.6);
-    }
-
-    /* ===== Переписка ===== */
-    .way__visual { margin-bottom: 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: center; }
-    .chat { gap: 8px; padding: 16px; border-radius: 8px; background: rgba(255,255,255,.03); }
-    .bubble {
-      align-self: flex-start; max-width: 80%; padding: 8px 14px; font-size: .9rem;
-      background: #262626; border-radius: 14px 14px 14px 4px; color: var(--text);
-    }
-    .bubble--me { align-self: flex-end; background: #3a3a3a; border-radius: 14px 14px 4px 14px; color: var(--text-muted); }
 
     /* ===== Показать все работы ===== */
     .pairs--more { margin-top: 28px; }
@@ -682,8 +605,6 @@
     .rules li { opacity: .8; }
     .rules b { color: var(--text); }
 
-    .ai-grid--2 { grid-template-columns: repeat(2, 1fr) !important; max-width: 640px; }
-
     @media (min-width: 1024px) {
       .case { grid-template-columns: 1.6fr 1fr; gap: 56px; }
       .offer__row { grid-template-columns: 1fr 1.2fr 1fr; gap: 40px; }
@@ -731,7 +652,6 @@
 
       .services__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; }
 
-      /* 6 колонок: сайты по 3, фото по 2 */
       .portfolio__grid { grid-template-columns: repeat(6, 1fr); gap: 24px; }
       .work--site  { grid-column: span 3; }
 
@@ -739,7 +659,105 @@
       .step { padding: 40px 0; border-bottom: 1px solid var(--border); }
     }
 
-    /* ===== Lightbox: увеличение по клику ===== */
+    /* ===== Карусель кейсов сайтов ===== */
+    .case-slider { position: relative; overflow: hidden; padding: 8px 0; }
+    .case-track { display: flex; transition: transform .5s var(--ease); }
+    .case-slide { flex: 0 0 100%; min-width: 0; }
+
+    .case-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(10, 10, 10, 0.55);
+      border: 1px solid rgba(255,255,255,.25);
+      color: #fff; font-size: 16px; line-height: 1;
+      cursor: pointer; z-index: 5;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .case-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
+    .case-arrow--prev { left: 4px; }
+    .case-arrow--next { right: 4px; }
+    @media (min-width: 1024px) {
+      .case-arrow--prev { left: -8px; }
+      .case-arrow--next { right: -8px; }
+    }
+
+    /* ===== Инфографика: карусель серий ===== */
+    .ig-block { display: grid; grid-template-columns: 1fr; gap: 24px; margin-bottom: 48px; }
+    @media (min-width: 1024px) { .ig-block { grid-template-columns: 3fr 1fr; gap: 32px; align-items: start; } }
+
+    .ig-carousel { position: relative; }
+    .ig-track {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      scrollbar-width: none; -ms-overflow-style: none;
+    }
+    .ig-track::-webkit-scrollbar { display: none; }
+    .ig-slide { flex: 0 0 calc((100% - 32px) / 3); min-width: 0; scroll-snap-align: start; }
+    .ig-slide__img {
+      position: relative; aspect-ratio: 3 / 4; overflow: hidden;
+      border-radius: var(--radius); background: var(--placeholder);
+      border: 1px solid var(--border); cursor: zoom-in;
+    }
+    .ig-slide__img img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: top;
+      transition: transform .6s var(--ease);
+    }
+    .ig-slide:hover .ig-slide__img img { transform: scale(1.04); }
+    .ig-slide__cap { margin-top: 8px; font-size: 13px; opacity: .6; text-align: center; }
+
+    .ig-arrow {
+      position: absolute; top: 40%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(10, 10, 10, 0.55); border: 1px solid rgba(255,255,255,.25);
+      color: #fff; font-size: 16px; line-height: 1; cursor: pointer; z-index: 5;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .ig-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
+    .ig-arrow--prev { left: -8px; }
+    .ig-arrow--next { right: -8px; }
+
+    .ig-carousel.is-expanded .ig-track { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
+    .ig-carousel.is-expanded .ig-slide { flex: none; }
+    .ig-carousel.is-expanded .ig-arrow { display: none; }
+
+    .ig-expand { grid-column: 1 / -1; margin-top: 4px; }
+
+    @media (max-width: 767px) { .ig-slide { flex: 0 0 100%; } }
+    @media (min-width: 768px) and (max-width: 1023px) { .ig-slide { flex: 0 0 calc((100% - 16px) / 2); } }
+
+    /* ===== Карусель пар до/после ===== */
+    .retouch-carousel { position: relative; margin-bottom: 32px; }
+    .retouch-track {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      scrollbar-width: none; -ms-overflow-style: none;
+      padding: 4px;
+    }
+    .retouch-track::-webkit-scrollbar { display: none; }
+    .retouch-slide { flex: 0 0 calc((100% - 48px) / 4); min-width: 0; scroll-snap-align: start; }
+    .retouch-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; cursor: zoom-in; }
+    .retouch-pair .pair__img { aspect-ratio: 1/1; }
+    .retouch-pair .pair__caption { grid-column: 1 / -1; text-align: center; margin-top: 8px; font-size: 13px; }
+
+    .retouch-arrow {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(10, 10, 10, 0.55); border: 1px solid rgba(255,255,255,.25);
+      color: #fff; font-size: 16px; cursor: pointer; z-index: 5;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
+    }
+    .retouch-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
+    .retouch-arrow--prev { left: -8px; }
+    .retouch-arrow--next { right: -8px; }
+
+    @media (max-width: 1023px) { .retouch-slide { flex: 0 0 calc((100% - 16px) / 2); } }
+    @media (max-width: 639px) { .retouch-slide { flex: 0 0 100%; } }
+
+    /* ===== Lightbox с навигацией ===== */
     .lightbox {
       position: fixed; inset: 0; z-index: 1000;
       background: rgba(0, 0, 0, 0.92);
@@ -747,8 +765,12 @@
       padding: 24px; cursor: zoom-out;
     }
     .lightbox.is-open { display: flex; }
-    .lightbox__img {
+    .lightbox__content {
       max-width: 100%; max-height: 100%;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .lightbox__content img {
+      max-width: 100%; max-height: 80vh;
       object-fit: contain; border-radius: var(--radius);
       box-shadow: 0 24px 64px rgba(0,0,0,.6);
     }
@@ -759,29 +781,34 @@
       color: #fff; font-size: 22px; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
       transition: background .2s, border-color .2s;
+      z-index: 1001;
     }
     .lightbox__close:hover { background: var(--accent); border-color: var(--accent); }
-    .pair__img, .igfolio__img { cursor: zoom-in; }
-
-    /* ===== Карусель кейсов сайтов ===== */
-    .case-slider { position: relative; }
-    .case-track { display: flex; transition: transform .5s var(--ease); }
-    .case-slide { flex: 0 0 100%; min-width: 0; }
-    .case-nav { display: flex; justify-content: center; align-items: center; gap: 16px; margin-top: 32px; }
-    .case-arrow {
+    .lightbox__nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
       width: 44px; height: 44px; border-radius: 50%;
-      border: 1px solid var(--border); background: transparent; color: var(--text);
-      font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center;
-      transition: border-color .2s, color .2s;
+      background: rgba(10, 10, 10, 0.55); border: 1px solid rgba(255,255,255,.25);
+      color: #fff; font-size: 18px; cursor: pointer; z-index: 1001;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s;
     }
-    .case-arrow:hover { border-color: var(--accent); color: var(--accent); }
-    .case-dots { display: flex; gap: 8px; }
-    .case-dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: rgba(255,255,255,.3); border: 0; padding: 0; cursor: pointer;
-      transition: background .2s;
+    .lightbox__nav:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
+    .lightbox__nav--prev { left: 16px; }
+    .lightbox__nav--next { right: 16px; }
+    .lightbox__counter {
+      position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+      font-size: 13px; color: rgba(255,255,255,.7); background: rgba(10,10,10,.6);
+      padding: 6px 12px; border-radius: 12px; z-index: 1001;
     }
-    .case-dot.is-active { background: var(--accent); }
+    .lightbox__slider {
+      width: 100%; max-width: 800px;
+      aspect-ratio: 1/1;
+      --divider-width: 2px;
+      --divider-color: var(--accent);
+      border-radius: var(--radius); overflow: hidden;
+      cursor: default;
+    }
+    .lightbox__slider img { display: block; width: 100%; height: 100%; object-fit: cover; }
   </style>
 </head>
 <body>
@@ -847,7 +874,7 @@
       </div>
     </section>
 
-    <!-- Кейсы сайтов (пролистываются) -->
+    <!-- Кейсы сайтов: карусель -->
     <section class="section" id="case">
       <div class="container">
         <h2 class="section__title reveal" id="caseTitle">Yulia Craft</h2>
@@ -913,189 +940,200 @@
             </div>
 
           </div>
-          <div class="case-nav">
-            <button class="case-arrow case-arrow--prev" type="button" aria-label="Предыдущий сайт">‹</button>
-            <div class="case-dots"></div>
-            <button class="case-arrow case-arrow--next" type="button" aria-label="Следующий сайт">›</button>
-          </div>
+          <button class="case-arrow case-arrow--prev" type="button" aria-label="Предыдущий сайт">‹</button>
+          <button class="case-arrow case-arrow--next" type="button" aria-label="Следующий сайт">›</button>
         </div>
       </div>
     </section>
 
-    <!-- Инфографика -->
+    <!-- Инфографика: карусели серий -->
     <section class="section" id="infographics">
       <div class="container">
         <h2 class="section__title reveal">Инфографика для маркетплейсов</h2>
-        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Каждая серия — отдельный блок.</p>
+        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + слайды за 2–3 дня.</p>
 
-        <div class="ig-series reveal">
-          <h3 class="ig-series__title">Кошечка Мила · 7 слайдов</h3>
-          <div class="igfolio">
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(1).jpg" alt="Обложка карточки: вязаная кошечка в руке" loading="lazy"></div><figcaption class="igfolio__cap">Обложка</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(2).jpg" alt="Кошечка Мила на полке" loading="lazy"></div><figcaption class="igfolio__cap">Модель</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(3).jpg" alt="Слайд «Ручная работа»" loading="lazy"></div><figcaption class="igfolio__cap">Ручная работа</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(4).jpg" alt="Слайд «Уют на полке»" loading="lazy"></div><figcaption class="igfolio__cap">Уют на полке</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(5).jpg" alt="Слайд «В подарок»" loading="lazy"></div><figcaption class="igfolio__cap">В подарок</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(6).jpg" alt="Слайд «Детали» — макро фактуры" loading="lazy"></div><figcaption class="igfolio__cap">Детали</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(7).jpg" alt="Слайд «Комплектация и уход»" loading="lazy"></div><figcaption class="igfolio__cap">Комплектация</figcaption></figure>
+        <!-- Серия 1 -->
+        <div class="ig-block reveal">
+          <div class="ig-carousel">
+            <div class="ig-track">
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(1).jpg" alt="Обложка карточки: вязаная кошечка в руке" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(2).jpg" alt="Кошечка Мила на полке" loading="lazy"></div><figcaption class="ig-slide__cap">Модель</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(3).jpg" alt="Слайд «Ручная работа»" loading="lazy"></div><figcaption class="ig-slide__cap">Ручная работа</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(4).jpg" alt="Слайд «Уют на полке»" loading="lazy"></div><figcaption class="ig-slide__cap">Уют на полке</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(5).jpg" alt="Слайд «В подарок»" loading="lazy"></div><figcaption class="ig-slide__cap">В подарок</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(6).jpg" alt="Слайд «Детали» — макро фактуры" loading="lazy"></div><figcaption class="ig-slide__cap">Детали</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(7).jpg" alt="Слайд «Комплектация и уход»" loading="lazy"></div><figcaption class="ig-slide__cap">Комплектация</figcaption></figure>
+            </div>
+            <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
+            <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
           </div>
+          <div class="ig-text">
+            <p class="ig__lead">Карточка вязаной кошечки для Wildberries. Обложка + 6 слайдов.</p>
+            <ul class="ig__list">
+              <li>Размер и детали прямо на обложке</li>
+              <li>Слайд про ручную работу</li>
+              <li>Слайд «в подарок» с упаковкой</li>
+              <li>Комплектация и уход</li>
+            </ul>
+            <p class="ig__price">Обложка + 6 слайдов — от 2 500 ₽, 2–3 дня</p>
+            <a href="#services" class="ig__link">Что входит в услугу →</a>
+          </div>
+          <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
         </div>
 
-        <div class="ig-series reveal">
-          <h3 class="ig-series__title">Зайка в шапке · 7 слайдов</h3>
-          <div class="igfolio">
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка карточки: вязаный зайка в синей шапке" loading="lazy"></div><figcaption class="igfolio__cap">Обложка</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл: зайка на полке" loading="lazy"></div><figcaption class="igfolio__cap">Лайфстайл</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(3).jpg" alt="Слайд «Материалы и качество»" loading="lazy"></div><figcaption class="igfolio__cap">Материалы</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(4).jpg" alt="Слайд «Готовый подарок — упаковка включена»" loading="lazy"></div><figcaption class="igfolio__cap">Упаковка</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(5).jpg" alt="Слайд «Размеры и характеристики»" loading="lazy"></div><figcaption class="igfolio__cap">Размеры</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс создания" loading="lazy"></div><figcaption class="igfolio__cap">Процесс</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(7).jpg" alt="Слайд «Производство и сроки»" loading="lazy"></div><figcaption class="igfolio__cap">Производство</figcaption></figure>
+        <!-- Серия 2 -->
+        <div class="ig-block reveal">
+          <div class="ig-carousel">
+            <div class="ig-track">
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка карточки: вязаный зайка в синей шапке" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл: зайка на полке" loading="lazy"></div><figcaption class="ig-slide__cap">Лайфстайл</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(3).jpg" alt="Слайд «Материалы и качество»" loading="lazy"></div><figcaption class="ig-slide__cap">Материалы</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(4).jpg" alt="Слайд «Готовый подарок — упаковка включена»" loading="lazy"></div><figcaption class="ig-slide__cap">Упаковка</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(5).jpg" alt="Слайд «Размеры и характеристики»" loading="lazy"></div><figcaption class="ig-slide__cap">Размеры</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс создания" loading="lazy"></div><figcaption class="ig-slide__cap">Процесс</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(7).jpg" alt="Слайд «Производство и сроки»" loading="lazy"></div><figcaption class="ig-slide__cap">Производство</figcaption></figure>
+            </div>
+            <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
+            <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
           </div>
+          <div class="ig-text">
+            <p class="ig__lead">Карточка вязаного зайки для Ozon. Обложка + 6 слайдов.</p>
+            <ul class="ig__list">
+              <li>Понятное название с первого взгляда</li>
+              <li>Материалы и размеры на слайдах</li>
+              <li>Упаковка как готовый подарок</li>
+              <li>Сроки производства</li>
+            </ul>
+            <p class="ig__price">Обложка + 6 слайдов — от 2 500 ₽, 2–3 дня</p>
+            <a href="#services" class="ig__link">Что входит в услугу →</a>
+          </div>
+          <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
         </div>
 
-        <div class="ig-series reveal">
-          <h3 class="ig-series__title">Набор для замены автостёкол · 5 слайдов</h3>
-          <div class="igfolio">
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка карточки: набор для замены автостёкол" loading="lazy"></div><figcaption class="igfolio__cap">Обложка</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(2).jpg" alt="Слайд «Замена автостёкол своими руками»" loading="lazy"></div><figcaption class="igfolio__cap">Применение</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(3).jpg" alt="Слайд «Детали» — инструменты набора" loading="lazy"></div><figcaption class="igfolio__cap">Детали</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(4).jpg" alt="Слайд «Размер» 33 × 27 см" loading="lazy"></div><figcaption class="igfolio__cap">Размер</figcaption></figure>
-            <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект набора в кейсе" loading="lazy"></div><figcaption class="igfolio__cap">Комплект</figcaption></figure>
+        <!-- Серия 3 -->
+        <div class="ig-block reveal">
+          <div class="ig-carousel">
+            <div class="ig-track">
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка карточки: набор для замены автостёкол" loading="lazy"></div><figcaption class="ig-slide__cap">Обложка</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(2).jpg" alt="Слайд «Замена автостёкол своими руками»" loading="lazy"></div><figcaption class="ig-slide__cap">Применение</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(3).jpg" alt="Слайд «Детали» — инструменты набора" loading="lazy"></div><figcaption class="ig-slide__cap">Детали</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(4).jpg" alt="Слайд «Размер» 33 × 27 см" loading="lazy"></div><figcaption class="ig-slide__cap">Размер</figcaption></figure>
+              <figure class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект набора в кейсе" loading="lazy"></div><figcaption class="ig-slide__cap">Комплект</figcaption></figure>
+            </div>
+            <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
+            <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
           </div>
+          <div class="ig-text">
+            <p class="ig__lead">Карточка автотовара для Ozon. Обложка + 4 слайда.</p>
+            <ul class="ig__list">
+              <li>Сценарий применения на обложке</li>
+              <li>Инструменты крупным планом</li>
+              <li>Размер и комплектация</li>
+            </ul>
+            <p class="ig__price">Обложка + 4 слайда — от 2 500 ₽, 2–3 дня</p>
+            <a href="#services" class="ig__link">Что входит в услугу →</a>
+          </div>
+          <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
         </div>
       </div>
     </section>
 
-    <!-- До / после -->
+    <!-- До / после: карусели пар -->
     <section class="section" id="photos">
       <div class="container">
         <h2 class="section__title reveal">До и&nbsp;после</h2>
+
         <h3 class="pairs__title reveal">Фото для меню</h3>
-        
-        <div class="pairs">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/cheesecake-before.webp" alt="Чизкейк на раздаче кухни" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне для меню" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Чизкейк: с раздачи кухни — в меню</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/begonia-before.webp" alt="Десерт с мороженым на тарелке, фото на кухне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/begonia-after.webp" alt="Тот же десерт для меню" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Десерт с мороженым: свет, фон, цвет</figcaption>
-          </figure>
+        <div class="retouch-carousel reveal" data-group="menu">
+          <div class="retouch-track">
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/cheesecake-before.webp" data-after="img/cheesecake-after.webp" data-caption="Чизкейк: с раздачи кухни — в меню">
+              <div class="pair__img"><img src="img/cheesecake-before.webp" alt="Чизкейк на раздаче кухни" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне для меню" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Чизкейк</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/begonia-before.webp" data-after="img/begonia-after.webp" data-caption="Десерт с мороженым: свет, фон, цвет">
+              <div class="pair__img"><img src="img/begonia-before.webp" alt="Десерт с мороженым на тарелке" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/begonia-after.webp" alt="Тот же десерт для меню" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Десерт с мороженым</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/buffet-before.webp" data-after="img/buffet-after.webp" data-caption="Фуршет: убрала зал и технику, светлый фон">
+              <div class="pair__img"><img src="img/buffet-before.webp" alt="Фуршет до обработки" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/buffet-after.webp" alt="Фуршет после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Фуршет</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/leaf-before.webp" data-after="img/leaf-after.webp" data-caption="Тарт с мороженым: резкость, свет, светлый фон">
+              <div class="pair__img"><img src="img/leaf-before.webp" alt="Тарт на зелёной тарелке" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/leaf-after.webp" alt="Тот же десерт после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Тарт с мороженым</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/tart-before.webp" data-after="img/tart-after.webp" data-caption="Грушевый тарт: фон, свет, цвет">
+              <div class="pair__img"><img src="img/tart-before.webp" alt="Грушевый тарт на кухне" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Грушевый тарт</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/eclair-before.webp" data-after="img/eclair-after.webp" data-caption="Шоколадный десерт: подача для меню">
+              <div class="pair__img"><img src="img/eclair-before.webp" alt="Шоколадный десерт до обработки" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/eclair-after.webp" alt="Шоколадный десерт после обработки" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Шоколадный десерт</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/mochi-before.webp" data-after="img/mochi-after.webp" data-caption="Моти с клубникой: фон и свет">
+              <div class="pair__img"><img src="img/mochi-before.webp" alt="Моти с клубникой на сером фоне" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/mochi-after.webp" alt="Те же моти на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Моти с клубникой</div>
+            </div></div>
+          </div>
+          <button class="retouch-arrow retouch-arrow--prev" type="button" aria-label="Предыдущие">‹</button>
+          <button class="retouch-arrow retouch-arrow--next" type="button" aria-label="Следующие">›</button>
         </div>
-        <div class="more" id="moreDesserts" hidden>
-        <div class="pairs pairs--more">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/buffet-before.webp" alt="Фуршет до обработки: зал, колонки, мебель на фоне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/buffet-after.webp" alt="Фуршет после обработки: светлый чистый фон" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Фуршет: убрала зал и технику, светлый фон</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/leaf-before.webp" alt="Грушевый тарт на зелёной тарелке, размытое фото" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/leaf-after.webp" alt="Тот же десерт: резкость, свет, светлый фон" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Тарт с мороженым: резкость, свет, светлый фон</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/tart-before.webp" alt="Грушевый тарт на кухне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Грушевый тарт: фон, свет, цвет</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/eclair-before.webp" alt="Шоколадный десерт до обработки" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/eclair-after.webp" alt="Шоколадный десерт после обработки" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Шоколадный десерт: подача для меню</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/mochi-before.webp" alt="Моти с клубникой на сером фоне" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/mochi-after.webp" alt="Те же моти на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Моти с клубникой: фон и свет, подложки для подачи</figcaption>
-          </figure>
-        </div>
-        </div>
-        <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Показать ещё фото для меню" aria-expanded="false" aria-controls="moreDesserts">Показать ещё фото для меню</button>
 
         <h3 class="pairs__title reveal">Фото товаров на чистом фоне</h3>
         <p class="block__lead reveal">Основа для сайта, каталога, соцсетей и&nbsp;карточек маркетплейса.</p>
-
-        <div class="pairs">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр на столе дома" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/tiger-after.webp" alt="Тот же тигр на студийном фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Вязаный тигр: фото для каталога</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/seal-before.webp" alt="Брелок-тюлень в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/seal-after.webp" alt="Тот же брелок целиком на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелок-тюлень: фото для каталога</figcaption>
-          </figure>
+        <div class="retouch-carousel reveal" data-group="toys">
+          <div class="retouch-track">
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/tiger-before.webp" data-after="img/tiger-after.webp" data-caption="Вязаный тигр: фото для каталога">
+              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр на столе дома" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/tiger-after.webp" alt="Тот же тигр на студийном фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Вязаный тигр</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/seal-before.webp" data-after="img/seal-after.webp" data-caption="Брелок-тюлень: фото для каталога">
+              <div class="pair__img"><img src="img/seal-before.webp" alt="Брелок-тюлень в руке" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/seal-after.webp" alt="Тот же брелок на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Брелок-тюлень</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/bunny-before.webp" data-after="img/bunny-after.webp" data-caption="Брошь-зайчик, сухое валяние">
+              <div class="pair__img"><img src="img/bunny-before.webp" alt="Валяная брошь-зайчик на ладони" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/bunny-after.webp" alt="Та же брошь на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Брошь-зайчик</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/gulls-before.webp" data-after="img/gulls-after.webp" data-caption="Броши-чайки: групповой кадр">
+              <div class="pair__img"><img src="img/gulls-before.webp" alt="Броши-чайки на зелёном коврике" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/gulls-after.webp" alt="Те же броши на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Броши-чайки</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/gull-before.webp" data-after="img/gull-after.webp" data-caption="Брелок-чайка: фото для каталога">
+              <div class="pair__img"><img src="img/gull-before.webp" alt="Вязаная чайка на ладони" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/gull-after.webp" alt="Вязаная чайка на белом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Брелок-чайка</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/bears3-before.webp" data-after="img/bears3-after.webp" data-caption="Брелоки-медведи в тельняшках">
+              <div class="pair__img"><img src="img/bears3-before.webp" alt="Три брелока-медведя в руке" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/bears3-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Брелоки-медведи</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/crabs-before.webp" data-after="img/crabs-after.webp" data-caption="Брелоки-крабики">
+              <div class="pair__img"><img src="img/crabs-before.webp" alt="Два брелока-крабика на ладони" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/crabs-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Брелоки-крабики</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/brownbear-before.webp" data-after="img/brownbear-after.webp" data-caption="Бурый мишка: фото для каталога">
+              <div class="pair__img"><img src="img/brownbear-before.webp" alt="Бурый вязаный мишка в руке" loading="lazy"><span class="pair__tag">До</span></div>
+              <div class="pair__img"><img src="img/brownbear-after.webp" alt="Тот же мишка на светлом фоне" loading="lazy"><span class="pair__tag">После</span></div>
+              <div class="pair__caption">Бурый мишка</div>
+            </div></div>
+          </div>
+          <button class="retouch-arrow retouch-arrow--prev" type="button" aria-label="Предыдущие">‹</button>
+          <button class="retouch-arrow retouch-arrow--next" type="button" aria-label="Следующие">›</button>
         </div>
-        <div class="more" id="moreToys" hidden>
-        <div class="pairs pairs--more">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bunny-before.webp" alt="Валяная брошь-зайчик на ладони" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/bunny-after.webp" alt="Та же брошь на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брошь-зайчик, сухое валяние</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/gulls-before.webp" alt="Броши-чайки на зелёном коврике" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/gulls-after.webp" alt="Те же броши на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Броши-чайки: групповой кадр</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/gull-before.webp" alt="Вязаная чайка на ладони" loading="lazy" width="800" height="1000"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/gull-after.webp" alt="Вязаная чайка на белом фоне" loading="lazy" width="800" height="1000"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелок-чайка: фото для каталога</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bears3-before.webp" alt="Три брелока-медведя в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/bears3-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелоки-медведи в тельняшках</figcaption>
-          </figure>
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/crabs-before.webp" alt="Два брелока-крабика на ладони" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/crabs-after.webp" alt="Те же брелоки на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Брелоки-крабики</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/brownbear-before.webp" alt="Бурый вязаный мишка в руке" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/brownbear-after.webp" alt="Тот же мишка на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Бурый мишка: фото для каталога</figcaption>
-          </figure>
-        </div>
-        </div>
-        <button class="btn btn--outline more__btn" data-more="moreToys" data-label="Показать ещё товары" aria-expanded="false" aria-controls="moreToys">Показать ещё товары</button>
 
         <h3 class="pairs__title reveal">Инфографика</h3>
         <div class="ig">
@@ -1120,41 +1158,32 @@
 
         <h3 class="pairs__title reveal">ИИ-визуал для соцсетей</h3>
         <p class="block__lead reveal">Сцены по&nbsp;мотивам товара для постов. Не&nbsp;для каталога: детали могут отличаться от&nbsp;оригинала.</p>
-        <div class="pairs">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/busts-before.webp" alt="Фигуры из белого шоколада на противне" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/busts-ai.webp" alt="ИИ-сцена с теми же фигурами" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
-            </div>
-            <figcaption class="pair__caption">Шоколадные фигуры, которые я готовила</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр дома" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/tiger-ai.webp" alt="ИИ-сцены с тигром в лесу" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
-            </div>
-            <figcaption class="pair__caption">Вязаный тигр в лесу</figcaption>
-          </figure>
+        <div class="retouch-carousel reveal" data-group="ai">
+          <div class="retouch-track">
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/busts-before.webp" data-after="img/busts-ai.webp" data-caption="Шоколадные фигуры, которые я готовила">
+              <div class="pair__img"><img src="img/busts-before.webp" alt="Фигуры из белого шоколада на противне" loading="lazy"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/busts-ai.webp" alt="ИИ-сцена с теми же фигурами" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__caption">Шоколадные фигуры</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/tiger-before.webp" data-after="img/tiger-ai.webp" data-caption="Вязаный тигр в лесу">
+              <div class="pair__img"><img src="img/tiger-before.webp" alt="Вязаный тигр дома" loading="lazy"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/tiger-ai.webp" alt="ИИ-сцена с тигром в лесу" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__caption">Тигр в лесу</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/bear-after.webp" data-after="img/ski-ai.webp" data-caption="Мишка на лыжах">
+              <div class="pair__img"><img src="img/bear-after.webp" alt="Вязаный мишка на светлом фоне" loading="lazy"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/ski-ai.webp" alt="ИИ-сцена: мишка на лыжах" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__caption">Мишка на лыжах</div>
+            </div></div>
+            <div class="retouch-slide"><div class="retouch-pair" data-before="img/bear-before.webp" data-after="img/xmas-ai.webp" data-caption="Мишка у ёлки">
+              <div class="pair__img"><img src="img/bear-before.webp" alt="Вязаный мишка, фото дома" loading="lazy"><span class="pair__tag">Оригинал</span></div>
+              <div class="pair__img"><img src="img/xmas-ai.webp" alt="ИИ-сцена: мишка у ёлки" loading="lazy"><span class="pair__tag">ИИ</span></div>
+              <div class="pair__caption">Мишка у ёлки</div>
+            </div></div>
+          </div>
+          <button class="retouch-arrow retouch-arrow--prev" type="button" aria-label="Предыдущие">‹</button>
+          <button class="retouch-arrow retouch-arrow--next" type="button" aria-label="Следующие">›</button>
         </div>
-        <div class="more" id="moreAi" hidden>
-        <div class="pairs pairs--more">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bear-after.webp" alt="Вязаный мишка на светлом фоне" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/ski-ai.webp" alt="ИИ-сцена: мишка на лыжах" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
-            </div>
-            <figcaption class="pair__caption">Мишка на лыжах</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay: .1s">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/bear-before.webp" alt="Вязаный мишка, фото дома" loading="lazy" width="800" height="800"><span class="pair__tag">Оригинал</span></div>
-              <div class="pair__img"><img src="img/xmas-ai.webp" alt="ИИ-сцена: мишка у ёлки" loading="lazy" width="800" height="800"><span class="pair__tag">ИИ</span></div>
-            </div>
-            <figcaption class="pair__caption">Мишка у ёлки</figcaption>
-          </figure>
-        </div>
-        </div>
-        <button class="btn btn--outline more__btn" data-more="moreAi" data-label="Показать все сцены" aria-expanded="false" aria-controls="moreAi">Показать все сцены</button>
       </div>
     </section>
 
@@ -1270,7 +1299,10 @@
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
     <button class="lightbox__close" type="button" aria-label="Закрыть">×</button>
-    <img class="lightbox__img" src="" alt="">
+    <button class="lightbox__nav lightbox__nav--prev" type="button" aria-label="Предыдущее">‹</button>
+    <button class="lightbox__nav lightbox__nav--next" type="button" aria-label="Следующее">›</button>
+    <div class="lightbox__content"></div>
+    <div class="lightbox__counter"></div>
   </div>
 
   <script>
@@ -1355,7 +1387,6 @@
       var slides = track.querySelectorAll('.case-slide');
       var prev = document.querySelector('.case-arrow--prev');
       var next = document.querySelector('.case-arrow--next');
-      var dotsWrap = document.querySelector('.case-dots');
       var titleEl = document.getElementById('caseTitle');
       var subEl = document.getElementById('caseSub');
       var data = [
@@ -1364,20 +1395,9 @@
       ];
       var current = 0;
 
-      slides.forEach(function (_, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'case-dot' + (i === 0 ? ' is-active' : '');
-        b.setAttribute('aria-label', 'Сайт ' + (i + 1));
-        b.addEventListener('click', function () { goTo(i); });
-        dotsWrap.appendChild(b);
-      });
-      var dots = dotsWrap.querySelectorAll('.case-dot');
-
       function goTo(i) {
         current = (i + slides.length) % slides.length;
         track.style.transform = 'translateX(' + (-current * 100) + '%)';
-        dots.forEach(function (d, j) { d.classList.toggle('is-active', j === current); });
         if (data[current]) {
           titleEl.textContent = data[current].title;
           subEl.textContent = data[current].sub;
@@ -1388,41 +1408,134 @@
       next.addEventListener('click', function () { goTo(current + 1); });
     })();
 
-    // Lightbox: клик по фото — увеличить, повторный клик — закрыть
+    // Карусель инфографики: стрелки + развернуть
     (function () {
-      var lb = document.getElementById('lightbox');
-      if (!lb) return;
-      var img = lb.querySelector('.lightbox__img');
-      var close = lb.querySelector('.lightbox__close');
-      var open = false;
-
-      function show(src, alt) {
-        if (open) { hide(); return; }
-        img.src = src;
-        img.alt = alt || '';
-        lb.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-        open = true;
-      }
-      function hide() {
-        lb.classList.remove('is-open');
-        document.body.style.overflow = '';
-        open = false;
-        setTimeout(function () { img.src = ''; }, 200);
-      }
-
-      document.querySelectorAll('.pair__img, .igfolio__img').forEach(function (el) {
-        el.addEventListener('click', function (e) {
-          e.preventDefault();
-          var im = el.querySelector('img');
-          if (im) show(im.src, im.alt);
+      document.querySelectorAll('.ig-arrow').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var carousel = btn.closest('.ig-carousel');
+          var track = carousel.querySelector('.ig-track');
+          var slide = track.querySelector('.ig-slide');
+          var step = slide ? slide.getBoundingClientRect().width + 16 : 320;
+          var dir = btn.classList.contains('ig-arrow--next') ? 1 : -1;
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
         });
       });
 
-      close.addEventListener('click', function (e) { e.stopPropagation(); hide(); });
-      img.addEventListener('click', function (e) { e.stopPropagation(); hide(); });
-      lb.addEventListener('click', function (e) { if (e.target === lb) hide(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && open) hide(); });
+      document.querySelectorAll('.ig-expand').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var block = btn.closest('.ig-block');
+          var carousel = block.querySelector('.ig-carousel');
+          var expanded = carousel.classList.toggle('is-expanded');
+          btn.textContent = expanded ? 'Свернуть' : 'Показать все слайды';
+          btn.setAttribute('aria-expanded', String(expanded));
+        });
+      });
+    })();
+
+    // Стрелки каруселей ретуши
+    (function () {
+      document.querySelectorAll('.retouch-arrow').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var carousel = btn.closest('.retouch-carousel');
+          var track = carousel.querySelector('.retouch-track');
+          var slide = track.querySelector('.retouch-slide');
+          var step = slide ? slide.getBoundingClientRect().width + 16 : 320;
+          var dir = btn.classList.contains('retouch-arrow--next') ? 1 : -1;
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        });
+      });
+    })();
+
+    // Lightbox с навигацией и слайдером до/после
+    (function () {
+      var lb = document.getElementById('lightbox');
+      if (!lb) return;
+      var content = lb.querySelector('.lightbox__content');
+      var counter = lb.querySelector('.lightbox__counter');
+      var close = lb.querySelector('.lightbox__close');
+      var prevBtn = lb.querySelector('.lightbox__nav--prev');
+      var nextBtn = lb.querySelector('.lightbox__nav--next');
+      var isOpen = false;
+      var currentGroup = [];
+      var currentIndex = 0;
+
+      function showSlider(before, after, caption, index, total) {
+        content.innerHTML = '<img-comparison-slider class="lightbox__slider"><img slot="first" src="' + before + '" alt="' + caption + ' до"><img slot="second" src="' + after + '" alt="' + caption + ' после"></img-comparison-slider>';
+        counter.textContent = (index + 1) + ' / ' + total + ' · ' + caption;
+      }
+
+      function showImage(src, alt, index, total) {
+        content.innerHTML = '<img src="' + src + '" alt="' + alt + '">';
+        counter.textContent = (index + 1) + ' / ' + total + ' · ' + alt;
+      }
+
+      function updateLightbox() {
+        var item = currentGroup[currentIndex];
+        if (item.before) {
+          showSlider(item.before, item.after, item.caption, currentIndex, currentGroup.length);
+        } else {
+          showImage(item.src, item.alt, currentIndex, currentGroup.length);
+        }
+      }
+
+      function openLightbox(group, index) {
+        currentGroup = group;
+        currentIndex = index;
+        updateLightbox();
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        isOpen = true;
+      }
+
+      function closeLightbox() {
+        lb.classList.remove('is-open');
+        document.body.style.overflow = '';
+        content.innerHTML = '';
+        isOpen = false;
+      }
+
+      function next() { currentIndex = (currentIndex + 1) % currentGroup.length; updateLightbox(); }
+      function prev() { currentIndex = (currentIndex - 1 + currentGroup.length) % currentGroup.length; updateLightbox(); }
+
+      // Пары до/после: группа = все пары этой карусели
+      document.querySelectorAll('.retouch-pair').forEach(function (pair) {
+        pair.addEventListener('click', function () {
+          var carousel = pair.closest('.retouch-carousel');
+          var pairs = Array.from(carousel.querySelectorAll('.retouch-pair'));
+          var group = pairs.map(function (p) {
+            return { before: p.dataset.before, after: p.dataset.after, caption: p.dataset.caption };
+          });
+          openLightbox(group, pairs.indexOf(pair));
+        });
+      });
+
+      // Одиночные картинки (инфографика, блок ig) — не внутри пар
+      document.querySelectorAll('.ig-slide__img').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          var im = el.querySelector('img');
+          if (im) openLightbox([{ src: im.src, alt: im.alt }], 0);
+        });
+      });
+      document.querySelectorAll('.pair__img').forEach(function (el) {
+        if (el.closest('.retouch-pair')) return;
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          var im = el.querySelector('img');
+          if (im) openLightbox([{ src: im.src, alt: im.alt }], 0);
+        });
+      });
+
+      prevBtn.addEventListener('click', function (e) { e.stopPropagation(); prev(); });
+      nextBtn.addEventListener('click', function (e) { e.stopPropagation(); next(); });
+      close.addEventListener('click', function (e) { e.stopPropagation(); closeLightbox(); });
+      lb.addEventListener('click', function (e) { if (e.target === lb) closeLightbox(); });
+      document.addEventListener('keydown', function (e) {
+        if (!isOpen) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') prev();
+        if (e.key === 'ArrowRight') next();
+      });
     })();
   </script>
 </body>
