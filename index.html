@@ -145,10 +145,10 @@
       .nav__sublink { padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 15px; }
     }
 
-    /* ===== Hero с фоновым фото ===== */
+    /* ===== Hero с фоновым фото (файл в корне репозитория) ===== */
     .hero {
       position: relative;
-      background: var(--bg-alt) url('img/hero-bg.webp') center right / cover no-repeat;
+      background: var(--bg-alt) url('imghero-bg.webp') center right / cover no-repeat;
       padding-top: 96px; padding-bottom: 96px;
       border-bottom: 3px solid var(--accent);
     }
@@ -276,7 +276,7 @@
     .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
     .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
 
-    /* ===== Показать все работы ===== */
+    /* ===== Показать другие серии ===== */
     .more__btn { display: flex; margin: 28px auto 0; }
     @media (min-width: 1024px) { .svc__row { grid-template-columns: 1.2fr 1fr; gap: 48px; padding-bottom: 40px; } }
 
@@ -409,16 +409,15 @@
     .ig-arrow:hover { background: var(--accent); border-color: var(--accent); color: #0A0A0A; }
     .ig-arrow--prev { left: -8px; }
     .ig-arrow--next { right: -8px; }
-    .ig-carousel.is-expanded .ig-track { display: grid; grid-template-columns: repeat(3, 1fr); overflow: visible; }
-    .ig-carousel.is-expanded .ig-slide { flex: none; }
-    .ig-carousel.is-expanded .ig-arrow { display: none; }
-    .ig-expand { grid-column: 1 / -1; margin-top: 4px; }
     @media (max-width: 767px) { .ig-slide { flex: 0 0 100%; } }
     @media (min-width: 768px) and (max-width: 1023px) { .ig-slide { flex: 0 0 calc((100% - 16px) / 2); } }
 
-    /* Скрытые серии инфографики: без текста сбоку, на всю ширину */
+    /* Скрытые серии: без текста сбоку, 4 слайда в ряд */
     #moreSeries .ig-block { grid-template-columns: 1fr; margin-bottom: 32px; }
     #moreSeries .ig-carousel { margin-bottom: 16px; }
+    #moreSeries .ig-slide { flex: 0 0 calc((100% - 48px) / 4); }
+    @media (max-width: 1023px) { #moreSeries .ig-slide { flex: 0 0 calc((100% - 16px) / 2); } }
+    @media (max-width: 639px) { #moreSeries .ig-slide { flex: 0 0 100%; } }
 
     /* ===== Карусель пар до/после ===== */
     .retouch-carousel { position: relative; margin-bottom: 32px; }
@@ -566,9 +565,8 @@
                     <img src="img/site-milana.webp" alt="Первый экран сайта Milana Volnaya" loading="lazy" width="1600" height="900">
                   </a>
                   <div class="case__thumbs">
-                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне" loading="lazy" width="1600" height="900"></div>
-                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/tart-after.webp" alt="Грушевый тарт после обработки" loading="lazy" width="1600" height="900"></div>
-                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/buffet-after.webp" alt="Фуршет после обработки" loading="lazy" width="1600" height="900"></div>
+                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/milana-cake2.webp" alt="Торт с физалисом и золотым декором" loading="lazy" width="1600" height="900"></div>
+                    <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/milana-cake3.webp" alt="Торт в портфолио кондитера" loading="lazy" width="1600" height="900"></div>
                   </div>
                 </div>
                 <dl class="case__facts">
@@ -626,10 +624,9 @@
             <p class="ig__price">Обложка + 6 слайдов — от 2 500 ₽, 2–3 дня</p>
             <a href="#services" class="ig__link">Что входит в услугу →</a>
           </div>
-          <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
         </div>
 
-        <!-- Скрытые серии: без текста сбоку -->
+        <!-- Скрытые серии: без текста сбоку, 4 слайда в ряд -->
         <div class="more" id="moreSeries" hidden>
           <div class="ig-block reveal">
             <div class="ig-carousel">
@@ -645,7 +642,6 @@
               <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
               <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
             </div>
-            <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
           </div>
 
           <div class="ig-block reveal">
@@ -660,7 +656,6 @@
               <button class="ig-arrow ig-arrow--prev" type="button" aria-label="Предыдущие слайды">‹</button>
               <button class="ig-arrow ig-arrow--next" type="button" aria-label="Следующие слайды">›</button>
             </div>
-            <button class="btn btn--outline ig-expand" type="button" aria-expanded="false">Показать все слайды</button>
           </div>
         </div>
         <button class="btn btn--outline more__btn" data-more="moreSeries" data-label="Показать другие серии" aria-expanded="false" aria-controls="moreSeries">Показать другие серии</button>
@@ -975,7 +970,7 @@
       next.addEventListener('click', function () { goTo(current + 1); });
     })();
 
-    // Карусель инфографики: стрелки + развернуть
+    // Карусель инфографики: стрелки
     (function () {
       document.querySelectorAll('.ig-arrow').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -985,15 +980,6 @@
           var step = slide ? slide.getBoundingClientRect().width + 16 : 320;
           var dir = btn.classList.contains('ig-arrow--next') ? 1 : -1;
           track.scrollBy({ left: dir * step, behavior: 'smooth' });
-        });
-      });
-      document.querySelectorAll('.ig-expand').forEach(function (btn) {
-        btn.addEventListener('click', function () {
-          var block = btn.closest('.ig-block');
-          var carousel = block.querySelector('.ig-carousel');
-          var expanded = carousel.classList.toggle('is-expanded');
-          btn.textContent = expanded ? 'Свернуть' : 'Показать все слайды';
-          btn.setAttribute('aria-expanded', String(expanded));
         });
       });
     })();
