@@ -6,7 +6,6 @@
   <title>MILA.STUDIO — сайты-визитки и инфографика</title>
   <meta name="description" content="Сайты-визитки за 7 дней и инфографика для маркетплейсов, соцсетей и меню. Обработка фото — дополнительно.">
 
-  <!-- Превью ссылки в мессенджерах. После публикации замените «img/og.jpg» на полный адрес: https://ВАШ-АДРЕС.netlify.app/img/og.jpg -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="MILA.STUDIO — сайты-визитки и инфографика">
   <meta property="og:description" content="Сайт для бизнеса за 7 дней, инфографика для маркетплейсов, соцсетей и меню.">
@@ -21,17 +20,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@700;900&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 
   <style>
-    /* ===== Переменные ===== */
     :root {
-      --bg: #0A0A0A;          /* чёрный */
-      --bg-alt: #0F2A1F;      /* тёмно-зелёный */
-      --surface: #141414;
+      --bg: #1C1C1E;
+      --bg-alt: #0F2A1F;
+      --surface: #262628;
       --surface-green: #143526;
       --placeholder: #2A2A2A;
       --border: rgba(255, 255, 255, 0.12);
-      --text: #FFFFFF;        /* белый */
+      --text: #FFFFFF;
       --text-muted: #B4B4B4;
-      --accent: #FF5E00;      /* оранжевый */
+      --accent: #FF5E00;
       --accent-hover: #E65500;
       --accent-rgb: 255, 94, 0;
 
@@ -46,11 +44,9 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* ===== Сброс ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-    html { font-size: 106.25%; } /* 17px */
+    html { font-size: 106.25%; }
 
     body {
       font-family: var(--font);
@@ -58,17 +54,13 @@
       color: var(--text);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a { color: inherit; text-decoration: none; }
     ul, ol { list-style: none; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
 
-    a:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 4px;
-    }
-
-    /* ===== Общие ===== */
     .container {
       width: 100%;
       max-width: var(--container);
@@ -76,7 +68,7 @@
       padding: 0 var(--gutter);
     }
 
-    .section { padding: var(--section-y) 0; }
+    .section { padding: var(--section-y) 0; overflow: hidden; }
     .section--alt { background: var(--bg-alt); }
     .section:not(.section--alt) + .section:not(.section--alt) { border-top: 1px solid var(--border); }
 
@@ -99,7 +91,6 @@
       margin-bottom: 32px;
     }
 
-    /* ===== Кнопки ===== */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -117,7 +108,6 @@
       transition: background-color 0.3s var(--ease), color 0.3s var(--ease),
                   border-color 0.3s var(--ease), transform 0.3s var(--ease);
     }
-
     .btn--primary {
       background: var(--accent);
       color: var(--text);
@@ -127,11 +117,7 @@
       letter-spacing: 0.04em;
       border-radius: 2px;
     }
-    .btn--primary:hover {
-      background: var(--accent-hover);
-      border-color: var(--accent-hover);
-    }
-
+    .btn--primary:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
     .btn--outline {
       background: transparent;
       color: var(--text);
@@ -143,7 +129,6 @@
       transform: translateY(-2px);
     }
 
-    /* ===== Header ===== */
     .header {
       position: sticky; top: 0; z-index: 100;
       background: rgba(15, 42, 31, 0.92);
@@ -152,7 +137,6 @@
     }
     section[id], footer[id] { scroll-margin-top: 72px; }
     @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 80px; } }
-    
     .header__inner {
       display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
       gap: 12px 24px; padding-top: 20px; padding-bottom: 20px;
@@ -200,7 +184,6 @@
     .header.is-open .nav__icon { background: transparent; }
     .header.is-open .nav__icon::before { transform: translateY(5px) rotate(45deg); }
     .header.is-open .nav__icon::after { transform: translateY(-5px) rotate(-45deg); }
-    
     @media (max-width: 639px) {
       .header__inner { flex-wrap: nowrap; padding-top: 12px; padding-bottom: 12px; }
       .nav__toggle { display: inline-flex; }
@@ -219,7 +202,6 @@
       .nav__sublink { padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 15px; }
     }
 
-    /* ===== Hero ===== */
     .hero { background: var(--bg-alt); padding-top: 48px; padding-bottom: 64px; border-bottom: 3px solid var(--accent); }
     .hero__title {
       font-family: var(--font-head); font-weight: 900; text-transform: uppercase;
@@ -234,7 +216,7 @@
     .hero__services span { white-space: nowrap; }
     .hero__slash { color: var(--accent); }
     .hero__text { max-width: 600px; margin-top: 24px; font-size: 18px; opacity: 0.8; }
-    
+
     .facts {
       display: grid; grid-template-columns: 1fr; gap: 1px;
       background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2);
@@ -244,14 +226,13 @@
     .facts__value { display: block; font-size: 22px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
     .facts__label { display: block; margin-top: 4px; font-size: 14px; color: rgba(255, 255, 255, 0.6); }
     .hero .btn { margin-top: 40px; }
-    
+
     .hero__grid { display: grid; grid-template-columns: 1fr; gap: 56px; align-items: center; }
     .hero__visual { display: grid; gap: 24px; max-width: 600px; }
     .show { margin: 0; }
     .show figcaption { margin-top: 10px; font-size: 14px; color: rgba(255,255,255,.7); }
     .show figcaption b { color: var(--text); font-weight: 600; }
 
-    /* ===== Карусель в шапке ===== */
     .hero__carousel {
       position: relative;
       max-width: 480px;
@@ -270,7 +251,7 @@
     .carousel__slide.is-active { opacity: 1; }
     .carousel__slide img {
       display: block; width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
+      object-fit: cover; object-position: top center;
     }
     .carousel__caption {
       padding: 14px 18px;
@@ -297,10 +278,9 @@
       .hero__carousel { max-width: 100%; }
     }
 
-    /* ===== Портфолио и пары ===== */
     .block__lead {
       max-width: 640px;
-      margin: -16px 0 32px;
+      margin: 0 0 32px;
       color: var(--text-muted);
     }
 
@@ -315,6 +295,7 @@
       overflow: hidden;
       border-radius: var(--radius);
       background: var(--placeholder);
+      cursor: pointer;
     }
     .pair__img img {
       display: block;
@@ -328,6 +309,7 @@
       position: absolute; top: 8px; left: 8px; padding: 2px 7px;
       font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
       color: rgba(255, 255, 255, 0.9); background: rgba(10, 10, 10, 0.45); border-radius: var(--radius);
+      pointer-events: none;
     }
     .pair__caption { margin-top: 12px; font-size: 14px; opacity: 0.7; text-align: left; }
     .pairs--more { margin-top: 28px; }
@@ -336,7 +318,6 @@
     @media (min-width: 640px) { .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; } }
     @media (min-width: 1024px) { .pairs { grid-template-columns: repeat(3, 1fr); } }
 
-    /* ===== Единая сетка портфолио 2:3 ===== */
     .ig-carousel { position: relative; margin-bottom: 48px; }
     .ig-carousel__head {
       display: flex; align-items: baseline; justify-content: space-between;
@@ -356,10 +337,11 @@
       position: relative; aspect-ratio: 2 / 3; overflow: hidden;
       border-radius: var(--radius); background: var(--placeholder);
       border: 1px solid var(--border);
+      cursor: pointer;
     }
     .ig-slide__img img {
       display: block; width: 100%; height: 100%;
-      object-fit: cover; object-position: center;
+      object-fit: cover; object-position: top center;
       transition: transform .6s var(--ease);
     }
     .ig-slide:hover .ig-slide__img img { transform: scale(1.04); }
@@ -367,7 +349,7 @@
     .ig-arrow {
       position: absolute; top: 0; bottom: 40px; width: 44px; z-index: 3;
       display: flex; align-items: center; justify-content: center;
-      background: rgba(10, 10, 10, .55); border: 1px solid var(--border);
+      background: rgba(28, 28, 30, .85); border: 1px solid var(--border);
       color: #fff; font-size: 20px; cursor: pointer;
       opacity: 0; transition: opacity .3s var(--ease), background .3s var(--ease);
     }
@@ -376,22 +358,24 @@
     .ig-arrow--prev { left: 4px; border-radius: var(--radius) 0 0 var(--radius); }
     .ig-arrow--next { right: 4px; border-radius: 0 var(--radius) var(--radius) 0; }
     @media (max-width: 1023px) { .ig-slide { flex-basis: calc((100% - 16px) / 2); } }
+    @media (min-width: 1024px) {
+      .ig-slide { flex: 0 0 calc((100% - 48px) / 4); }
+    }
     @media (max-width: 639px) {
       .ig-slide { flex-basis: 100%; }
       .ig-arrow { opacity: 1; }
     }
 
-    /* ===== Слайдер до/после в формате 2:3 ===== */
     .cmp {
       display: block; width: 100%;
-      aspect-ratio: 2 / 3;
+      aspect-ratio: 1 / 1;
       --divider-width: 2px;
       --divider-color: var(--accent);
       border-radius: var(--radius); overflow: hidden;
       border: 1px solid var(--border); background: var(--placeholder);
+      cursor: pointer;
     }
 
-    /* ===== Кейс ===== */
     .case__sub { margin: -20px 0 28px; font-size: 18px; opacity: .7; }
     .case { display: grid; grid-template-columns: 1fr; gap: 40px; }
     .case__main { display: block; }
@@ -406,7 +390,6 @@
     .case__link { display: inline-block; margin-top: 32px; font-weight: 600; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
     .case__link:hover { color: var(--accent); }
 
-    /* ===== Рамки: браузер ===== */
     .browser {
       overflow: hidden; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.14);
       background: #1a1a1a; box-shadow: 0 24px 48px rgba(0,0,0,.45);
@@ -415,7 +398,6 @@
     .browser__bar i { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,.22); }
     .browser img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: top; }
 
-    /* ===== Услуги и цены ===== */
     .offer { display: grid; }
     .offer__row { display: grid; grid-template-columns: 1fr; gap: 20px; padding: 28px 0; border-top: 1px solid var(--border); }
     .offer__row:last-child { border-bottom: 1px solid var(--border); }
@@ -424,7 +406,7 @@
     .price__value--sm { font-size: 1.75rem !important; }
     .offer__meta { font-size: 14px; opacity: .7; }
     .offer__row--extra .offer__title { font-size: 1.25rem; }
-    
+
     .svc__num { display: block; font-size: 3rem; font-weight: 300; line-height: 1; color: rgba(255,255,255,.25); margin-bottom: 12px; }
     .svc__list li { position: relative; padding-left: 20px; margin-bottom: 10px; color: var(--text-muted); }
     .svc__list li::before { content: ''; position: absolute; left: 0; top: .7em; width: 8px; height: 1px; background: var(--text-muted); }
@@ -439,23 +421,13 @@
     .price__value { font-family: var(--font-head); font-size: clamp(2rem, 4vw, 2.75rem); font-weight: 700; line-height: 1.1; color: var(--accent); margin-bottom: 24px; }
     .prices__note { margin-top: 24px; font-size: 14px; opacity: .7; max-width: 70ch; }
 
-    /* ===== Процесс ===== */
-    .process__list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0;
-      counter-reset: step;
-    }
-    .step {
-      padding: 32px 0;
-      border-top: 1px solid var(--border);
-    }
+    .process__list { display: grid; grid-template-columns: 1fr; gap: 0; counter-reset: step; }
+    .step { padding: 32px 0; border-top: 1px solid var(--border); }
     .step:last-child { border-bottom: 1px solid var(--border); }
     .step__num { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px; }
     .step__title { font-size: 1.5rem; font-weight: 600; }
     .step__text { margin-top: 12px; padding-right: 16px; color: var(--text-muted); }
 
-    /* ===== Обо мне ===== */
     .section--about { background: var(--bg-alt); }
     .about { display: block; }
     .about__lead { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; max-width: 32ch; margin: -8px 0 32px; }
@@ -467,7 +439,6 @@
     .rules li { opacity: .8; }
     .rules b { color: var(--text); }
 
-    /* ===== Контакты / футер ===== */
     .footer {
       padding: var(--section-y) 0 40px;
       border-top: 1px solid var(--border);
@@ -491,7 +462,6 @@
     .footer__buttons .btn:hover { background: var(--accent); border-color: var(--accent); color: var(--bg); transform: none; }
     .footer__copy { font-size: 0.85rem; color: var(--text-muted); }
 
-    /* ===== Анимация появления ===== */
     .js .reveal {
       opacity: 0;
       transform: translateY(40px);
@@ -506,7 +476,6 @@
       .btn, .card, .work .browser { transition: none; }
     }
 
-    /* ===== Планшет ===== */
     @media (min-width: 640px) {
       .hero__text { font-size: 20px; }
       .facts { grid-template-columns: repeat(3, 1fr); }
@@ -516,7 +485,6 @@
       .footer__buttons { flex-direction: row; flex-wrap: wrap; }
     }
 
-    /* ===== Десктоп ===== */
     @media (min-width: 1024px) {
       .hero__grid { grid-template-columns: 1.05fr 1fr; gap: 64px; }
       .hero__title { font-size: clamp(5rem, 10vw, 10rem); }
@@ -529,6 +497,34 @@
       .process__list { grid-template-columns: repeat(4, 1fr); column-gap: 32px; }
       .step { padding: 40px 0; border-bottom: 1px solid var(--border); }
     }
+
+    /* ===== Lightbox ===== */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(10, 10, 10, 0.92);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+      cursor: zoom-out;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox__img {
+      max-width: 100%; max-height: 100%;
+      object-fit: contain;
+      border-radius: var(--radius);
+      box-shadow: 0 24px 64px rgba(0,0,0,.6);
+    }
+    .lightbox__close {
+      position: absolute; top: 16px; right: 20px;
+      width: 44px; height: 44px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 50%;
+      color: #fff; font-size: 22px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .lightbox__close:hover { background: var(--accent); border-color: var(--accent); }
   </style>
 
   <script type="module" src="https://cdn.jsdelivr.net/npm/img-comparison-slider@8/dist/index.js"></script>
@@ -559,7 +555,6 @@
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container">
         <div class="hero__grid">
@@ -575,7 +570,7 @@
               <div class="facts__cell"><span class="facts__value">от 10 000 ₽</span><span class="facts__label">сайт под ключ</span></div>
               <div class="facts__cell"><span class="facts__value">от 2 500 ₽</span><span class="facts__label">карточка инфографики</span></div>
             </div>
-            <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
+            <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Написать в Telegram</a>
           </div>
           <div class="hero__visual">
             <div class="hero__carousel" aria-label="Примеры работ">
@@ -612,33 +607,28 @@
         <h2 class="section__title reveal">Сайты-визитки</h2>
         <p class="block__lead reveal">Одна ссылка вместо переписки: клиент сам видит работы, цены и как заказать.</p>
 
-        <div class="case">
-          <div class="case__media reveal">
-            <a href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener" class="browser case__main">
-              <div class="browser__bar"><i></i><i></i><i></i></div>
-              <img src="img/site-yulia.webp" alt="Первый экран сайта Yulia Craft" loading="lazy" width="1600" height="900">
-            </a>
-            <div class="case__thumbs">
-              <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/case-yulia-catalog.webp" alt="Каталог игрушек с ценами" loading="lazy" width="1600" height="900"></div>
-              <div class="browser"><div class="browser__bar"><i></i><i></i><i></i></div><img src="img/case-yulia-gift.webp" alt="Блок с предложением к праздникам" loading="lazy" width="1600" height="900"></div>
+        <div class="ig-carousel reveal">
+          <div class="ig-carousel__head">
+            <h3 class="ig-carousel__title">Выполненные сайты</h3>
+            <span class="ig-carousel__meta">листайте стрелками</span>
+          </div>
+          <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущий сайт">‹</button>
+          <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующий сайт">›</button>
+          <div class="ig-track">
+            <div class="ig-slide">
+              <a href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener" class="ig-slide__img" style="aspect-ratio: 16/9;">
+                <img src="img/site-yulia.webp" alt="Первый экран сайта Yulia Craft" loading="lazy">
+              </a>
+              <div class="ig-slide__cap"><b>Yulia Craft</b> · вязаные игрушки</div>
+            </div>
+            <div class="ig-slide">
+              <a href="https://agent-6aec6c83f676a9b355e75040--cool-elf-fe83fe.netlify.app/" target="_blank" rel="noopener" class="ig-slide__img" style="aspect-ratio: 16/9;">
+                <img src="img/site-milana.webp" alt="Первый экран сайта Milana Volnaya" loading="lazy">
+              </a>
+              <div class="ig-slide__cap"><b>Milana Volnaya</b> · кондитер</div>
             </div>
           </div>
-
-          <dl class="case__facts reveal">
-            <div><dt>Задача</dt><dd>Одна ссылка вместо переписки: покупатель сам видит модели, цены и как заказать.</dd></div>
-            <div><dt>Что сделала</dt><dd>
-              <ul class="case__list">
-                <li>Структура и тексты</li>
-                <li>Каталог: 13 моделей с ценами</li>
-                <li>Кнопка «Узнать наличие» с готовым сообщением в WhatsApp</li>
-                <li>Блок к праздникам</li>
-                <li>Обработка фото игрушек</li>
-              </ul>
-            </dd></div>
-            <div><dt>Результат</dt><dd>Покупатель пишет мастеру уже с выбранной игрушкой.</dd></div>
-          </dl>
         </div>
-        <a class="case__link reveal" href="https://agent-6aef5a8692c2d9b--exquisite-sunshine-07f529.netlify.app/" target="_blank" rel="noopener">Открыть сайт →</a>
       </div>
     </section>
 
@@ -646,9 +636,8 @@
     <section class="section" id="infographics">
       <div class="container">
         <h2 class="section__title reveal">Инфографика для маркетплейсов</h2>
-        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + 4 слайда за 2–3 дня. Листайте серию стрелками.</p>
+        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + 4 слайда за 2–3 дня. Клик по слайду — увеличить.</p>
 
-        <!-- Серия 1: видима -->
         <div class="ig-carousel reveal">
           <div class="ig-carousel__head">
             <h3 class="ig-carousel__title">Кошечка Мила</h3>
@@ -657,17 +646,16 @@
           <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущие слайды">‹</button>
           <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующие слайды">›</button>
           <div class="ig-track">
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(1).jpg" alt="Обложка: вязаная кошечка" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(2).jpg" alt="Модель" loading="lazy"></div><div class="ig-slide__cap">Модель</div></div>
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(3).jpg" alt="Ручная работа" loading="lazy"></div><div class="ig-slide__cap">Ручная работа</div></div>
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(4).jpg" alt="Уют на полке" loading="lazy"></div><div class="ig-slide__cap">Уют на полке</div></div>
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(5).jpg" alt="В подарок" loading="lazy"></div><div class="ig-slide__cap">В подарок</div></div>
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(6).jpg" alt="Детали" loading="lazy"></div><div class="ig-slide__cap">Детали</div></div>
-            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(7).jpg" alt="Комплектация" loading="lazy"></div><div class="ig-slide__cap">Комплектация</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(1).jpg"><img src="img/infografika/cat%20(1).jpg" alt="Обложка: вязаная кошечка" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(2).jpg"><img src="img/infografika/cat%20(2).jpg" alt="Модель" loading="lazy"></div><div class="ig-slide__cap">Модель</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(3).jpg"><img src="img/infografika/cat%20(3).jpg" alt="Ручная работа" loading="lazy"></div><div class="ig-slide__cap">Ручная работа</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(4).jpg"><img src="img/infografika/cat%20(4).jpg" alt="Уют на полке" loading="lazy"></div><div class="ig-slide__cap">Уют на полке</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(5).jpg"><img src="img/infografika/cat%20(5).jpg" alt="В подарок" loading="lazy"></div><div class="ig-slide__cap">В подарок</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(6).jpg"><img src="img/infografika/cat%20(6).jpg" alt="Детали" loading="lazy"></div><div class="ig-slide__cap">Детали</div></div>
+            <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/cat%20(7).jpg"><img src="img/infografika/cat%20(7).jpg" alt="Комплектация" loading="lazy"></div><div class="ig-slide__cap">Комплектация</div></div>
           </div>
         </div>
 
-        <!-- Скрытые серии -->
         <div class="more" id="moreSeries" hidden>
           <div class="ig-carousel reveal">
             <div class="ig-carousel__head">
@@ -677,13 +665,13 @@
             <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущие слайды">‹</button>
             <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующие слайды">›</button>
             <div class="ig-track">
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка: зайка в синей шапке" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл" loading="lazy"></div><div class="ig-slide__cap">Лайфстайл</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(3).jpg" alt="Материалы" loading="lazy"></div><div class="ig-slide__cap">Материалы</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(4).jpg" alt="Упаковка" loading="lazy"></div><div class="ig-slide__cap">Упаковка</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(5).jpg" alt="Размеры" loading="lazy"></div><div class="ig-slide__cap">Размеры</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс" loading="lazy"></div><div class="ig-slide__cap">Процесс</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(7).jpg" alt="Производство" loading="lazy"></div><div class="ig-slide__cap">Производство</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(1).jpg"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(2).jpg"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл" loading="lazy"></div><div class="ig-slide__cap">Лайфстайл</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(3).jpg"><img src="img/infografika/bunny%20(3).jpg" alt="Материалы" loading="lazy"></div><div class="ig-slide__cap">Материалы</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(4).jpg"><img src="img/infografika/bunny%20(4).jpg" alt="Упаковка" loading="lazy"></div><div class="ig-slide__cap">Упаковка</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(5).jpg"><img src="img/infografika/bunny%20(5).jpg" alt="Размеры" loading="lazy"></div><div class="ig-slide__cap">Размеры</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(6).jpg"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс" loading="lazy"></div><div class="ig-slide__cap">Процесс</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/bunny%20(7).jpg"><img src="img/infografika/bunny%20(7).jpg" alt="Производство" loading="lazy"></div><div class="ig-slide__cap">Производство</div></div>
             </div>
           </div>
 
@@ -695,34 +683,42 @@
             <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущие слайды">‹</button>
             <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующие слайды">›</button>
             <div class="ig-track">
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка: набор для автостёкол" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(2).jpg" alt="Применение" loading="lazy"></div><div class="ig-slide__cap">Применение</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(3).jpg" alt="Детали" loading="lazy"></div><div class="ig-slide__cap">Детали</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(4).jpg" alt="Размер" loading="lazy"></div><div class="ig-slide__cap">Размер</div></div>
-              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект" loading="lazy"></div><div class="ig-slide__cap">Комплект</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/auto%20(1).jpg"><img src="img/infografika/auto%20(1).jpg" alt="Обложка" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/auto%20(2).jpg"><img src="img/infografika/auto%20(2).jpg" alt="Применение" loading="lazy"></div><div class="ig-slide__cap">Применение</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/auto%20(3).jpg"><img src="img/infografika/auto%20(3).jpg" alt="Детали" loading="lazy"></div><div class="ig-slide__cap">Детали</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/auto%20(4).jpg"><img src="img/infografika/auto%20(4).jpg" alt="Размер" loading="lazy"></div><div class="ig-slide__cap">Размер</div></div>
+              <div class="ig-slide"><div class="ig-slide__img" data-lightbox="img/infografika/auto%20(5).jpg"><img src="img/infografika/auto%20(5).jpg" alt="Комплект" loading="lazy"></div><div class="ig-slide__cap">Комплект</div></div>
             </div>
           </div>
         </div>
         <button class="btn btn--outline more__btn" data-more="moreSeries" data-label="Свернуть другие серии" aria-expanded="false" aria-controls="moreSeries" style="margin-top: 28px;">Показать другие серии</button>
 
-        <!-- Motion и AI (маргины починены) -->
         <div style="margin-top:72px; padding-top:40px; border-top:1px solid var(--border);">
-          <h3 class="pairs__title reveal" style="margin-top:0;">Motion и AI для соцсетей</h3>
-          <p class="block__lead reveal" style="margin:0 0 32px;">
+          <h3 class="section__title reveal" style="font-size: clamp(1.8rem, 4.2vw, 3rem);">Motion и AI для соцсетей</h3>
+          <p class="block__lead reveal">
             Для каталога важна точность, а для сторис и рекламы — внимание.
             Делаю яркую анимацию и AI-сцены по мотивам товара, чтобы остановить скроллинг ленты.
           </p>
           <div class="pairs">
             <figure class="pair reveal">
-              <div class="ig-slide__img"><img src="img/busts-ai.webp" alt="AI-сцена: шоколадные фигуры" loading="lazy"></div>
+              <div class="pair__img" data-lightbox="img/busts-ai.webp">
+                <img src="img/busts-ai.webp" alt="AI-сцена: шоколадные фигуры" loading="lazy">
+                <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
+              </div>
               <figcaption class="pair__caption" style="text-align:center;">Промо для кондитерской</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
-              <div class="ig-slide__img"><img src="img/tiger-ai.webp" alt="AI-сцена: тигр в лесу" loading="lazy"></div>
+              <div class="pair__img" data-lightbox="img/tiger-ai.webp">
+                <img src="img/tiger-ai.webp" alt="AI-сцена: тигр в лесу" loading="lazy">
+                <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
+              </div>
               <figcaption class="pair__caption" style="text-align:center;">Сказочная сцена для сторис</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.2s">
-              <div class="ig-slide__img"><img src="img/ski-ai.webp" alt="AI-сцена: мишка на лыжах" loading="lazy"></div>
+              <div class="pair__img" data-lightbox="img/ski-ai.webp">
+                <img src="img/ski-ai.webp" alt="AI-сцена: мишка на лыжах" loading="lazy">
+                <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
+              </div>
               <figcaption class="pair__caption" style="text-align:center;">Сезонный визуал</figcaption>
             </figure>
           </div>
@@ -734,9 +730,9 @@
     <section class="section" id="menu">
       <div class="container">
         <h2 class="section__title reveal">Ретушь и обработка фото</h2>
-        <p class="block__lead reveal">Потяните ползунок — увидите разницу между исходником и готовым фото.</p>
+        <p class="block__lead reveal">Потяните ползунок — увидите разницу между исходником и готовым фото. Клик по картинке — увеличить.</p>
 
-        <h3 class="pairs__title reveal">Меню кафе и кондитерских</h3>
+        <h3 class="section__title reveal" style="font-size: clamp(1.8rem, 4.2vw, 3rem);">Меню кафе и кондитерских</h3>
         <div class="pairs">
           <figure class="pair reveal">
             <img-comparison-slider class="cmp">
@@ -795,7 +791,7 @@
         </div>
         <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Свернуть десерты" aria-expanded="false" aria-controls="moreDesserts" style="margin-top: 28px;">Показать ещё десерты</button>
 
-        <h3 class="pairs__title reveal" style="margin-top:64px;">Товары на чистом фоне</h3>
+        <h3 class="section__title reveal" style="font-size: clamp(1.8rem, 4.2vw, 3rem); margin-top:64px;">Товары на чистом фоне</h3>
         <p class="block__lead reveal">Для каталога, сайта и карточек маркетплейса.</p>
 
         <div class="pairs">
@@ -865,7 +861,6 @@
       </div>
     </section>
 
-    <!-- Услуги и цены -->
     <section class="section" id="services">
       <div class="container">
         <h2 class="section__title reveal">Что я делаю</h2>
@@ -921,7 +916,6 @@
       </div>
     </section>
 
-    <!-- Обо мне -->
     <section class="section section--about" id="about">
       <div class="container about">
         <div class="about__text reveal">
@@ -936,7 +930,6 @@
       </div>
     </section>
 
-    <!-- Как я работаю -->
     <section class="section" id="process">
       <div class="container">
         <h2 class="section__title reveal">Как я работаю</h2>
@@ -955,7 +948,6 @@
     </section>
   </main>
 
-  <!-- Контакты -->
   <footer class="footer" id="contacts">
     <div class="container">
       <span class="footer__label reveal">Контакты</span>
@@ -971,6 +963,12 @@
       <p class="footer__copy">© <span id="year">2026</span> MILA.STUDIO. Все права защищены.</p>
     </div>
   </footer>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр изображения">
+    <button class="lightbox__close" aria-label="Закрыть">×</button>
+    <img class="lightbox__img" src="" alt="">
+  </div>
 
   <script>
     (function () {
@@ -1079,7 +1077,6 @@
       start();
     })();
 
-    // Стрелки каруселей инфографики
     (function () {
       document.querySelectorAll('.ig-arrow').forEach(function (btn) {
         btn.addEventListener('click', function () {
@@ -1090,6 +1087,51 @@
           var dir = parseInt(btn.getAttribute('data-dir'), 10);
           track.scrollBy({ left: dir * step, behavior: 'smooth' });
         });
+      });
+    })();
+
+    (function () {
+      var lightbox = document.getElementById('lightbox');
+      var lbImg = lightbox.querySelector('.lightbox__img');
+      var lbClose = lightbox.querySelector('.lightbox__close');
+
+      function openLightbox(src, alt) {
+        lbImg.src = src;
+        lbImg.alt = alt || '';
+        lightbox.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        document.body.style.overflow = '';
+        setTimeout(function () { lbImg.src = ''; }, 300);
+      }
+
+      document.querySelectorAll('[data-lightbox]').forEach(function (el) {
+        el.addEventListener('click', function (e) {
+          e.preventDefault();
+          var src = el.getAttribute('data-lightbox');
+          var img = el.querySelector('img');
+          openLightbox(src, img ? img.alt : '');
+        });
+      });
+
+      document.querySelectorAll('.pair__img').forEach(function (el) {
+        if (el.hasAttribute('data-lightbox')) return;
+        var img = el.querySelector('img');
+        if (img) {
+          el.addEventListener('click', function () {
+            openLightbox(img.src, img.alt);
+          });
+        }
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function (e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
       });
     })();
   </script>
