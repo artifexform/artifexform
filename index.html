@@ -87,45 +87,43 @@
     .btn--outline { background: transparent; color: var(--text); border-color: var(--border); }
     .btn--outline:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
 
-    /* ===== Header ===== */
+    /* ===== Header (как в референсе, без верхней кнопки) ===== */
     .header {
       position: sticky; top: 0; z-index: 100;
-      background: rgba(15, 42, 31, 0.95);
-      -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      background: #0F2A1F;
     }
-    section[id], footer[id] { scroll-margin-top: 72px; }
-    @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 76px; } }
+    section[id], footer[id] { scroll-margin-top: 76px; }
 
-    .header__inner { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; padding-top: 14px; padding-bottom: 14px; }
-    .header__cta { min-height: 0; padding: 12px 28px; font-size: 14px; }
-    @media (max-width: 639px) { .header__cta { display: none; } }
+    .header__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px 40px; padding: 18px 0;
+    }
 
-    .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
+    .logo { font-weight: 700; font-size: 19px; letter-spacing: .01em; }
     .logo__dot { color: var(--accent); }
 
-    /* Меню: обычный регистр, как на референсе */
-    .nav__list { display: flex; flex-wrap: wrap; gap: 8px 32px; list-style: none; }
-    .nav__link { font-size: 15px; font-weight: 500; opacity: 0.75; transition: opacity 0.2s, color 0.2s; }
-    .nav__link:hover { opacity: 1; color: var(--accent); }
+    /* Меню: обычный регистр, лёгкий вес, без капса */
+    .nav__list { display: flex; align-items: center; gap: 8px 36px; list-style: none; }
+    .nav__link { font-size: 16px; font-weight: 500; color: rgba(255,255,255,.78); transition: color .2s; }
+    .nav__link:hover { color: #fff; }
 
     .nav__has-sub { position: relative; }
-    .nav__sub-toggle { background: none; border: 0; font: inherit; color: inherit; letter-spacing: inherit; opacity: 0.75; cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 6px; }
-    .nav__sub-toggle::after { content: "▾"; font-size: 10px; transition: transform 0.2s; }
+    .nav__sub-toggle { background: none; border: 0; font: inherit; color: rgba(255,255,255,.78); cursor: pointer; padding: 0; display: inline-flex; align-items: center; gap: 6px; transition: color .2s; }
+    .nav__sub-toggle::after { content: "▾"; font-size: 10px; transition: transform .2s; }
     .nav__has-sub.is-open .nav__sub-toggle::after { transform: rotate(180deg); }
-    .nav__sub-toggle:hover { opacity: 1; color: var(--accent); }
+    .nav__sub-toggle:hover { color: #fff; }
     .nav__sub {
       position: absolute; top: calc(100% + 12px); left: -12px;
       min-width: 230px; padding: 6px 0; list-style: none;
       background: #0F2A1F; border: 1px solid rgba(255,255,255,.14);
-      border-radius: var(--radius); box-shadow: 0 16px 32px rgba(0,0,0,.45); display: none;
+      border-radius: 6px; box-shadow: 0 16px 32px rgba(0,0,0,.45); display: none;
     }
     .nav__sub::before { content: ""; position: absolute; top: -14px; left: 0; right: 0; height: 14px; }
     .nav__has-sub:hover .nav__sub, .nav__has-sub.is-open .nav__sub { display: block; }
-    .nav__sublink { display: block; padding: 11px 18px; font-size: 14px; font-weight: 500; opacity: .75; }
-    .nav__sublink:hover { opacity: 1; color: var(--accent); }
+    .nav__sublink { display: block; padding: 11px 18px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,.78); }
+    .nav__sublink:hover { color: #fff; background: rgba(255,255,255,.05); }
 
-    .nav__toggle { display: none; align-items: center; gap: 10px; background: none; border: 1px solid rgba(255,255,255,.25); border-radius: var(--radius); color: inherit; font: 500 13px/1 var(--font); letter-spacing: .06em; padding: 10px 14px; cursor: pointer; }
+    .nav__toggle { display: none; align-items: center; gap: 10px; background: none; border: 1px solid rgba(255,255,255,.25); border-radius: 6px; color: inherit; font: 500 13px/1 var(--font); padding: 10px 14px; cursor: pointer; }
     .nav__icon, .nav__icon::before, .nav__icon::after { display: block; width: 16px; height: 2px; background: currentColor; transition: transform .2s, opacity .2s; }
     .nav__icon { position: relative; }
     .nav__icon::before, .nav__icon::after { content: ""; position: absolute; left: 0; }
@@ -135,17 +133,17 @@
     .header.is-open .nav__icon::before { transform: translateY(5px) rotate(45deg); }
     .header.is-open .nav__icon::after { transform: translateY(-5px) rotate(-45deg); }
 
-    @media (max-width: 900px) and (min-width: 640px) {
-      .nav__list { gap: 8px 18px; }
-      .nav__link { font-size: 14px; }
+    @media (max-width: 1100px) and (min-width: 640px) {
+      .nav__list { gap: 8px 20px; }
+      .nav__link, .nav__sub-toggle { font-size: 14px; }
     }
     @media (max-width: 639px) {
       .header__inner { flex-wrap: nowrap; padding-top: 12px; padding-bottom: 12px; }
       .nav__toggle { display: inline-flex; }
-      .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #0F2A1F; border-bottom: 1px solid rgba(255,255,255,.1); box-shadow: 0 12px 24px rgba(0,0,0,.35); }
+      .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: #0F2A1F; box-shadow: 0 12px 24px rgba(0,0,0,.35); }
       .header.is-open .nav { display: block; }
-      .nav__list { flex-direction: column; gap: 0; padding: 8px 20px 16px; }
-      .nav__link { display: block; padding: 14px 0; font-size: 16px; opacity: .9; border-bottom: 1px solid rgba(255,255,255,.08); }
+      .nav__list { flex-direction: column; align-items: stretch; gap: 0; padding: 8px 20px 16px; }
+      .nav__link { display: block; padding: 14px 0; font-size: 16px; border-bottom: 1px solid rgba(255,255,255,.08); }
       .nav__list li:last-child .nav__link { border-bottom: 0; }
       .nav__has-sub { position: static; }
       .nav__sub { position: static; display: block; min-width: 0; padding: 0; background: transparent; border: 0; box-shadow: none; }
@@ -507,7 +505,6 @@
           <li><a href="#contacts" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
-      <a href="https://t.me/artifexform" class="btn btn--primary header__cta" target="_blank" rel="noopener">Обсудить проект</a>
     </div>
   </header>
 
