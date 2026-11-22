@@ -949,12 +949,12 @@
         <h3 class="pairs__title reveal">Фото для меню</h3>
         
         <div class="pairs">
-          <figure class="pair reveal">
-            <div class="pair__images">
-              <div class="pair__img"><img src="img/cheesecake-before.webp" alt="Чизкейк на раздаче кухни" loading="lazy" width="800" height="800"><span class="pair__tag">До</span></div>
-              <div class="pair__img"><img src="img/cheesecake-after.webp" alt="Чизкейк на светлом фоне для меню" loading="lazy" width="800" height="800"><span class="pair__tag pair__tag--after">После</span></div>
-            </div>
-            <figcaption class="pair__caption">Чизкейк: с раздачи кухни — в меню</figcaption>
+                   <figure class="pair reveal" style="max-width: 600px; margin: 0 auto;">
+            <img-comparison-slider style="--divider-width: 2px; --divider-color: var(--accent); border-radius: var(--radius); overflow: hidden; aspect-ratio: 1 / 1;">
+              <img slot="first" src="img/cheesecake-before.webp" alt="Чизкейк до обработки" style="width: 100%; height: 100%; object-fit: cover;">
+              <img slot="second" src="img/cheesecake-after.webp" alt="Чизкейк после обработки" style="width: 100%; height: 100%; object-fit: cover;">
+            </img-comparison-slider>
+            <figcaption class="pair__caption" style="text-align: center; margin-top: 12px;">Чизкейк: потяни ползунок, чтобы увидеть разницу</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay: .1s">
             <div class="pair__images">
