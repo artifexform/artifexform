@@ -254,14 +254,14 @@
     /* ===== Карусель в шапке ===== */
     .hero__carousel {
       position: relative;
-      max-width: 400px;
+      max-width: 480px;
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.14);
       background: #1a1a1a;
       box-shadow: 0 24px 48px rgba(0,0,0,.45);
     }
-    .carousel__slides { position: relative; aspect-ratio: 2 / 3; }
+    .carousel__slides { position: relative; aspect-ratio: 1 / 1; }
     .carousel__slide {
       position: absolute; inset: 0;
       opacity: 0;
@@ -294,7 +294,7 @@
     .carousel__dot-btn.is-active { background: var(--accent); }
     .carousel__dot-btn:hover { background: rgba(255,255,255,.7); }
     @media (max-width: 639px) {
-      .hero__carousel { max-width: 320px; margin: 0 auto; }
+      .hero__carousel { max-width: 100%; }
     }
 
     /* ===== Портфолио и пары ===== */
@@ -333,36 +333,63 @@
     .pairs--more { margin-top: 28px; }
     .more__btn { display: flex; margin: 28px auto 0; }
 
-    @media (min-width: 1024px) {
-      .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; }
+    @media (min-width: 640px) { .pairs { grid-template-columns: repeat(2, 1fr); gap: 32px 24px; } }
+    @media (min-width: 1024px) { .pairs { grid-template-columns: repeat(3, 1fr); } }
+
+    /* ===== Единая сетка портфолио 2:3 ===== */
+    .ig-carousel { position: relative; margin-bottom: 48px; }
+    .ig-carousel__head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .ig-carousel__title { font-size: 1.25rem; font-weight: 600; color: var(--text); }
+    .ig-carousel__meta { font-family: var(--font-mono); font-size: 12px; letter-spacing: 1px; opacity: .5; }
+    .ig-track {
+      display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      scrollbar-width: none; -ms-overflow-style: none;
+      padding: 4px;
+    }
+    .ig-track::-webkit-scrollbar { display: none; }
+    .ig-slide { flex: 0 0 calc((100% - 32px) / 3); scroll-snap-align: start; }
+    .ig-slide__img {
+      position: relative; aspect-ratio: 2 / 3; overflow: hidden;
+      border-radius: var(--radius); background: var(--placeholder);
+      border: 1px solid var(--border);
+    }
+    .ig-slide__img img {
+      display: block; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      transition: transform .6s var(--ease);
+    }
+    .ig-slide:hover .ig-slide__img img { transform: scale(1.04); }
+    .ig-slide__cap { margin-top: 8px; font-size: 13px; opacity: .6; text-align: center; }
+    .ig-arrow {
+      position: absolute; top: 0; bottom: 40px; width: 44px; z-index: 3;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(10, 10, 10, .55); border: 1px solid var(--border);
+      color: #fff; font-size: 20px; cursor: pointer;
+      opacity: 0; transition: opacity .3s var(--ease), background .3s var(--ease);
+    }
+    .ig-carousel:hover .ig-arrow { opacity: 1; }
+    .ig-arrow:hover { background: var(--accent); border-color: var(--accent); }
+    .ig-arrow--prev { left: 4px; border-radius: var(--radius) 0 0 var(--radius); }
+    .ig-arrow--next { right: 4px; border-radius: 0 var(--radius) var(--radius) 0; }
+    @media (max-width: 1023px) { .ig-slide { flex-basis: calc((100% - 16px) / 2); } }
+    @media (max-width: 639px) {
+      .ig-slide { flex-basis: 100%; }
+      .ig-arrow { opacity: 1; }
     }
 
-    /* ===== Инфографика: серии в окошках ===== */
-    .ig-series {
-      padding: 32px;
-      margin-bottom: 40px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
+    /* ===== Слайдер до/после в формате 2:3 ===== */
+    .cmp {
+      display: block; width: 100%;
+      aspect-ratio: 2 / 3;
+      --divider-width: 2px;
+      --divider-color: var(--accent);
+      border-radius: var(--radius); overflow: hidden;
+      border: 1px solid var(--border); background: var(--placeholder);
     }
-    .ig-series__title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 24px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      color: var(--text);
-    }
-    .igfolio { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
-    .igfolio__item { margin: 0; }
-    .igfolio__img {
-      position: relative; overflow: hidden; border-radius: var(--radius);
-      background: var(--placeholder); border: 1px solid var(--border);
-    }
-    .igfolio__img img { display: block; width: 100%; height: auto; transition: transform 0.6s var(--ease); }
-    .igfolio__item:hover .igfolio__img img { transform: scale(1.03); }
-    .igfolio__cap { margin-top: 8px; font-size: 13px; opacity: .65; text-align: center; }
-    @media (min-width: 768px) { .igfolio { grid-template-columns: repeat(4, 1fr); gap: 20px; } }
 
     /* ===== Кейс ===== */
     .case__sub { margin: -20px 0 28px; font-size: 18px; opacity: .7; }
@@ -619,94 +646,86 @@
     <section class="section" id="infographics">
       <div class="container">
         <h2 class="section__title reveal">Инфографика для маркетплейсов</h2>
-        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + 4 слайда за 2–3 дня.</p>
+        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + 4 слайда за 2–3 дня. Листайте серию стрелками.</p>
 
-        <div class="pairs">
-          <figure class="pair reveal">
-            <div class="pair__img" style="aspect-ratio: 3/4;">
-              <img src="img/infografika/cat%20(1).jpg" alt="Кошечка Мила — обложка карточки" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;"><b>Кошечка Мила</b><br>7 слайдов · вязаная игрушка</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay:.1s">
-            <div class="pair__img" style="aspect-ratio: 3/4;">
-              <img src="img/infografika/bunny%20(1).jpg" alt="Зайка в шапке — обложка карточки" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;"><b>Зайка в шапке</b><br>7 слайдов · вязаная игрушка</figcaption>
-          </figure>
-          <figure class="pair reveal" style="--delay:.2s">
-            <div class="pair__img" style="aspect-ratio: 3/4;">
-              <img src="img/infografika/auto%20(1).jpg" alt="Набор для автостёкол — обложка карточки" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;"><b>Набор для автостёкол</b><br>5 слайдов · автотовары</figcaption>
-          </figure>
+        <!-- Серия 1: видима -->
+        <div class="ig-carousel reveal">
+          <div class="ig-carousel__head">
+            <h3 class="ig-carousel__title">Кошечка Мила</h3>
+            <span class="ig-carousel__meta">7 слайдов · вязаная игрушка</span>
+          </div>
+          <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущие слайды">‹</button>
+          <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующие слайды">›</button>
+          <div class="ig-track">
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(1).jpg" alt="Обложка: вязаная кошечка" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(2).jpg" alt="Модель" loading="lazy"></div><div class="ig-slide__cap">Модель</div></div>
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(3).jpg" alt="Ручная работа" loading="lazy"></div><div class="ig-slide__cap">Ручная работа</div></div>
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(4).jpg" alt="Уют на полке" loading="lazy"></div><div class="ig-slide__cap">Уют на полке</div></div>
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(5).jpg" alt="В подарок" loading="lazy"></div><div class="ig-slide__cap">В подарок</div></div>
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(6).jpg" alt="Детали" loading="lazy"></div><div class="ig-slide__cap">Детали</div></div>
+            <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/cat%20(7).jpg" alt="Комплектация" loading="lazy"></div><div class="ig-slide__cap">Комплектация</div></div>
+          </div>
         </div>
 
-        <div class="more" id="moreInfographics" hidden>
-          <div class="ig-series" style="margin-top:40px;">
-            <h3 class="ig-series__title">Кошечка Мила · все 7 слайдов</h3>
-            <div class="igfolio">
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(1).jpg" alt="Обложка" loading="lazy"></div><figcaption class="igfolio__cap">Обложка</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(2).jpg" alt="Модель" loading="lazy"></div><figcaption class="igfolio__cap">Модель</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(3).jpg" alt="Ручная работа" loading="lazy"></div><figcaption class="igfolio__cap">Ручная работа</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(4).jpg" alt="Уют на полке" loading="lazy"></div><figcaption class="igfolio__cap">Уют на полке</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(5).jpg" alt="В подарок" loading="lazy"></div><figcaption class="igfolio__cap">В подарок</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(6).jpg" alt="Детали" loading="lazy"></div><figcaption class="igfolio__cap">Детали</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/cat%20(7).jpg" alt="Комплектация" loading="lazy"></div><figcaption class="igfolio__cap">Комплектация</figcaption></figure>
+        <!-- Скрытые серии -->
+        <div class="more" id="moreSeries" hidden>
+          <div class="ig-carousel reveal">
+            <div class="ig-carousel__head">
+              <h3 class="ig-carousel__title">Зайка в шапке</h3>
+              <span class="ig-carousel__meta">7 слайдов · вязаная игрушка</span>
+            </div>
+            <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущие слайды">‹</button>
+            <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующие слайды">›</button>
+            <div class="ig-track">
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка: зайка в синей шапке" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл" loading="lazy"></div><div class="ig-slide__cap">Лайфстайл</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(3).jpg" alt="Материалы" loading="lazy"></div><div class="ig-slide__cap">Материалы</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(4).jpg" alt="Упаковка" loading="lazy"></div><div class="ig-slide__cap">Упаковка</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(5).jpg" alt="Размеры" loading="lazy"></div><div class="ig-slide__cap">Размеры</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс" loading="lazy"></div><div class="ig-slide__cap">Процесс</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/bunny%20(7).jpg" alt="Производство" loading="lazy"></div><div class="ig-slide__cap">Производство</div></div>
             </div>
           </div>
 
-          <div class="ig-series">
-            <h3 class="ig-series__title">Зайка в шапке · все 7 слайдов</h3>
-            <div class="igfolio">
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(1).jpg" alt="Обложка" loading="lazy"></div><figcaption class="igfolio__cap">Обложка</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(2).jpg" alt="Лайфстайл" loading="lazy"></div><figcaption class="igfolio__cap">Лайфстайл</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(3).jpg" alt="Материалы" loading="lazy"></div><figcaption class="igfolio__cap">Материалы</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(4).jpg" alt="Упаковка" loading="lazy"></div><figcaption class="igfolio__cap">Упаковка</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(5).jpg" alt="Размеры" loading="lazy"></div><figcaption class="igfolio__cap">Размеры</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(6).jpg" alt="Процесс" loading="lazy"></div><figcaption class="igfolio__cap">Процесс</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/bunny%20(7).jpg" alt="Производство" loading="lazy"></div><figcaption class="igfolio__cap">Производство</figcaption></figure>
+          <div class="ig-carousel reveal">
+            <div class="ig-carousel__head">
+              <h3 class="ig-carousel__title">Набор для автостёкол</h3>
+              <span class="ig-carousel__meta">5 слайдов · автотовары</span>
             </div>
-          </div>
-
-          <div class="ig-series">
-            <h3 class="ig-series__title">Набор для автостёкол · все 5 слайдов</h3>
-            <div class="igfolio">
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка" loading="lazy"></div><figcaption class="igfolio__cap">Обложка</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(2).jpg" alt="Применение" loading="lazy"></div><figcaption class="igfolio__cap">Применение</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(3).jpg" alt="Детали" loading="lazy"></div><figcaption class="igfolio__cap">Детали</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(4).jpg" alt="Размер" loading="lazy"></div><figcaption class="igfolio__cap">Размер</figcaption></figure>
-              <figure class="igfolio__item"><div class="igfolio__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект" loading="lazy"></div><figcaption class="igfolio__cap">Комплект</figcaption></figure>
+            <button class="ig-arrow ig-arrow--prev" data-dir="-1" aria-label="Предыдущие слайды">‹</button>
+            <button class="ig-arrow ig-arrow--next" data-dir="1" aria-label="Следующие слайды">›</button>
+            <div class="ig-track">
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(1).jpg" alt="Обложка: набор для автостёкол" loading="lazy"></div><div class="ig-slide__cap">Обложка</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(2).jpg" alt="Применение" loading="lazy"></div><div class="ig-slide__cap">Применение</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(3).jpg" alt="Детали" loading="lazy"></div><div class="ig-slide__cap">Детали</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(4).jpg" alt="Размер" loading="lazy"></div><div class="ig-slide__cap">Размер</div></div>
+              <div class="ig-slide"><div class="ig-slide__img"><img src="img/infografika/auto%20(5).jpg" alt="Комплект" loading="lazy"></div><div class="ig-slide__cap">Комплект</div></div>
             </div>
           </div>
         </div>
-        <button class="btn btn--outline more__btn" data-more="moreInfographics" data-label="Свернуть серии" aria-expanded="false" aria-controls="moreInfographics" style="margin-top: 28px;">Показать все слайды серий</button>
+        <button class="btn btn--outline more__btn" data-more="moreSeries" data-label="Свернуть другие серии" aria-expanded="false" aria-controls="moreSeries" style="margin-top: 28px;">Показать другие серии</button>
 
-        <div style="margin-top:80px; padding-top:40px; border-top:1px solid var(--border);">
-          <h3 class="pairs__title reveal">Motion и AI для соцсетей</h3>
-          <p class="block__lead reveal">
-            Для каталога важна точность, а для сторис и рекламы — внимание. 
+        <!-- Motion и AI (маргины починены) -->
+        <div style="margin-top:72px; padding-top:40px; border-top:1px solid var(--border);">
+          <h3 class="pairs__title reveal" style="margin-top:0;">Motion и AI для соцсетей</h3>
+          <p class="block__lead reveal" style="margin:0 0 32px;">
+            Для каталога важна точность, а для сторис и рекламы — внимание.
             Делаю яркую анимацию и AI-сцены по мотивам товара, чтобы остановить скроллинг ленты.
           </p>
           <div class="pairs">
             <figure class="pair reveal">
-              <div class="pair__img" style="aspect-ratio: 1/1;">
-                <img src="img/busts-ai.webp" alt="AI-сцена: фигуры из шоколада" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
-              </div>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Промо-визуал для кондитерской</figcaption>
+              <div class="ig-slide__img"><img src="img/busts-ai.webp" alt="AI-сцена: шоколадные фигуры" loading="lazy"></div>
+              <figcaption class="pair__caption" style="text-align:center;">Промо для кондитерской</figcaption>
             </figure>
-            <figure class="pair reveal" style="--delay: .1s">
-              <div class="pair__img" style="aspect-ratio: 1/1;">
-                <img src="img/tiger-ai.webp" alt="AI-сцена: вязаный тигр в лесу" loading="lazy" style="width:100%; height:100%; object-fit:cover;">
-                <span class="pair__tag" style="top:auto; bottom:8px; left:8px; background: var(--accent); color: #000; font-weight:600;">AI / Промо</span>
-              </div>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Сказочная сцена для сторис</figcaption>
+            <figure class="pair reveal" style="--delay:.1s">
+              <div class="ig-slide__img"><img src="img/tiger-ai.webp" alt="AI-сцена: тигр в лесу" loading="lazy"></div>
+              <figcaption class="pair__caption" style="text-align:center;">Сказочная сцена для сторис</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay:.2s">
+              <div class="ig-slide__img"><img src="img/ski-ai.webp" alt="AI-сцена: мишка на лыжах" loading="lazy"></div>
+              <figcaption class="pair__caption" style="text-align:center;">Сезонный визуал</figcaption>
             </figure>
           </div>
-          <p class="prices__note reveal" style="margin-top: 24px; text-align: center;">
-            Планирую запуск услуги по оживлению фото (мини-ролики). Спрашивайте подробности.
-          </p>
         </div>
       </div>
     </section>
@@ -715,134 +734,134 @@
     <section class="section" id="menu">
       <div class="container">
         <h2 class="section__title reveal">Ретушь и обработка фото</h2>
-        <p class="block__lead reveal">Потяни ползунок — увидишь разницу между исходником и готовым фото.</p>
+        <p class="block__lead reveal">Потяните ползунок — увидите разницу между исходником и готовым фото.</p>
 
         <h3 class="pairs__title reveal">Меню кафе и кондитерских</h3>
         <div class="pairs">
           <figure class="pair reveal">
-            <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-              <img slot="first" src="img/cheesecake-before.webp" alt="Птичье молоко до обработки" style="width:100%; height:100%; object-fit:cover;">
-              <img slot="second" src="img/cheesecake-after.webp" alt="Птичье молоко после обработки" style="width:100%; height:100%; object-fit:cover;">
+            <img-comparison-slider class="cmp">
+              <img slot="first" src="img/cheesecake-before.webp" alt="Птичье молоко до обработки">
+              <img slot="second" src="img/cheesecake-after.webp" alt="Птичье молоко после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Птичье молоко</figcaption>
+            <figcaption class="pair__caption" style="text-align:center;">Птичье молоко</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay:.1s">
-            <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-              <img slot="first" src="img/begonia-before.webp" alt="Чизкейк халва до обработки" style="width:100%; height:100%; object-fit:cover;">
-              <img slot="second" src="img/begonia-after.webp" alt="Чизкейк халва после обработки" style="width:100%; height:100%; object-fit:cover;">
+            <img-comparison-slider class="cmp">
+              <img slot="first" src="img/begonia-before.webp" alt="Чизкейк халва до обработки">
+              <img slot="second" src="img/begonia-after.webp" alt="Чизкейк халва после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Чизкейк халва</figcaption>
+            <figcaption class="pair__caption" style="text-align:center;">Чизкейк халва</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay:.2s">
+            <img-comparison-slider class="cmp">
+              <img slot="first" src="img/buffet-before.webp" alt="Фуршет до обработки">
+              <img slot="second" src="img/buffet-after.webp" alt="Фуршет после обработки">
+            </img-comparison-slider>
+            <figcaption class="pair__caption" style="text-align:center;">Фуршет</figcaption>
           </figure>
         </div>
 
         <div class="more" id="moreDesserts" hidden>
           <div class="pairs pairs--more">
             <figure class="pair reveal">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/buffet-before.webp" alt="Фуршет до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/buffet-after.webp" alt="Фуршет после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/leaf-before.webp" alt="Тарт до обработки">
+                <img slot="second" src="img/leaf-after.webp" alt="Тарт после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Фуршет</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Тарт с мороженым</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/leaf-before.webp" alt="Тарт до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/leaf-after.webp" alt="Тарт после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/tart-before.webp" alt="Грушевый тарт до обработки">
+                <img slot="second" src="img/tart-after.webp" alt="Грушевый тарт после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Тарт с мороженым</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Грушевый тарт</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay:.2s">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/eclair-before.webp" alt="Шоколадный десерт до обработки">
+                <img slot="second" src="img/eclair-after.webp" alt="Шоколадный десерт после обработки">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align:center;">Шоколадный десерт</figcaption>
             </figure>
             <figure class="pair reveal">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/tart-before.webp" alt="Грушевый тарт до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/tart-after.webp" alt="Грушевый тарт после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/mochi-before.webp" alt="Моти до обработки">
+                <img slot="second" src="img/mochi-after.webp" alt="Моти после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Грушевый тарт</figcaption>
-            </figure>
-            <figure class="pair reveal" style="--delay:.1s">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/eclair-before.webp" alt="Десерт до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/eclair-after.webp" alt="Десерт после" style="width:100%; height:100%; object-fit:cover;">
-              </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Шоколадный десерт</figcaption>
-            </figure>
-            <figure class="pair reveal">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/mochi-before.webp" alt="Моти до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/mochi-after.webp" alt="Моти после" style="width:100%; height:100%; object-fit:cover;">
-              </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Моти с клубникой</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Моти с клубникой</figcaption>
             </figure>
           </div>
         </div>
-        <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Показать ещё десерты" aria-expanded="false" aria-controls="moreDesserts" style="margin-top: 28px;">Показать ещё десерты</button>
+        <button class="btn btn--outline more__btn" data-more="moreDesserts" data-label="Свернуть десерты" aria-expanded="false" aria-controls="moreDesserts" style="margin-top: 28px;">Показать ещё десерты</button>
 
         <h3 class="pairs__title reveal" style="margin-top:64px;">Товары на чистом фоне</h3>
         <p class="block__lead reveal">Для каталога, сайта и карточек маркетплейса.</p>
 
         <div class="pairs">
           <figure class="pair reveal">
-            <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-              <img slot="first" src="img/tiger-before.webp" alt="Тигр до" style="width:100%; height:100%; object-fit:cover;">
-              <img slot="second" src="img/tiger-after.webp" alt="Тигр после" style="width:100%; height:100%; object-fit:cover;">
+            <img-comparison-slider class="cmp">
+              <img slot="first" src="img/tiger-before.webp" alt="Тигр до обработки">
+              <img slot="second" src="img/tiger-after.webp" alt="Тигр после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Вязаный тигр</figcaption>
+            <figcaption class="pair__caption" style="text-align:center;">Вязаный тигр</figcaption>
           </figure>
           <figure class="pair reveal" style="--delay:.1s">
-            <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-              <img slot="first" src="img/seal-before.webp" alt="Тюлень до" style="width:100%; height:100%; object-fit:cover;">
-              <img slot="second" src="img/seal-after.webp" alt="Тюлень после" style="width:100%; height:100%; object-fit:cover;">
+            <img-comparison-slider class="cmp">
+              <img slot="first" src="img/seal-before.webp" alt="Тюлень до обработки">
+              <img slot="second" src="img/seal-after.webp" alt="Тюлень после обработки">
             </img-comparison-slider>
-            <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Брелок-тюлень</figcaption>
+            <figcaption class="pair__caption" style="text-align:center;">Брелок-тюлень</figcaption>
+          </figure>
+          <figure class="pair reveal" style="--delay:.2s">
+            <img-comparison-slider class="cmp">
+              <img slot="first" src="img/bunny-before.webp" alt="Зайчик до обработки">
+              <img slot="second" src="img/bunny-after.webp" alt="Зайчик после обработки">
+            </img-comparison-slider>
+            <figcaption class="pair__caption" style="text-align:center;">Брошь-зайчик</figcaption>
           </figure>
         </div>
 
         <div class="more" id="moreToys" hidden>
           <div class="pairs pairs--more">
             <figure class="pair reveal">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/bunny-before.webp" alt="Зайчик до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/bunny-after.webp" alt="Зайчик после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/gulls-before.webp" alt="Чайки до обработки">
+                <img slot="second" src="img/gulls-after.webp" alt="Чайки после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Брошь-зайчик</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Броши-чайки</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/gulls-before.webp" alt="Чайки до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/gulls-after.webp" alt="Чайки после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/gull-before.webp" alt="Чайка до обработки">
+                <img slot="second" src="img/gull-after.webp" alt="Чайка после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Броши-чайки</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Брелок-чайка</figcaption>
+            </figure>
+            <figure class="pair reveal" style="--delay:.2s">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/bears3-before.webp" alt="Медведи до обработки">
+                <img slot="second" src="img/bears3-after.webp" alt="Медведи после обработки">
+              </img-comparison-slider>
+              <figcaption class="pair__caption" style="text-align:center;">Брелоки-медведи</figcaption>
             </figure>
             <figure class="pair reveal">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/gull-before.webp" alt="Чайка до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/gull-after.webp" alt="Чайка после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/crabs-before.webp" alt="Крабики до обработки">
+                <img slot="second" src="img/crabs-after.webp" alt="Крабики после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Брелок-чайка</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Брелоки-крабики</figcaption>
             </figure>
             <figure class="pair reveal" style="--delay:.1s">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/bears3-before.webp" alt="Медведи до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/bears3-after.webp" alt="Медведи после" style="width:100%; height:100%; object-fit:cover;">
+              <img-comparison-slider class="cmp">
+                <img slot="first" src="img/brownbear-before.webp" alt="Мишка до обработки">
+                <img slot="second" src="img/brownbear-after.webp" alt="Мишка после обработки">
               </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Брелоки-медведи</figcaption>
-            </figure>
-            <figure class="pair reveal">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/crabs-before.webp" alt="Крабики до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/crabs-after.webp" alt="Крабики после" style="width:100%; height:100%; object-fit:cover;">
-              </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Брелоки-крабики</figcaption>
-            </figure>
-            <figure class="pair reveal" style="--delay:.1s">
-              <img-comparison-slider style="--divider-width:2px; --divider-color:var(--accent); border-radius:var(--radius); overflow:hidden; aspect-ratio:1/1; width:100%;">
-                <img slot="first" src="img/brownbear-before.webp" alt="Мишка до" style="width:100%; height:100%; object-fit:cover;">
-                <img slot="second" src="img/brownbear-after.webp" alt="Мишка после" style="width:100%; height:100%; object-fit:cover;">
-              </img-comparison-slider>
-              <figcaption class="pair__caption" style="text-align:center; margin-top:12px;">Бурый мишка</figcaption>
+              <figcaption class="pair__caption" style="text-align:center;">Бурый мишка</figcaption>
             </figure>
           </div>
         </div>
-        <button class="btn btn--outline more__btn" data-more="moreToys" data-label="Показать ещё товары" aria-expanded="false" aria-controls="moreToys" style="margin-top: 28px;">Показать ещё товары</button>
+        <button class="btn btn--outline more__btn" data-more="moreToys" data-label="Свернуть товары" aria-expanded="false" aria-controls="moreToys" style="margin-top: 28px;">Показать ещё товары</button>
       </div>
     </section>
 
@@ -1058,6 +1077,20 @@
         });
       });
       start();
+    })();
+
+    // Стрелки каруселей инфографики
+    (function () {
+      document.querySelectorAll('.ig-arrow').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var carousel = btn.closest('.ig-carousel');
+          var track = carousel.querySelector('.ig-track');
+          var slide = track.querySelector('.ig-slide');
+          var step = slide ? slide.getBoundingClientRect().width + 16 : 320;
+          var dir = parseInt(btn.getAttribute('data-dir'), 10);
+          track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        });
+      });
     })();
   </script>
 </body>
