@@ -98,6 +98,8 @@
     @media (min-width: 640px) { section[id], footer[id] { scroll-margin-top: 80px; } }
 
     .header__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding-top: 20px; padding-bottom: 20px; }
+    .header__cta { min-height: 0; padding: 10px 22px; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; }
+    @media (max-width: 639px) { .header__cta { display: none; } }
     .logo { font-weight: 700; font-size: 18px; letter-spacing: 0.02em; }
     .logo__dot { color: var(--accent); }
     .nav__list { display: flex; flex-wrap: wrap; gap: 8px 24px; list-style: none; }
@@ -145,35 +147,40 @@
       .nav__sublink { padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(255,255,255,.08); font-size: 15px; }
     }
 
-    /* ===== Hero с фоновым фото (файл в корне репозитория) ===== */
+    /* ===== Hero с фоновым фото ===== */
     .hero {
       position: relative;
+      display: flex; align-items: center;
+      min-height: calc(100vh - 76px);
       background: var(--bg-alt) url('imghero-bg.webp') center right / cover no-repeat;
-      padding-top: 96px; padding-bottom: 96px;
+      padding-top: 72px; padding-bottom: 72px;
       border-bottom: 3px solid var(--accent);
     }
+    /* Градиент только на левой части: справа фото остаётся светлым */
     .hero::before {
       content: ""; position: absolute; inset: 0; z-index: 0;
-      background: linear-gradient(100deg, rgba(10,10,10,.88) 0%, rgba(10,10,10,.72) 38%, rgba(10,10,10,.35) 62%, rgba(10,10,10,.15) 100%);
+      background: linear-gradient(95deg, rgba(8,20,14,.94) 0%, rgba(8,20,14,.85) 34%, rgba(8,20,14,.45) 58%, rgba(8,20,14,.05) 85%);
     }
-    .hero > .container { position: relative; z-index: 1; }
-    .hero__title { font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(4rem, 19vw, 12rem); line-height: 0.85; letter-spacing: -0.04em; }
+    .hero > .container { position: relative; z-index: 1; width: 100%; }
+    .hero__content { max-width: 560px; }
+    .hero__title { font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(4rem, 9vw, 7.5rem); line-height: 0.85; letter-spacing: -0.04em; }
     .hero__line--accent { color: var(--accent); }
-    .hero__services { margin-top: 28px; font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(1.1rem, 3.2vw, 2rem); line-height: 1.2; letter-spacing: -0.01em; }
-    .hero__services span { white-space: nowrap; }
     .hero__line { display: block; }
+    .hero__services { margin-top: 24px; font-family: var(--font-head); font-weight: 900; text-transform: uppercase; font-size: clamp(1.1rem, 2vw, 1.6rem); line-height: 1.25; letter-spacing: -0.01em; }
+    .hero__services span { white-space: nowrap; }
     .hero__slash { color: var(--accent); }
-    .hero__text { max-width: 600px; margin-top: 24px; font-size: 18px; opacity: 0.8; }
+    .hero__text { max-width: 480px; margin-top: 20px; font-size: 18px; opacity: 0.85; }
 
-    .facts { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(255, 255, 255, 0.2); border: 1px solid rgba(255, 255, 255, 0.2); max-width: 600px; margin-top: 40px; }
-    .facts__cell { background: rgba(15, 42, 31, 0.88); padding: 18px 20px; }
-    .facts__value { display: block; font-size: 22px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
-    .facts__label { display: block; margin-top: 4px; font-size: 14px; color: rgba(255, 255, 255, 0.6); }
-    .hero .btn { margin-top: 40px; }
-    .hero .facts { max-width: none; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255, 255, 255, 0.25); border: 1px solid rgba(255, 255, 255, 0.25); margin-top: 36px; }
+    .facts__cell { background: rgba(8, 20, 14, 0.78); padding: 14px 18px; -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); }
+    .facts__value { display: block; font-size: 20px; font-weight: 700; line-height: 1.2; white-space: nowrap; }
+    .facts__label { display: block; margin-top: 2px; font-size: 13px; color: rgba(255, 255, 255, 0.65); }
+    .hero .btn { margin-top: 32px; }
     @media (max-width: 767px) {
-      .hero { padding-top: 64px; padding-bottom: 64px; background-position: 72% center; }
-      .hero::before { background: linear-gradient(180deg, rgba(10,10,10,.82) 0%, rgba(10,10,10,.5) 50%, rgba(10,10,10,.85) 100%); }
+      .hero { min-height: 0; padding: 56px 0; background-position: 72% center; }
+      .hero::before { background: linear-gradient(180deg, rgba(8,20,14,.85) 0%, rgba(8,20,14,.55) 45%, rgba(8,20,14,.92) 100%); }
+      .facts { grid-template-columns: 1fr; }
+      .hero__content { max-width: none; }
     }
 
     /* ===== Услуги ===== */
@@ -349,7 +356,6 @@
     /* ===== Планшет ===== */
     @media (min-width: 640px) {
       .hero__text { font-size: 20px; }
-      .facts { grid-template-columns: repeat(3, 1fr); }
       :root { --gutter: 32px; }
       .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
       .process__list { grid-template-columns: repeat(2, 1fr); column-gap: 32px; }
@@ -494,6 +500,7 @@
           <li><a href="#contacts" class="nav__link">Контакты</a></li>
         </ul>
       </nav>
+      <a href="https://t.me/artifexform" class="btn btn--primary header__cta" target="_blank" rel="noopener">Обсудить проект</a>
     </div>
   </header>
 
@@ -511,7 +518,7 @@
           <div class="facts">
             <div class="facts__cell"><span class="facts__value">7 дней</span><span class="facts__label">срок сайта</span></div>
             <div class="facts__cell"><span class="facts__value">от 10 000 ₽</span><span class="facts__label">сайт под ключ</span></div>
-            <div class="facts__cell"><span class="facts__value">от 2 500 ₽</span><span class="facts__label">карточка инфографики</span></div>
+            <div class="facts__cell"><span class="facts__value">от 2 500 ₽</span><span class="facts__label">блок из 5 карточек инфографики</span></div>
           </div>
           <a href="https://t.me/artifexform" class="btn btn--primary" target="_blank" rel="noopener">Обсудить проект</a>
         </div>
@@ -596,7 +603,7 @@
     <section class="section" id="infographics">
       <div class="container">
         <h2 class="section__title reveal">Инфографика для маркетплейсов</h2>
-        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Обложка + слайды за 2–3 дня.</p>
+        <p class="block__lead reveal">Готовые карточки Ozon и Wildberries. Блок из 5 карточек за 2–3 дня.</p>
 
         <!-- Серия 1: видна сразу с текстом -->
         <div class="ig-block reveal">
@@ -621,7 +628,7 @@
               <li>Слайд «в подарок» с упаковкой</li>
               <li>Комплектация и уход</li>
             </ul>
-            <p class="ig__price">Обложка + 6 слайдов — от 2 500 ₽, 2–3 дня</p>
+            <p class="ig__price">Блок из 5 карточек — от 2 500 ₽, 2–3 дня</p>
             <a href="#services" class="ig__link">Что входит в услугу →</a>
           </div>
         </div>
@@ -788,7 +795,7 @@
               <li>Структура и тексты по вашей информации</li>
               <li>Вёрстка, удобный вид на телефоне</li>
               <li>До 15 фото с простой обработкой</li>
-              <li>Публикация, два круга правок</li>
+              <li>Публикация, один круг правок</li>
             </ul>
             <div class="svc__result"><span class="svc__label">Результат</span><p>Клиент сам находит ответы на сайте, а вы меньше переписываетесь.</p></div>
           </article>
@@ -798,13 +805,13 @@
               <span class="svc__num">02</span>
               <h3 class="offer__title">Инфографика</h3>
               <p class="price__value">от 2 500 ₽</p>
-              <p class="offer__meta">за карточку · 2–3 рабочих дня</p>
+              <p class="offer__meta">за блок из 5 карточек · 2–3 рабочих дня</p>
             </div>
             <ul class="svc__list">
-              <li>Карточка товара для Ozon и Wildberries: обложка + 4 слайда</li>
+              <li>Блок из 5 карточек для Ozon и Wildberries: обложка + 4 слайда</li>
               <li>Слайды для соцсетей, меню и прайсы — от 500 ₽</li>
               <li>Тексты на слайдах по вашей информации</li>
-              <li>Два круга правок</li>
+              <li>Один круг правок</li>
             </ul>
             <div class="svc__result"><span class="svc__label">Результат</span><p>Покупатель за пару секунд понимает, что это за товар и чем он лучше.</p></div>
           </article>
@@ -814,10 +821,11 @@
               <span class="svc__num">+</span>
               <h3 class="offer__title">Обработка фото</h3>
               <p class="price__value price__value--sm">500 ₽</p>
-              <p class="offer__meta">за 10 фото · ручная ретушь 1 000 ₽ за фото</p>
+              <p class="offer__meta">за 10 фото · замена или удаление фона</p>
             </div>
             <ul class="svc__list">
-              <li>Нейтральный фон, свет, цвет, ретушь</li>
+              <li>Замена или удаление фона на 10 фото</li>
+              <li>Ручная ретушь — от 1 000 ₽ за фото</li>
               <li>ТЗ для фотографа и контроль съёмки — по запросу</li>
               <li>ИИ-визуал для соцсетей по мотивам вашего товара</li>
             </ul>
@@ -837,7 +845,7 @@
           <ul class="about__facts">
             <li><b>Полиграфия и фотомастерские</b> работала с макетами, печатью и ретушью — отсюда внимание к деталям и цвету</li>
             <li><b>Сама работала в сфере услуг</b> кондитером в кафе и отелях с 2016 года — знаю, как продукт попадает к клиенту</li>
-            <li><b>ИП на НПД</b> договор, акт и чек на каждую оплату</li>
+            <li><b>ИП на НПД</b> договор, акт и чек на каждую оплату — по запросу</li>
           </ul>
         </div>
       </div>
@@ -850,11 +858,11 @@
         <ol class="process__list">
           <li class="step reveal"><span class="step__num">01</span><h3 class="step__title">Знакомство</h3><p class="step__text">Вы рассказываете о деле и задаче. Я задаю вопросы и называю точную цену и срок.</p></li>
           <li class="step reveal" style="--delay: .1s"><span class="step__num">02</span><h3 class="step__title">Договор и материалы</h3><p class="step__text">Подписываем договор. Вы присылаете фото и информацию — с этого дня идёт срок.</p></li>
-          <li class="step reveal" style="--delay: .2s"><span class="step__num">03</span><h3 class="step__title">Работа</h3><p class="step__text">Пишу тексты, делаю дизайн и собираю сайт. Сайт — 7 дней, карточка — 2–3 рабочих дня.</p></li>
-          <li class="step reveal" style="--delay: .3s"><span class="step__num">04</span><h3 class="step__title">Правки и сдача</h3><p class="step__text">Два круга правок. Затем публикую сайт на вашем аккаунте и передаю файлы, фото и инструкцию.</p></li>
+          <li class="step reveal" style="--delay: .2s"><span class="step__num">03</span><h3 class="step__title">Работа</h3><p class="step__text">Пишу тексты, делаю дизайн и собираю сайт. Сайт — 7 дней, блок карточек — 2–3 рабочих дня.</p></li>
+          <li class="step reveal" style="--delay: .3s"><span class="step__num">04</span><h3 class="step__title">Правки и сдача</h3><p class="step__text">Один круг правок одним списком. Затем публикую сайт на вашем аккаунте и передаю файлы, фото и инструкцию.</p></li>
         </ol>
         <ul class="rules reveal">
-          <li><b>Правки.</b> Два круга: все замечания одним списком. Дальше — от 500 ₽.</li>
+          <li><b>Правки.</b> Один круг: все замечания одним списком. Дальше — от 500 ₽.</li>
           <li><b>Сайт ваш.</b> Аккаунт, файлы и домен на вас, перейти к другому разработчику можно в любой момент.</li>
           <li><b>Права.</b> После оплаты переходят к вам, авторство и право показать работу в портфолио остаются за мной.</li>
         </ul>
